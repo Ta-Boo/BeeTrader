@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B35BA94C240FEB4C00BDA7C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35BA94B240FEB4C00BDA7C9 /* AppDelegate.swift */; };
+		B35BA94E240FEB4C00BDA7C9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35BA94D240FEB4C00BDA7C9 /* SceneDelegate.swift */; };
+		B35BA950240FEB4C00BDA7C9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35BA94F240FEB4C00BDA7C9 /* ViewController.swift */; };
+		B35BA953240FEB4C00BDA7C9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B35BA951240FEB4C00BDA7C9 /* Main.storyboard */; };
+		B35BA955240FEB4F00BDA7C9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B35BA954240FEB4F00BDA7C9 /* Assets.xcassets */; };
+		B35BA958240FEB4F00BDA7C9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B35BA956240FEB4F00BDA7C9 /* LaunchScreen.storyboard */; };
+		B35BA963240FEB4F00BDA7C9 /* BeeTraderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35BA962240FEB4F00BDA7C9 /* BeeTraderTests.swift */; };
+		B35BA96E240FEB4F00BDA7C9 /* BeeTraderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35BA96D240FEB4F00BDA7C9 /* BeeTraderUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B35BA95F240FEB4F00BDA7C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B35BA940240FEB4C00BDA7C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B35BA947240FEB4C00BDA7C9;
+			remoteInfo = BeeTrader;
+		};
+		B35BA96A240FEB4F00BDA7C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B35BA940240FEB4C00BDA7C9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B35BA947240FEB4C00BDA7C9;
+			remoteInfo = BeeTrader;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B35BA948240FEB4C00BDA7C9 /* BeeTrader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeeTrader.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B35BA94B240FEB4C00BDA7C9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B35BA94D240FEB4C00BDA7C9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B35BA94F240FEB4C00BDA7C9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B35BA952240FEB4C00BDA7C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B35BA954240FEB4F00BDA7C9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B35BA957240FEB4F00BDA7C9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B35BA959240FEB4F00BDA7C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B35BA95E240FEB4F00BDA7C9 /* BeeTraderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeeTraderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B35BA962240FEB4F00BDA7C9 /* BeeTraderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeeTraderTests.swift; sourceTree = "<group>"; };
+		B35BA964240FEB4F00BDA7C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B35BA969240FEB4F00BDA7C9 /* BeeTraderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeeTraderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B35BA96D240FEB4F00BDA7C9 /* BeeTraderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeeTraderUITests.swift; sourceTree = "<group>"; };
+		B35BA96F240FEB4F00BDA7C9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B35BA945240FEB4C00BDA7C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B35BA95B240FEB4F00BDA7C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B35BA966240FEB4F00BDA7C9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B35BA93F240FEB4C00BDA7C9 = {
+			isa = PBXGroup;
+			children = (
+				B35BA94A240FEB4C00BDA7C9 /* BeeTrader */,
+				B35BA961240FEB4F00BDA7C9 /* BeeTraderTests */,
+				B35BA96C240FEB4F00BDA7C9 /* BeeTraderUITests */,
+				B35BA949240FEB4C00BDA7C9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B35BA949240FEB4C00BDA7C9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B35BA948240FEB4C00BDA7C9 /* BeeTrader.app */,
+				B35BA95E240FEB4F00BDA7C9 /* BeeTraderTests.xctest */,
+				B35BA969240FEB4F00BDA7C9 /* BeeTraderUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B35BA94A240FEB4C00BDA7C9 /* BeeTrader */ = {
+			isa = PBXGroup;
+			children = (
+				B35BA94B240FEB4C00BDA7C9 /* AppDelegate.swift */,
+				B35BA94D240FEB4C00BDA7C9 /* SceneDelegate.swift */,
+				B35BA94F240FEB4C00BDA7C9 /* ViewController.swift */,
+				B35BA951240FEB4C00BDA7C9 /* Main.storyboard */,
+				B35BA954240FEB4F00BDA7C9 /* Assets.xcassets */,
+				B35BA956240FEB4F00BDA7C9 /* LaunchScreen.storyboard */,
+				B35BA959240FEB4F00BDA7C9 /* Info.plist */,
+			);
+			path = BeeTrader;
+			sourceTree = "<group>";
+		};
+		B35BA961240FEB4F00BDA7C9 /* BeeTraderTests */ = {
+			isa = PBXGroup;
+			children = (
+				B35BA962240FEB4F00BDA7C9 /* BeeTraderTests.swift */,
+				B35BA964240FEB4F00BDA7C9 /* Info.plist */,
+			);
+			path = BeeTraderTests;
+			sourceTree = "<group>";
+		};
+		B35BA96C240FEB4F00BDA7C9 /* BeeTraderUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B35BA96D240FEB4F00BDA7C9 /* BeeTraderUITests.swift */,
+				B35BA96F240FEB4F00BDA7C9 /* Info.plist */,
+			);
+			path = BeeTraderUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B35BA947240FEB4C00BDA7C9 /* BeeTrader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B35BA972240FEB4F00BDA7C9 /* Build configuration list for PBXNativeTarget "BeeTrader" */;
+			buildPhases = (
+				B35BA944240FEB4C00BDA7C9 /* Sources */,
+				B35BA945240FEB4C00BDA7C9 /* Frameworks */,
+				B35BA946240FEB4C00BDA7C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BeeTrader;
+			productName = BeeTrader;
+			productReference = B35BA948240FEB4C00BDA7C9 /* BeeTrader.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B35BA95D240FEB4F00BDA7C9 /* BeeTraderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B35BA975240FEB4F00BDA7C9 /* Build configuration list for PBXNativeTarget "BeeTraderTests" */;
+			buildPhases = (
+				B35BA95A240FEB4F00BDA7C9 /* Sources */,
+				B35BA95B240FEB4F00BDA7C9 /* Frameworks */,
+				B35BA95C240FEB4F00BDA7C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B35BA960240FEB4F00BDA7C9 /* PBXTargetDependency */,
+			);
+			name = BeeTraderTests;
+			productName = BeeTraderTests;
+			productReference = B35BA95E240FEB4F00BDA7C9 /* BeeTraderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B35BA968240FEB4F00BDA7C9 /* BeeTraderUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B35BA978240FEB4F00BDA7C9 /* Build configuration list for PBXNativeTarget "BeeTraderUITests" */;
+			buildPhases = (
+				B35BA965240FEB4F00BDA7C9 /* Sources */,
+				B35BA966240FEB4F00BDA7C9 /* Frameworks */,
+				B35BA967240FEB4F00BDA7C9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B35BA96B240FEB4F00BDA7C9 /* PBXTargetDependency */,
+			);
+			name = BeeTraderUITests;
+			productName = BeeTraderUITests;
+			productReference = B35BA969240FEB4F00BDA7C9 /* BeeTraderUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B35BA940240FEB4C00BDA7C9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1130;
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = hladek;
+				TargetAttributes = {
+					B35BA947240FEB4C00BDA7C9 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					B35BA95D240FEB4F00BDA7C9 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = B35BA947240FEB4C00BDA7C9;
+					};
+					B35BA968240FEB4F00BDA7C9 = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = B35BA947240FEB4C00BDA7C9;
+					};
+				};
+			};
+			buildConfigurationList = B35BA943240FEB4C00BDA7C9 /* Build configuration list for PBXProject "BeeTrader" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B35BA93F240FEB4C00BDA7C9;
+			productRefGroup = B35BA949240FEB4C00BDA7C9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B35BA947240FEB4C00BDA7C9 /* BeeTrader */,
+				B35BA95D240FEB4F00BDA7C9 /* BeeTraderTests */,
+				B35BA968240FEB4F00BDA7C9 /* BeeTraderUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B35BA946240FEB4C00BDA7C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B35BA958240FEB4F00BDA7C9 /* LaunchScreen.storyboard in Resources */,
+				B35BA955240FEB4F00BDA7C9 /* Assets.xcassets in Resources */,
+				B35BA953240FEB4C00BDA7C9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B35BA95C240FEB4F00BDA7C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B35BA967240FEB4F00BDA7C9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B35BA944240FEB4C00BDA7C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B35BA950240FEB4C00BDA7C9 /* ViewController.swift in Sources */,
+				B35BA94C240FEB4C00BDA7C9 /* AppDelegate.swift in Sources */,
+				B35BA94E240FEB4C00BDA7C9 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B35BA95A240FEB4F00BDA7C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B35BA963240FEB4F00BDA7C9 /* BeeTraderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B35BA965240FEB4F00BDA7C9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B35BA96E240FEB4F00BDA7C9 /* BeeTraderUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B35BA960240FEB4F00BDA7C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B35BA947240FEB4C00BDA7C9 /* BeeTrader */;
+			targetProxy = B35BA95F240FEB4F00BDA7C9 /* PBXContainerItemProxy */;
+		};
+		B35BA96B240FEB4F00BDA7C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B35BA947240FEB4C00BDA7C9 /* BeeTrader */;
+			targetProxy = B35BA96A240FEB4F00BDA7C9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B35BA951240FEB4C00BDA7C9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B35BA952240FEB4C00BDA7C9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B35BA956240FEB4F00BDA7C9 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B35BA957240FEB4F00BDA7C9 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B35BA970240FEB4F00BDA7C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B35BA971240FEB4F00BDA7C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B35BA973240FEB4F00BDA7C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZJZYDWBNWH;
+				INFOPLIST_FILE = BeeTrader/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ta-boo.BeeTrader";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B35BA974240FEB4F00BDA7C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZJZYDWBNWH;
+				INFOPLIST_FILE = BeeTrader/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ta-boo.BeeTrader";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B35BA976240FEB4F00BDA7C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZJZYDWBNWH;
+				INFOPLIST_FILE = BeeTraderTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ta-boo.BeeTraderTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeeTrader.app/BeeTrader";
+			};
+			name = Debug;
+		};
+		B35BA977240FEB4F00BDA7C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZJZYDWBNWH;
+				INFOPLIST_FILE = BeeTraderTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ta-boo.BeeTraderTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BeeTrader.app/BeeTrader";
+			};
+			name = Release;
+		};
+		B35BA979240FEB4F00BDA7C9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZJZYDWBNWH;
+				INFOPLIST_FILE = BeeTraderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ta-boo.BeeTraderUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BeeTrader;
+			};
+			name = Debug;
+		};
+		B35BA97A240FEB4F00BDA7C9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = ZJZYDWBNWH;
+				INFOPLIST_FILE = BeeTraderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ta-boo.BeeTraderUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BeeTrader;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B35BA943240FEB4C00BDA7C9 /* Build configuration list for PBXProject "BeeTrader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B35BA970240FEB4F00BDA7C9 /* Debug */,
+				B35BA971240FEB4F00BDA7C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B35BA972240FEB4F00BDA7C9 /* Build configuration list for PBXNativeTarget "BeeTrader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B35BA973240FEB4F00BDA7C9 /* Debug */,
+				B35BA974240FEB4F00BDA7C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B35BA975240FEB4F00BDA7C9 /* Build configuration list for PBXNativeTarget "BeeTraderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B35BA976240FEB4F00BDA7C9 /* Debug */,
+				B35BA977240FEB4F00BDA7C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B35BA978240FEB4F00BDA7C9 /* Build configuration list for PBXNativeTarget "BeeTraderUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B35BA979240FEB4F00BDA7C9 /* Debug */,
+				B35BA97A240FEB4F00BDA7C9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B35BA940240FEB4C00BDA7C9 /* Project object */;
+}
