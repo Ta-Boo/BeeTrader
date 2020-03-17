@@ -12,16 +12,16 @@ public struct Address: Codable {
     let id: Int
     let name: String
     let postalCode: String
-    
+
     enum CodingKeys: String, CodingKey {
         case id
         case name
         case postalCode = "postal_code"
     }
-    
 }
 
 public struct User: Codable {
+    let id: Int
     let firstName: String
     let lastName: String
     let email: String
@@ -30,6 +30,7 @@ public struct User: Codable {
     let address: Address?
 
     enum CodingKeys: String, CodingKey {
+        case id
         case firstName = "first_name"
         case lastName = "last_name"
         case email

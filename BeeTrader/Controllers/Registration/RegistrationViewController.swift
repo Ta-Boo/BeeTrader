@@ -111,13 +111,18 @@ public class RegistrationViewController: UIViewController {
             registrationConfirmEmailLabel.isNotEmpty()
     }
 
+    private func saveUserData(user: LoginResponse) {
+        if let encoded = try? JSONEncoder().encode(user) {
+            let defaults = UserDefaults.standard
+            defaults.set(encoded, forKey: StorageKeys.user)
+        }
+    }
+
     private func sucessfulLogin(_ value: DataWrapper<LoginResponse>) {
         if let data = value.data {
-            UserDefaults.standard.set(data.token, forKey: StorageKeys.apiToken)
-            UserDefaults.standard.set(data.email, forKey: StorageKeys.email)
+            saveUserData(user: data)
             successfulLoginHandler?()
             dismiss(animated: true, completion: nil)
-            // TODO: let him continue
         } else {
             let alert = UIAlertController(title: "Check your email or password", message: nil, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))

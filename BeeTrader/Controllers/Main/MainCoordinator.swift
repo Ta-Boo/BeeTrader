@@ -14,7 +14,7 @@ class MainCoordinator: Coordinator {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
 
-        if let _ = UserDefaults.standard.string(forKey: StorageKeys.apiToken) {
+        if let _ = UserDefaults.standard.object(forKey: StorageKeys.user) {
             let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.mainTabBar)
             navigationController.pushViewController(controller, animated: true)
@@ -26,7 +26,7 @@ class MainCoordinator: Coordinator {
                 let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.mainTabBar)
                 self.navigationController.pushViewController(controller, animated: true)
             }
-            navigationController.presentInFullScreen(controller, animated: true)
+            navigationController.presentInFullScreen(controller, animated: false)
         }
     }
 }

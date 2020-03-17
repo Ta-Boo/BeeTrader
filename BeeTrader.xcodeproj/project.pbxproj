@@ -3,12 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7FB4A2D55E39482FD45D83BE /* Pods_BeeTrader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A72758528B86197B32EEA7ED /* Pods_BeeTrader.framework */; };
-		B31DC7E524193DB300E4F6DE /* RegistrationViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31DC7E424193DB300E4F6DE /* RegistrationViewType.swift */; };
+		1788DCCBEDF57FB89B3FF439 /* libPods-BeeTrader.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A97B99D8265A1756988E7F9E /* libPods-BeeTrader.a */; };
 		B33B7C982411210300CD6719 /* DataWrapperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B7C972411210300CD6719 /* DataWrapperModel.swift */; };
 		B33B7C9A2411481600CD6719 /* UrlRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B7C992411481600CD6719 /* UrlRequest.swift */; };
 		B35BA94C240FEB4C00BDA7C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35BA94B240FEB4C00BDA7C9 /* AppDelegate.swift */; };
@@ -20,9 +19,11 @@
 		B35BA98D240FEC5700BDA7C9 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35BA988240FEC5600BDA7C9 /* RegistrationViewModel.swift */; };
 		B35BA98E240FEC5700BDA7C9 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35BA989240FEC5600BDA7C9 /* UserModel.swift */; };
 		B35BA992240FEC7300BDA7C9 /* ViewControllerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35BA991240FEC7300BDA7C9 /* ViewControllerType.swift */; };
+		B3654E2B241F90DE00592EF8 /* ListingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3654E2A241F90DE00592EF8 /* ListingModel.swift */; };
+		B3654E2D241F9C7E00592EF8 /* ListingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3654E2C241F9C7E00592EF8 /* ListingViewModel.swift */; };
+		B3654E2F241FC22600592EF8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3654E2E241FC22600592EF8 /* Colors.swift */; };
 		B37B1B4524157012005C3702 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4424157012005C3702 /* StorageKeys.swift */; };
 		B37B1B4824159F0D005C3702 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4724159F0D005C3702 /* Circle.swift */; };
-		B37B1B4B2415A08A005C3702 /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B37B1B4A2415A08A005C3702 /* User.storyboard */; };
 		B37B1B4D2415A68B005C3702 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4C2415A68B005C3702 /* UserViewController.swift */; };
 		B37B1B4F2415A6DA005C3702 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4E2415A6DA005C3702 /* UserViewModel.swift */; };
 		B37B1B5324169252005C3702 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B5224169252005C3702 /* Coordinator.swift */; };
@@ -30,17 +31,36 @@
 		B37B1B582416C74E005C3702 /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B572416C74E005C3702 /* ViewControllers.swift */; };
 		B38E4EEF241AC45600B85994 /* Aliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38E4EEE241AC45600B85994 /* Aliases.swift */; };
 		B38E4EF1241AC74500B85994 /* Parameters+Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38E4EF0241AC74500B85994 /* Parameters+Headers.swift */; };
+		B3923DBA241E3B5100DD7F53 /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B3923DD1241E3EFD00DD7F53 /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B3C2AD95241BBD2E00CECE33 /* MainTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C2AD94241BBD2E00CECE33 /* MainTabBar.storyboard */; };
 		B3C2AD97241BBD7500CECE33 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C2AD96241BBD7500CECE33 /* MainTabBarController.swift */; };
+		B3D02ED1241D8B75009AAD20 /* ListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D02ED0241D8B75009AAD20 /* ListingViewController.swift */; };
+		B3D02ED4241D8E1F009AAD20 /* ListingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3D02ED2241D8E1F009AAD20 /* ListingCell.swift */; };
 		B3EC2C15241BDB6F00F0E738 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = B3EC2C14241BDB6F00F0E738 /* loading.json */; };
 		B3EC2C17241BDC7D00F0E738 /* Hud.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC2C16241BDC7D00F0E738 /* Hud.swift */; };
 		B3F5C66B2413B46600F7EF70 /* UIElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F5C66A2413B46600F7EF70 /* UIElements.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		B3923DBB241E3B5100DD7F53 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B3923DBA241E3B5100DD7F53 /* (null) in Embed Frameworks */,
+				B3923DD1241E3EFD00DD7F53 /* (null) in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
-		45F28E8031A50AF40598A487 /* Pods-BeeTrader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeTrader.debug.xcconfig"; path = "Target Support Files/Pods-BeeTrader/Pods-BeeTrader.debug.xcconfig"; sourceTree = "<group>"; };
-		A72758528B86197B32EEA7ED /* Pods_BeeTrader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeeTrader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B31DC7E424193DB300E4F6DE /* RegistrationViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewType.swift; sourceTree = "<group>"; };
+		392DE9F024D1E313D6C6AD47 /* Pods-BeeTrader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeTrader.debug.xcconfig"; path = "Target Support Files/Pods-BeeTrader/Pods-BeeTrader.debug.xcconfig"; sourceTree = "<group>"; };
+		976A236BFE4F04EB31A85055 /* Pods-BeeTrader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeTrader.release.xcconfig"; path = "Target Support Files/Pods-BeeTrader/Pods-BeeTrader.release.xcconfig"; sourceTree = "<group>"; };
+		A97B99D8265A1756988E7F9E /* libPods-BeeTrader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BeeTrader.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B33B7C972411210300CD6719 /* DataWrapperModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataWrapperModel.swift; sourceTree = "<group>"; };
 		B33B7C992411481600CD6719 /* UrlRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlRequest.swift; sourceTree = "<group>"; };
 		B35BA948240FEB4C00BDA7C9 /* BeeTrader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeeTrader.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,9 +74,11 @@
 		B35BA988240FEC5600BDA7C9 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		B35BA989240FEC5600BDA7C9 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		B35BA991240FEC7300BDA7C9 /* ViewControllerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerType.swift; sourceTree = "<group>"; };
+		B3654E2A241F90DE00592EF8 /* ListingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingModel.swift; sourceTree = "<group>"; };
+		B3654E2C241F9C7E00592EF8 /* ListingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingViewModel.swift; sourceTree = "<group>"; };
+		B3654E2E241FC22600592EF8 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B37B1B4424157012005C3702 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
 		B37B1B4724159F0D005C3702 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
-		B37B1B4A2415A08A005C3702 /* User.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = User.storyboard; sourceTree = "<group>"; };
 		B37B1B4C2415A68B005C3702 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		B37B1B4E2415A6DA005C3702 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		B37B1B5224169252005C3702 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -64,12 +86,20 @@
 		B37B1B572416C74E005C3702 /* ViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
 		B38E4EEE241AC45600B85994 /* Aliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aliases.swift; sourceTree = "<group>"; };
 		B38E4EF0241AC74500B85994 /* Parameters+Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Parameters+Headers.swift"; sourceTree = "<group>"; };
+		B3923DB2241E3A0600DD7F53 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3923DB5241E3B1E00DD7F53 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3923DBC241E3CEA00DD7F53 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3923DBF241E3E4500DD7F53 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3923DC0241E3E4500DD7F53 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3923DC9241E3EE700DD7F53 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3923DCA241E3EE700DD7F53 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C2AD94241BBD2E00CECE33 /* MainTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBar.storyboard; sourceTree = "<group>"; };
 		B3C2AD96241BBD7500CECE33 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		B3D02ED0241D8B75009AAD20 /* ListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingViewController.swift; sourceTree = "<group>"; };
+		B3D02ED2241D8E1F009AAD20 /* ListingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingCell.swift; sourceTree = "<group>"; };
 		B3EC2C14241BDB6F00F0E738 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		B3EC2C16241BDC7D00F0E738 /* Hud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hud.swift; sourceTree = "<group>"; };
 		B3F5C66A2413B46600F7EF70 /* UIElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElements.swift; sourceTree = "<group>"; };
-		BAF3516972054F746F6864F6 /* Pods-BeeTrader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeeTrader.release.xcconfig"; path = "Target Support Files/Pods-BeeTrader/Pods-BeeTrader.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7FB4A2D55E39482FD45D83BE /* Pods_BeeTrader.framework in Frameworks */,
+				1788DCCBEDF57FB89B3FF439 /* libPods-BeeTrader.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,7 +117,14 @@
 		7C13FF9B749E7C3F5F13F756 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A72758528B86197B32EEA7ED /* Pods_BeeTrader.framework */,
+				B3923DC9241E3EE700DD7F53 /* Alamofire.framework */,
+				B3923DCA241E3EE700DD7F53 /* Lottie.framework */,
+				B3923DBF241E3E4500DD7F53 /* Alamofire.framework */,
+				B3923DC0241E3E4500DD7F53 /* Lottie.framework */,
+				B3923DBC241E3CEA00DD7F53 /* Alamofire.framework */,
+				B3923DB5241E3B1E00DD7F53 /* Alamofire.framework */,
+				B3923DB2241E3A0600DD7F53 /* Alamofire.framework */,
+				A97B99D8265A1756988E7F9E /* libPods-BeeTrader.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -95,8 +132,8 @@
 		8AAB58BA8973F96DDF845FD9 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				45F28E8031A50AF40598A487 /* Pods-BeeTrader.debug.xcconfig */,
-				BAF3516972054F746F6864F6 /* Pods-BeeTrader.release.xcconfig */,
+				392DE9F024D1E313D6C6AD47 /* Pods-BeeTrader.debug.xcconfig */,
+				976A236BFE4F04EB31A85055 /* Pods-BeeTrader.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -172,7 +209,6 @@
 				B35BA987240FEC5600BDA7C9 /* RegistrationViewController.swift */,
 				B35BA988240FEC5600BDA7C9 /* RegistrationViewModel.swift */,
 				B35BA986240FEC5600BDA7C9 /* Registration.storyboard */,
-				B31DC7E424193DB300E4F6DE /* RegistrationViewType.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -208,7 +244,6 @@
 			children = (
 				B37B1B4C2415A68B005C3702 /* UserViewController.swift */,
 				B37B1B4E2415A6DA005C3702 /* UserViewModel.swift */,
-				B37B1B4A2415A08A005C3702 /* User.storyboard */,
 				B35BA989240FEC5600BDA7C9 /* UserModel.swift */,
 			);
 			path = User;
@@ -218,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				B37B1B492415A079005C3702 /* User */,
+				B3D02ECF241D85B7009AAD20 /* List */,
 				B37B1B55241692B6005C3702 /* MainCoordinator.swift */,
 				B3C2AD94241BBD2E00CECE33 /* MainTabBar.storyboard */,
 				B3C2AD96241BBD7500CECE33 /* MainTabBarController.swift */,
@@ -234,6 +270,17 @@
 			path = Others;
 			sourceTree = "<group>";
 		};
+		B3D02ECF241D85B7009AAD20 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				B3D02ED0241D8B75009AAD20 /* ListingViewController.swift */,
+				B3D02ED2241D8E1F009AAD20 /* ListingCell.swift */,
+				B3654E2A241F90DE00592EF8 /* ListingModel.swift */,
+				B3654E2C241F9C7E00592EF8 /* ListingViewModel.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
 		B3EC2C07241BD61200F0E738 /* Animations */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				B3F5C66A2413B46600F7EF70 /* UIElements.swift */,
+				B3654E2E241FC22600592EF8 /* Colors.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -257,11 +305,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B35BA972240FEB4F00BDA7C9 /* Build configuration list for PBXNativeTarget "BeeTrader" */;
 			buildPhases = (
-				E1E17E0AD68E38E92F754C63 /* [CP] Check Pods Manifest.lock */,
+				9FF47E9DEA7A759AF7C451AB /* [CP] Check Pods Manifest.lock */,
 				B35BA944240FEB4C00BDA7C9 /* Sources */,
 				B35BA945240FEB4C00BDA7C9 /* Frameworks */,
 				B35BA946240FEB4C00BDA7C9 /* Resources */,
-				73824056A5E20DA69D6B30F9 /* [CP] Embed Pods Frameworks */,
+				B3923DBB241E3B5100DD7F53 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -313,7 +361,6 @@
 				B35BA97E240FEBB700BDA7C9 /* LaunchScreen.storyboard in Resources */,
 				B3C2AD95241BBD2E00CECE33 /* MainTabBar.storyboard in Resources */,
 				B3EC2C15241BDB6F00F0E738 /* loading.json in Resources */,
-				B37B1B4B2415A08A005C3702 /* User.storyboard in Resources */,
 				B35BA98B240FEC5700BDA7C9 /* Registration.storyboard in Resources */,
 				B35BA983240FEC0100BDA7C9 /* Assets.xcassets in Resources */,
 			);
@@ -322,24 +369,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		73824056A5E20DA69D6B30F9 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BeeTrader/Pods-BeeTrader-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-BeeTrader/Pods-BeeTrader-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BeeTrader/Pods-BeeTrader-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E1E17E0AD68E38E92F754C63 /* [CP] Check Pods Manifest.lock */ = {
+		9FF47E9DEA7A759AF7C451AB /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -373,12 +403,14 @@
 				B38E4EF1241AC74500B85994 /* Parameters+Headers.swift in Sources */,
 				B35BA98E240FEC5700BDA7C9 /* UserModel.swift in Sources */,
 				B35BA98D240FEC5700BDA7C9 /* RegistrationViewModel.swift in Sources */,
-				B31DC7E524193DB300E4F6DE /* RegistrationViewType.swift in Sources */,
 				B37B1B4D2415A68B005C3702 /* UserViewController.swift in Sources */,
+				B3654E2F241FC22600592EF8 /* Colors.swift in Sources */,
 				B33B7C982411210300CD6719 /* DataWrapperModel.swift in Sources */,
 				B35BA94C240FEB4C00BDA7C9 /* AppDelegate.swift in Sources */,
 				B37B1B4F2415A6DA005C3702 /* UserViewModel.swift in Sources */,
 				B3EC2C17241BDC7D00F0E738 /* Hud.swift in Sources */,
+				B3D02ED1241D8B75009AAD20 /* ListingViewController.swift in Sources */,
+				B3654E2B241F90DE00592EF8 /* ListingModel.swift in Sources */,
 				B37B1B4524157012005C3702 /* StorageKeys.swift in Sources */,
 				B38E4EEF241AC45600B85994 /* Aliases.swift in Sources */,
 				B37B1B4824159F0D005C3702 /* Circle.swift in Sources */,
@@ -388,7 +420,9 @@
 				B3C2AD97241BBD7500CECE33 /* MainTabBarController.swift in Sources */,
 				B37B1B582416C74E005C3702 /* ViewControllers.swift in Sources */,
 				B33B7C9A2411481600CD6719 /* UrlRequest.swift in Sources */,
+				B3D02ED4241D8E1F009AAD20 /* ListingCell.swift in Sources */,
 				B35BA94E240FEB4C00BDA7C9 /* SceneDelegate.swift in Sources */,
+				B3654E2D241F9C7E00592EF8 /* ListingViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,9 +545,10 @@
 		};
 		B35BA973240FEB4F00BDA7C9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 45F28E8031A50AF40598A487 /* Pods-BeeTrader.debug.xcconfig */;
+			baseConfigurationReference = 392DE9F024D1E313D6C6AD47 /* Pods-BeeTrader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZJZYDWBNWH;
 				INFOPLIST_FILE = BeeTrader/Info.plist;
@@ -523,6 +558,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ta-boo.BeeTrader";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -530,9 +566,10 @@
 		};
 		B35BA974240FEB4F00BDA7C9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BAF3516972054F746F6864F6 /* Pods-BeeTrader.release.xcconfig */;
+			baseConfigurationReference = 976A236BFE4F04EB31A85055 /* Pods-BeeTrader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZJZYDWBNWH;
 				INFOPLIST_FILE = BeeTrader/Info.plist;
@@ -542,6 +579,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ta-boo.BeeTrader";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

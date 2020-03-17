@@ -10,10 +10,10 @@ import Alamofire
 import Foundation
 
 public class UserViewModel {
-    func loadData(parameters : Parameters, _ completion : @escaping (DataResult<User>) -> Void) {
+    func loadData(parameters: Parameters, _ completion: @escaping (DataResult<User>) -> Void) {
         UrlRequest<User>().handle(ApiConstants.baseUrl + "api/userByEmail",
-                                           methood: HTTPMethod.get,
-                                           parameters: parameters) { result in
+                                  methood: HTTPMethod.get,
+                                  parameters: parameters) { result in
             completion(result)
         }
     }

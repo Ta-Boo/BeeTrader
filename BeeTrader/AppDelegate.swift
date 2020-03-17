@@ -1,11 +1,13 @@
 import UIKit
 
+
+var globalUser: LoginResponse?
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
-  private var applicationCoordinator: MainCoordinator? 
-  
-  func application(_ application: UIApplication,
+  private var applicationCoordinator: MainCoordinator?
+    func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions:
     [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     
@@ -17,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     applicationCoordinator.start()
     styleNavBar()
+    loadUser()
     return true
   }
     
@@ -25,5 +28,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().backgroundColor = .clear
         UINavigationBar.appearance().isTranslucent = true
+    }
+    private func loadUser() {
+        if let user = UserDefaults.standard.object(forKey: StorageKeys.user) as? Data {
+            let decoder = JSONDecoder()
+            if let loadedUser = try? decoder.decode(LoginResponse.self, from: user) {
+                globalUser = loadedUser
+            }
+        }
     }
 }

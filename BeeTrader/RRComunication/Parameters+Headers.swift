@@ -13,14 +13,17 @@ public struct RequestParameters {
     static func login(withEmail email: String, password: String) -> Parameters {
         return ["email": email, "password": password]
     }
-
     static func register(firstName: String, lastName: String,
                          email: String, password: String) -> Parameters {
         return ["first_name": firstName, "last_name": lastName, "email": email,
                 "password": password, "password_confirmation": password]
     }
-
     static func userData(email: String) -> Parameters {
         return ["email": email]
+    }
+    static func listingInRadius(radius: Int, latitude: Double, longitude: Double) -> Parameters {
+        return ["radius": radius,
+                "lat": latitude,
+                "lon": longitude]
     }
 }
