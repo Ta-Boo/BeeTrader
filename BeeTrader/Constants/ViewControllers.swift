@@ -12,4 +12,5 @@ struct ViewControllers {
     static let user = "UserviewController"
     static let registration = "RegistrationviewController"
     static let mainTabBar = "MainTabBarController"
+    static let userDetail = "UserDetailTableViewController"
 }

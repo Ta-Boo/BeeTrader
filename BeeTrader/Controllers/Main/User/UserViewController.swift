@@ -33,10 +33,10 @@ public class UserViewController: UIViewController, UITextFieldDelegate {
         avatar.alpha = 0.45
         viewModel?.loadData(parameters: parameters) { [weak self] result in
             switch result {
-            case let .success(user):
+            case .success(let user):
                 self?.hideHUD()
                 self?.setUpInfo(user.data)
-            case let .failure:
+            case .failure:
                 self?.hideHUD()
             }
         }
@@ -66,11 +66,9 @@ public class UserViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func onEditClicked(_: Any) {
-        firstName.enableEditing()
-        lastName.enableEditing()
-        email.enableEditing()
-        address.enableEditing()
-        phoneNumber.enableEditing()
+        let storyboard = UIStoryboard(name: "UserDetail", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.userDetail)
+        present(controller, animated: true)
     }
 
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {

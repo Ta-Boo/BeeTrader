@@ -29,6 +29,10 @@
 		B37B1B5324169252005C3702 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B5224169252005C3702 /* Coordinator.swift */; };
 		B37B1B56241692B6005C3702 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B55241692B6005C3702 /* MainCoordinator.swift */; };
 		B37B1B582416C74E005C3702 /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B572416C74E005C3702 /* ViewControllers.swift */; };
+		B37F57A9242159C4001B84BB /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37F57A8242159C4001B84BB /* UIViewController.swift */; };
+		B37F57AC242204F5001B84BB /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37F57AB242204F5001B84BB /* UserDetailViewController.swift */; };
+		B37F57AE2422050A001B84BB /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37F57AD2422050A001B84BB /* UserDetailViewModel.swift */; };
+		B37F57B024220558001B84BB /* UserDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B37F57AF24220558001B84BB /* UserDetail.storyboard */; };
 		B38E4EEF241AC45600B85994 /* Aliases.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38E4EEE241AC45600B85994 /* Aliases.swift */; };
 		B38E4EF1241AC74500B85994 /* Parameters+Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B38E4EF0241AC74500B85994 /* Parameters+Headers.swift */; };
 		B3923DBA241E3B5100DD7F53 /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -84,6 +88,10 @@
 		B37B1B5224169252005C3702 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		B37B1B55241692B6005C3702 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		B37B1B572416C74E005C3702 /* ViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
+		B37F57A8242159C4001B84BB /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		B37F57AB242204F5001B84BB /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		B37F57AD2422050A001B84BB /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
+		B37F57AF24220558001B84BB /* UserDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserDetail.storyboard; sourceTree = "<group>"; };
 		B38E4EEE241AC45600B85994 /* Aliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aliases.swift; sourceTree = "<group>"; };
 		B38E4EF0241AC74500B85994 /* Parameters+Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Parameters+Headers.swift"; sourceTree = "<group>"; };
 		B3923DB2241E3A0600DD7F53 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -242,6 +250,7 @@
 		B37B1B492415A079005C3702 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				B37F57AA242204D0001B84BB /* Detail */,
 				B37B1B4C2415A68B005C3702 /* UserViewController.swift */,
 				B37B1B4E2415A6DA005C3702 /* UserViewModel.swift */,
 				B35BA989240FEC5600BDA7C9 /* UserModel.swift */,
@@ -259,6 +268,16 @@
 				B3C2AD96241BBD7500CECE33 /* MainTabBarController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		B37F57AA242204D0001B84BB /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				B37F57AB242204F5001B84BB /* UserDetailViewController.swift */,
+				B37F57AD2422050A001B84BB /* UserDetailViewModel.swift */,
+				B37F57AF24220558001B84BB /* UserDetail.storyboard */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		B38E4EED241AC44700B85994 /* Others */ = {
@@ -294,6 +313,7 @@
 			children = (
 				B3F5C66A2413B46600F7EF70 /* UIElements.swift */,
 				B3654E2E241FC22600592EF8 /* Colors.swift */,
+				B37F57A8242159C4001B84BB /* UIViewController.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -360,6 +380,7 @@
 			files = (
 				B35BA97E240FEBB700BDA7C9 /* LaunchScreen.storyboard in Resources */,
 				B3C2AD95241BBD2E00CECE33 /* MainTabBar.storyboard in Resources */,
+				B37F57B024220558001B84BB /* UserDetail.storyboard in Resources */,
 				B3EC2C15241BDB6F00F0E738 /* loading.json in Resources */,
 				B35BA98B240FEC5700BDA7C9 /* Registration.storyboard in Resources */,
 				B35BA983240FEC0100BDA7C9 /* Assets.xcassets in Resources */,
@@ -400,6 +421,7 @@
 			files = (
 				B37B1B56241692B6005C3702 /* MainCoordinator.swift in Sources */,
 				B37B1B5324169252005C3702 /* Coordinator.swift in Sources */,
+				B37F57AE2422050A001B84BB /* UserDetailViewModel.swift in Sources */,
 				B38E4EF1241AC74500B85994 /* Parameters+Headers.swift in Sources */,
 				B35BA98E240FEC5700BDA7C9 /* UserModel.swift in Sources */,
 				B35BA98D240FEC5700BDA7C9 /* RegistrationViewModel.swift in Sources */,
@@ -409,6 +431,7 @@
 				B35BA94C240FEB4C00BDA7C9 /* AppDelegate.swift in Sources */,
 				B37B1B4F2415A6DA005C3702 /* UserViewModel.swift in Sources */,
 				B3EC2C17241BDC7D00F0E738 /* Hud.swift in Sources */,
+				B37F57AC242204F5001B84BB /* UserDetailViewController.swift in Sources */,
 				B3D02ED1241D8B75009AAD20 /* ListingViewController.swift in Sources */,
 				B3654E2B241F90DE00592EF8 /* ListingModel.swift in Sources */,
 				B37B1B4524157012005C3702 /* StorageKeys.swift in Sources */,
@@ -418,6 +441,7 @@
 				B35BA992240FEC7300BDA7C9 /* ViewControllerType.swift in Sources */,
 				B35BA98C240FEC5700BDA7C9 /* RegistrationViewController.swift in Sources */,
 				B3C2AD97241BBD7500CECE33 /* MainTabBarController.swift in Sources */,
+				B37F57A9242159C4001B84BB /* UIViewController.swift in Sources */,
 				B37B1B582416C74E005C3702 /* ViewControllers.swift in Sources */,
 				B33B7C9A2411481600CD6719 /* UrlRequest.swift in Sources */,
 				B3D02ED4241D8E1F009AAD20 /* ListingCell.swift in Sources */,
