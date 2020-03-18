@@ -36,6 +36,9 @@
                                                             <color key="backgroundColor" name="SecondaryColor"/>
                                                             <color key="tintColor" name="TextColor"/>
                                                             <state key="normal" title="Change me!"/>
+                                                            <connections>
+                                                                <action selector="takePhoto:" destination="S8T-ve-jfu" eventType="touchUpInside" id="WHj-CF-2fh"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -139,6 +142,9 @@
                             <outlet property="delegate" destination="S8T-ve-jfu" id="X4i-EZ-GkP"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="avatar" destination="TSU-1j-254" id="6YF-U8-jAr"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wKp-Vk-m7F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

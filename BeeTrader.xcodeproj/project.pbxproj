@@ -250,10 +250,10 @@
 		B37B1B492415A079005C3702 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				B37F57AA242204D0001B84BB /* Detail */,
 				B37B1B4C2415A68B005C3702 /* UserViewController.swift */,
 				B37B1B4E2415A6DA005C3702 /* UserViewModel.swift */,
 				B35BA989240FEC5600BDA7C9 /* UserModel.swift */,
+				B37F57AA242204D0001B84BB /* Detail */,
 			);
 			path = User;
 			sourceTree = "<group>";
