@@ -9,6 +9,12 @@
 import Foundation
 import UIKit
 
-class UserDetailViewController: UITableViewController {
+class UserDetailViewController: UITableViewController, UITextFieldDelegate {
     
+    
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class UserViewController: UIViewController, UITextFieldDelegate {
+public class UserViewController: UIViewController {
     public var viewModel: UserViewModel?
     @IBOutlet var firstName: UITextField!
     @IBOutlet var lastName: UITextField!
@@ -69,10 +69,5 @@ public class UserViewController: UIViewController, UITextFieldDelegate {
         let storyboard = UIStoryboard(name: "UserDetail", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.userDetail)
         present(controller, animated: true)
-    }
-
-    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
 }
