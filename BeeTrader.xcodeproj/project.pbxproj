@@ -22,6 +22,10 @@
 		B3654E2B241F90DE00592EF8 /* ListingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3654E2A241F90DE00592EF8 /* ListingModel.swift */; };
 		B3654E2D241F9C7E00592EF8 /* ListingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3654E2C241F9C7E00592EF8 /* ListingViewModel.swift */; };
 		B3654E2F241FC22600592EF8 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3654E2E241FC22600592EF8 /* Colors.swift */; };
+		B37539832424BFAC0051C2E6 /* AddressPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37539822424BFAC0051C2E6 /* AddressPickerViewController.swift */; };
+		B37539852424BFDA0051C2E6 /* AddressPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37539842424BFDA0051C2E6 /* AddressPickerViewModel.swift */; };
+		B37539872424C0840051C2E6 /* AddressPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B37539862424C0840051C2E6 /* AddressPicker.storyboard */; };
+		B37539892424C32D0051C2E6 /* UserDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37539882424C32D0051C2E6 /* UserDetailCoordinator.swift */; };
 		B37B1B4524157012005C3702 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4424157012005C3702 /* StorageKeys.swift */; };
 		B37B1B4824159F0D005C3702 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4724159F0D005C3702 /* Circle.swift */; };
 		B37B1B4D2415A68B005C3702 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4C2415A68B005C3702 /* UserViewController.swift */; };
@@ -81,6 +85,10 @@
 		B3654E2A241F90DE00592EF8 /* ListingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingModel.swift; sourceTree = "<group>"; };
 		B3654E2C241F9C7E00592EF8 /* ListingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingViewModel.swift; sourceTree = "<group>"; };
 		B3654E2E241FC22600592EF8 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		B37539822424BFAC0051C2E6 /* AddressPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressPickerViewController.swift; sourceTree = "<group>"; };
+		B37539842424BFDA0051C2E6 /* AddressPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressPickerViewModel.swift; sourceTree = "<group>"; };
+		B37539862424C0840051C2E6 /* AddressPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddressPicker.storyboard; sourceTree = "<group>"; };
+		B37539882424C32D0051C2E6 /* UserDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailCoordinator.swift; sourceTree = "<group>"; };
 		B37B1B4424157012005C3702 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
 		B37B1B4724159F0D005C3702 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		B37B1B4C2415A68B005C3702 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -230,6 +238,16 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		B37539812424BF8E0051C2E6 /* AddressPicker */ = {
+			isa = PBXGroup;
+			children = (
+				B37539822424BFAC0051C2E6 /* AddressPickerViewController.swift */,
+				B37539842424BFDA0051C2E6 /* AddressPickerViewModel.swift */,
+				B37539862424C0840051C2E6 /* AddressPicker.storyboard */,
+			);
+			path = AddressPicker;
+			sourceTree = "<group>";
+		};
 		B37B1B4324156FBE005C3702 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,6 +294,8 @@
 				B37F57AB242204F5001B84BB /* UserDetailViewController.swift */,
 				B37F57AD2422050A001B84BB /* UserDetailViewModel.swift */,
 				B37F57AF24220558001B84BB /* UserDetail.storyboard */,
+				B37539882424C32D0051C2E6 /* UserDetailCoordinator.swift */,
+				B37539812424BF8E0051C2E6 /* AddressPicker */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -381,6 +401,7 @@
 				B35BA97E240FEBB700BDA7C9 /* LaunchScreen.storyboard in Resources */,
 				B3C2AD95241BBD2E00CECE33 /* MainTabBar.storyboard in Resources */,
 				B37F57B024220558001B84BB /* UserDetail.storyboard in Resources */,
+				B37539872424C0840051C2E6 /* AddressPicker.storyboard in Resources */,
 				B3EC2C15241BDB6F00F0E738 /* loading.json in Resources */,
 				B35BA98B240FEC5700BDA7C9 /* Registration.storyboard in Resources */,
 				B35BA983240FEC0100BDA7C9 /* Assets.xcassets in Resources */,
@@ -426,6 +447,7 @@
 				B35BA98E240FEC5700BDA7C9 /* UserModel.swift in Sources */,
 				B35BA98D240FEC5700BDA7C9 /* RegistrationViewModel.swift in Sources */,
 				B37B1B4D2415A68B005C3702 /* UserViewController.swift in Sources */,
+				B37539852424BFDA0051C2E6 /* AddressPickerViewModel.swift in Sources */,
 				B3654E2F241FC22600592EF8 /* Colors.swift in Sources */,
 				B33B7C982411210300CD6719 /* DataWrapperModel.swift in Sources */,
 				B35BA94C240FEB4C00BDA7C9 /* AppDelegate.swift in Sources */,
@@ -439,12 +461,14 @@
 				B37B1B4824159F0D005C3702 /* Circle.swift in Sources */,
 				B3F5C66B2413B46600F7EF70 /* UIElements.swift in Sources */,
 				B35BA992240FEC7300BDA7C9 /* ViewControllerType.swift in Sources */,
+				B37539892424C32D0051C2E6 /* UserDetailCoordinator.swift in Sources */,
 				B35BA98C240FEC5700BDA7C9 /* RegistrationViewController.swift in Sources */,
 				B3C2AD97241BBD7500CECE33 /* MainTabBarController.swift in Sources */,
 				B37F57A9242159C4001B84BB /* UIViewController.swift in Sources */,
 				B37B1B582416C74E005C3702 /* ViewControllers.swift in Sources */,
 				B33B7C9A2411481600CD6719 /* UrlRequest.swift in Sources */,
 				B3D02ED4241D8E1F009AAD20 /* ListingCell.swift in Sources */,
+				B37539832424BFAC0051C2E6 /* AddressPickerViewController.swift in Sources */,
 				B35BA94E240FEB4C00BDA7C9 /* SceneDelegate.swift in Sources */,
 				B3654E2D241F9C7E00592EF8 /* ListingViewModel.swift in Sources */,
 			);

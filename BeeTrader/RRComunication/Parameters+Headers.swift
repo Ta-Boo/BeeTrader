@@ -26,4 +26,11 @@ public struct RequestParameters {
                 "lat": latitude,
                 "lon": longitude]
     }
+    static func updateUser(firstName: String, lastName: String, addressID: Int, phoneNumber: String, email: String ) -> Parameters {
+        return ["first_name": firstName,
+                "last_name": lastName,
+                "phone_number": phoneNumber,
+                "email": email,
+                "address_id": addressID]
+    }
 }

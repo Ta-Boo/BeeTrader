@@ -8,34 +8,32 @@
 
 import Foundation
 
-public struct Address: Codable {
-    let id: Int
-    let name: String
-    let postalCode: String
-
-    enum CodingKeys: String, CodingKey {
-        case id
-        case name
-        case postalCode = "postal_code"
-    }
-}
 
 public struct User: Codable {
-    let id: Int
     let firstName: String
     let lastName: String
     let email: String
+    let latitude: Double
+    let longitude: Double
     let phoneNumber: String?
+    let city: String
+    let postalCode: String
+    let token: String?
     let image: String?
-    let address: Address?
-
+    let id: Int
+    
     enum CodingKeys: String, CodingKey {
-        case id
         case firstName = "first_name"
         case lastName = "last_name"
         case email
+        case latitude
+        case longitude
         case phoneNumber = "phone_number"
+        case city = "name"
+        case postalCode = "postal_code"
+        case token
         case image
-        case address
+        case id
     }
 }
+

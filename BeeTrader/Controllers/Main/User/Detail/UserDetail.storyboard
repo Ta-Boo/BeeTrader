@@ -108,6 +108,9 @@
                                                     </constraints>
                                                     <color key="tintColor" name="TextColor"/>
                                                     <state key="normal" image="paperplane.fill" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="sendTapped:" destination="S8T-ve-jfu" eventType="touchUpInside" id="LOf-HD-RIL"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -143,7 +146,12 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="avatar" destination="TSU-1j-254" id="6YF-U8-jAr"/>
+                        <outlet property="address" destination="XNa-Xs-be1" id="Uhe-9X-6n1"/>
+                        <outlet property="avatar" destination="TSU-1j-254" id="hzy-7b-dok"/>
+                        <outlet property="email" destination="7be-c9-ykr" id="XFV-oP-ddi"/>
+                        <outlet property="firstName" destination="BTx-uM-DE9" id="UcM-wa-ljM"/>
+                        <outlet property="lastName" destination="FWp-S9-nII" id="ZQE-WC-LMT"/>
+                        <outlet property="phoneNumber" destination="CSs-QC-L9r" id="cTd-sf-qXc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wKp-Vk-m7F" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

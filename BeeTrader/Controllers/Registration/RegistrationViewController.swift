@@ -10,8 +10,8 @@ import Alamofire
 import Foundation
 import UIKit
 
-public class RegistrationViewController: UIViewController {
-    public var viewModel: RegistrationViewModel?
+class RegistrationViewController: UIViewController {
+    public var viewModel = RegistrationViewModel()
 
     @IBOutlet var emailLabel: UITextField!
     @IBOutlet var passwordLabel: UITextField!
@@ -33,9 +33,8 @@ public class RegistrationViewController: UIViewController {
     private let shrinkedOffset: CGFloat = 64
     private let stretchedOffset: CGFloat = 8
 
-    public override func viewDidLoad() {
+     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = RegistrationViewModel()
     }
 
     public override func viewDidAppear(_ animated: Bool) {
@@ -111,14 +110,14 @@ public class RegistrationViewController: UIViewController {
             registrationConfirmEmailLabel.isNotEmpty()
     }
 
-    private func saveUserData(user: LoginResponse) {
+    private func saveUserData(user: User) {
         if let encoded = try? JSONEncoder().encode(user) {
             let defaults = UserDefaults.standard
             defaults.set(encoded, forKey: StorageKeys.user)
         }
     }
 
-    private func sucessfulLogin(_ value: DataWrapper<LoginResponse>) {
+    private func sucessfulLogin(_ value: DataWrapper<User>) {
         if let data = value.data {
             saveUserData(user: data)
             successfulLoginHandler?()
@@ -139,7 +138,7 @@ public class RegistrationViewController: UIViewController {
     func login(parameters: Parameters? = nil) {
         let workingParams = parameters ?? RequestParameters.login(withEmail: emailLabel.text!, password: passwordLabel.text!)
         showHUD()
-        viewModel?.login(parameters: workingParams) { [weak self] result in
+        viewModel.login(parameters: workingParams) { [weak self] result in
             self?.hideHUD()
             switch result {
             case let .success(value):
@@ -174,7 +173,7 @@ public class RegistrationViewController: UIViewController {
                                                     email: email,
                                                     password: password)
         showHUD()
-        viewModel?.register(parameters: parameters) { [weak self] result in
+        viewModel.register(parameters: parameters) { [weak self] result in
             switch result {
             case .success:
                 self?.login(parameters: RequestParameters.login(withEmail: email, password: password))

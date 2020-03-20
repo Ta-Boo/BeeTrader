@@ -10,8 +10,8 @@ import Alamofire
 import Foundation
 
 public class RegistrationViewModel {
-    func login(parameters: Parameters, _ completion: @escaping (DataResult<LoginResponse>) -> Void) {
-        UrlRequest<LoginResponse>().handle(ApiConstants.baseUrl + "api/login",
+    func login(parameters: Parameters, _ completion: @escaping (DataResult<User>) -> Void) {
+        UrlRequest<User>().handle(ApiConstants.baseUrl + "api/login",
                                            methood: HTTPMethod.post,
                                            parameters: parameters) { result in
             completion(result)

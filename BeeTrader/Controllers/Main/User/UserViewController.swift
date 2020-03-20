@@ -22,6 +22,7 @@ public class UserViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = UserViewModel()
+        
         if let user = globalUser {
             loadData(email: user.email)
         }
@@ -47,7 +48,7 @@ public class UserViewController: UIViewController {
             firstName.text = user.firstName
             lastName.text = user.lastName
             email.text = user.email
-            address.text = "\(user.address?.name ?? "---"), \(user.address?.postalCode ?? "---")"
+            address.text = "\(user.city ), \(user.postalCode)"
             phoneNumber.text = user.phoneNumber ?? "---"
             if let imageUrl = user.image {
                 UIView.animate(withDuration: 0.5, animations: {

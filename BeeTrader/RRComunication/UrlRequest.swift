@@ -15,6 +15,12 @@ enum ApiConstants {
     static let baseUrl = "http://192.168.0.100:8000/"
 }
 
+struct Image {
+    var name: String
+    var fileName: String
+    var data: UIImage
+}
+
 class UrlRequest<WrappedData: Codable> {
     func handle(_ url: String,
                 methood: HTTPMethod,
@@ -42,4 +48,37 @@ class UrlRequest<WrappedData: Codable> {
             completionHandler(result)
         }
     }
+
+    func uploadImages(url: String,
+                        images: [Image],
+                      parameters: Parameters? = nil,
+                      headers: HTTPHeaders? = nil,
+                      loadingProgressor: @escaping DoubleClosure,
+                      successCompletion: @escaping EmptyClosure,
+                      failureCompletion: @escaping EmptyClosure
+                      ) {
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            for image in images {
+                if let imageData = image.data.jpegData(compressionQuality: 0.02) {
+                    multipartFormData.append(imageData, withName: image.name, fileName: image.fileName, mimeType: "image/jpg")
+                }
+            }
+        }, to: url,
+           method: .post) { result in
+                switch result {
+                case .success(let upload, _, _):
+                    upload.uploadProgress(closure: { (progress) in
+                        loadingProgressor(progress.fractionCompleted)
+                    })
+                    upload.validate().responseJSON { result in
+                        if let data = result.data {
+                            print(String(data: data, encoding: String.Encoding.utf8) ?? "cannot decode response")
+                            successCompletion()
+                        }
+                    }
+                case .failure:
+                    failureCompletion()
+                }
+            }
+        }
 }

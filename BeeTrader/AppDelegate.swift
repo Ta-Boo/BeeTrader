@@ -1,7 +1,7 @@
 import UIKit
 
 
-var globalUser: LoginResponse?
+var globalUser: User?
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,9 +32,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func loadUser() {
         if let user = UserDefaults.standard.object(forKey: StorageKeys.user) as? Data {
             let decoder = JSONDecoder()
-            if let loadedUser = try? decoder.decode(LoginResponse.self, from: user) {
+            if let loadedUser = try? decoder.decode(User.self, from: user) {
                 globalUser = loadedUser
             }
         }
     }
 }
+
+
