@@ -1,5 +1,19 @@
 import UIKit
 
+//var globalUser: User?
+class GlobalUser {
+    static var shared: () -> User? =  {
+        if let user = UserDefaults.standard.object(forKey: StorageKeys.user) as? Data {
+            let decoder = JSONDecoder()
+            if let loadedUser = try? decoder.decode(User.self, from: user) {
+                return loadedUser
+            }
+        }
+        return nil
+    }
+    private init() {}
+}
+
 class MainCoordinator: Coordinator {
     let window: UIWindow
     let navigationController: UINavigationController
@@ -13,8 +27,9 @@ class MainCoordinator: Coordinator {
     func start() {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
-
-        if let _ = UserDefaults.standard.object(forKey: StorageKeys.user) {
+        
+        loadUser()
+        if let _ = globalUser {
             let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.mainTabBar)
             navigationController.pushViewController(controller, animated: true)
@@ -27,6 +42,15 @@ class MainCoordinator: Coordinator {
                 self.navigationController.pushViewController(controller, animated: true)
             }
             navigationController.presentInFullScreen(controller, animated: false)
+        }
+    }
+    
+    private func loadUser() {
+        if let user = UserDefaults.standard.object(forKey: StorageKeys.user) as? Data {
+            let decoder = JSONDecoder()
+            if let loadedUser = try? decoder.decode(User.self, from: user) {
+                globalUser = loadedUser
+            }
         }
     }
 }

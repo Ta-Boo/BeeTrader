@@ -15,4 +15,9 @@ extension UIViewController {
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
         present(alertController, animated: true)
     }
+    func presentFailedRequestAlert(){
+        let alertController = UIAlertController(title: "Something went wrong", message: "Try again later", preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.cancel, handler: nil))
+        present(alertController, animated: true)
+    }
 }

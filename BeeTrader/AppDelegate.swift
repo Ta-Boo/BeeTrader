@@ -1,8 +1,5 @@
 import UIKit
 
-
-var globalUser: User?
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
@@ -19,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     applicationCoordinator.start()
     styleNavBar()
-    loadUser()
     return true
   }
     
@@ -28,14 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().backgroundColor = .clear
         UINavigationBar.appearance().isTranslucent = true
-    }
-    private func loadUser() {
-        if let user = UserDefaults.standard.object(forKey: StorageKeys.user) as? Data {
-            let decoder = JSONDecoder()
-            if let loadedUser = try? decoder.decode(User.self, from: user) {
-                globalUser = loadedUser
-            }
-        }
     }
 }
 

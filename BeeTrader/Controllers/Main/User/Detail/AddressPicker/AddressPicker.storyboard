@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,20 +16,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="nasrac" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qHZ-CI-vJ9">
-                                <rect key="frame" x="159" y="387" width="97" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type your postal code or  city name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qHZ-CI-vJ9">
+                                <rect key="frame" x="32" y="60" width="350" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="onFilterChanged:" destination="YjU-hL-SLs" eventType="editingChanged" id="UTg-nO-dlU"/>
+                                </connections>
                             </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="olX-Lb-JSD">
+                                <rect key="frame" x="0.0" y="110" width="414" height="752"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddressCell" id="fwY-cj-vV2" customClass="AddressCell" customModule="BeeTrader" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fwY-cj-vV2" id="t8P-Ct-sNR">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6vw-4f-LSk">
+                                                    <rect key="frame" x="36" y="11" width="342" height="21.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="6vw-4f-LSk" firstAttribute="top" secondItem="t8P-Ct-sNR" secondAttribute="topMargin" id="3Hi-kM-KsL"/>
+                                                <constraint firstItem="6vw-4f-LSk" firstAttribute="leading" secondItem="t8P-Ct-sNR" secondAttribute="leadingMargin" constant="16" id="TLF-lQ-OF1"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="6vw-4f-LSk" secondAttribute="bottom" id="mhT-nR-Zw6"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="6vw-4f-LSk" secondAttribute="trailing" constant="16" id="ya5-LK-Gig"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="address" destination="6vw-4f-LSk" id="AJk-Sz-UN7"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="YjU-hL-SLs" id="me1-gh-zMX"/>
+                                    <outlet property="delegate" destination="YjU-hL-SLs" id="FBh-jf-bBP"/>
+                                </connections>
+                            </tableView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" name="AccentTomatoColor"/>
+                        <constraints>
+                            <constraint firstItem="JDl-mH-Ty8" firstAttribute="bottom" secondItem="olX-Lb-JSD" secondAttribute="bottom" id="GrH-N2-UgP"/>
+                            <constraint firstItem="qHZ-CI-vJ9" firstAttribute="leading" secondItem="JDl-mH-Ty8" secondAttribute="leading" constant="32" id="Hp5-I6-hOY"/>
+                            <constraint firstItem="olX-Lb-JSD" firstAttribute="leading" secondItem="JDl-mH-Ty8" secondAttribute="leading" id="U5Y-em-hO3"/>
+                            <constraint firstItem="JDl-mH-Ty8" firstAttribute="trailing" secondItem="olX-Lb-JSD" secondAttribute="trailing" id="czB-8j-enL"/>
+                            <constraint firstItem="olX-Lb-JSD" firstAttribute="top" secondItem="qHZ-CI-vJ9" secondAttribute="bottom" constant="16" id="eNp-4p-OSJ"/>
+                            <constraint firstItem="JDl-mH-Ty8" firstAttribute="trailing" secondItem="qHZ-CI-vJ9" secondAttribute="trailing" constant="32" id="fRf-VR-AVR"/>
+                            <constraint firstItem="qHZ-CI-vJ9" firstAttribute="top" secondItem="JDl-mH-Ty8" secondAttribute="top" constant="16" id="wEz-s9-yNa"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="JDl-mH-Ty8"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="olX-Lb-JSD" id="n5A-0j-Siq"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y3V-5b-MS0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="165" y="90"/>
+            <point key="canvasLocation" x="163.768115942029" y="89.732142857142847"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="AccentTomatoColor">
+            <color red="0.93699997663497925" green="0.39599999785423279" blue="0.28600001335144043" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+    </resources>
 </document>

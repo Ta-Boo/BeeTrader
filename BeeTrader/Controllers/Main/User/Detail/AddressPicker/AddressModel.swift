@@ -7,3 +7,15 @@
 //
 
 import Foundation
+
+class Address: Codable {
+    let id: Int
+    let name: String
+    let postalCode: String
+   
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case postalCode = "postal_code"
+    }
+}

@@ -7,7 +7,7 @@
 //
 import Foundation
 
-public struct Listing: Codable {
+struct Listing: Codable {
     let title: String
     let price: Int
     let seen: Int

@@ -22,7 +22,6 @@ public class UserViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = UserViewModel()
-        
         if let user = globalUser {
             loadData(email: user.email)
         }

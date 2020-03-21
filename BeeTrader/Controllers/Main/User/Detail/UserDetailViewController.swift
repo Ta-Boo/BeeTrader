@@ -10,28 +10,31 @@ import Foundation
 import UIKit
 import Alamofire
 
-
-class UserDetailViewController: UINavigationController, UITableViewDelegate, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+class UserDetailViewController: UITableViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     var imagePicker: UIImagePickerController!
     var viewMModel = UserDetailViewModel()
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
-    @IBOutlet weak var address: UITextField!
+    @IBOutlet weak var address: UIButton!
     @IBOutlet weak var phoneNumber: UITextField!
     @IBOutlet weak var email: UITextField!
     
+    var userUpdateCompletion: ((Address) -> Void)?
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationController?.delegate = self
         setupData()
     }
     
     func setupData() {
         firstName.text = globalUser?.firstName ?? ""
         lastName.text = globalUser?.lastName ?? ""
-        address.text = globalUser?.postalCode ?? ""
+        address.setTitle(globalUser?.postalCode ?? "", for: .normal
+        )
         phoneNumber.text = globalUser?.firstName ?? ""
         email.text = globalUser?.email ?? ""
     }
@@ -54,11 +57,17 @@ class UserDetailViewController: UINavigationController, UITableViewDelegate, UIT
     }
     
     @IBAction func sendTapped(_ sender: Any) {
+       
+        let parameters = RequestParameters.updateUser(firstName: firstName.text ?? "Missing", lastName: lastName.text ?? "Missing", addressID: 77, phoneNumber: phoneNumber.text ?? "Missing", email: email.text!)
+        viewMModel.uploadData(image: avatar.image!, parameters: parameters)
+    }
+    @IBAction func onAddressTapped(_ sender: Any) {
         let storyboard = UIStoryboard(name: "AddressPicker", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.userDetailAddressPicker)
-        let nieco = self.navigationController
+        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.userDetailAddressPicker) as! AddressPickerViewController
+        controller.addressPickCompletion =  { [weak self] address in
+            self?.address.setTitle("\(address.postalCode), \(address.name)", for: .normal)
+            print(address.id)
+        }
         present(controller, animated: true)
-//        let parameters = RequestParameters.updateUser(firstName: firstName.text ?? "Missing", lastName: lastName.text ?? "Missing", addressID: 77, phoneNumber: phoneNumber.text ?? "Missing", email: email.text!)
-//        viewMModel.uploadData(image: avatar.image!, parameters: parameters)
     }
 }

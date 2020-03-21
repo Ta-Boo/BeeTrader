@@ -26,6 +26,9 @@
 		B37539852424BFDA0051C2E6 /* AddressPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37539842424BFDA0051C2E6 /* AddressPickerViewModel.swift */; };
 		B37539872424C0840051C2E6 /* AddressPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B37539862424C0840051C2E6 /* AddressPicker.storyboard */; };
 		B37539892424C32D0051C2E6 /* UserDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37539882424C32D0051C2E6 /* UserDetailCoordinator.swift */; };
+		B375398B2424D7550051C2E6 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B375398A2424D7550051C2E6 /* AddressModel.swift */; };
+		B375398D2424D9B40051C2E6 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B375398C2424D9B40051C2E6 /* AddressCell.swift */; };
+		B375398F24262ADF0051C2E6 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B375398E24262ADF0051C2E6 /* Debouncer.swift */; };
 		B37B1B4524157012005C3702 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4424157012005C3702 /* StorageKeys.swift */; };
 		B37B1B4824159F0D005C3702 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4724159F0D005C3702 /* Circle.swift */; };
 		B37B1B4D2415A68B005C3702 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4C2415A68B005C3702 /* UserViewController.swift */; };
@@ -89,6 +92,9 @@
 		B37539842424BFDA0051C2E6 /* AddressPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressPickerViewModel.swift; sourceTree = "<group>"; };
 		B37539862424C0840051C2E6 /* AddressPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddressPicker.storyboard; sourceTree = "<group>"; };
 		B37539882424C32D0051C2E6 /* UserDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailCoordinator.swift; sourceTree = "<group>"; };
+		B375398A2424D7550051C2E6 /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
+		B375398C2424D9B40051C2E6 /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
+		B375398E24262ADF0051C2E6 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		B37B1B4424157012005C3702 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
 		B37B1B4724159F0D005C3702 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		B37B1B4C2415A68B005C3702 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +166,7 @@
 				B33B7C972411210300CD6719 /* DataWrapperModel.swift */,
 				B33B7C992411481600CD6719 /* UrlRequest.swift */,
 				B38E4EF0241AC74500B85994 /* Parameters+Headers.swift */,
+				B375398E24262ADF0051C2E6 /* Debouncer.swift */,
 			);
 			path = RRComunication;
 			sourceTree = "<group>";
@@ -244,6 +251,8 @@
 				B37539822424BFAC0051C2E6 /* AddressPickerViewController.swift */,
 				B37539842424BFDA0051C2E6 /* AddressPickerViewModel.swift */,
 				B37539862424C0840051C2E6 /* AddressPicker.storyboard */,
+				B375398A2424D7550051C2E6 /* AddressModel.swift */,
+				B375398C2424D9B40051C2E6 /* AddressCell.swift */,
 			);
 			path = AddressPicker;
 			sourceTree = "<group>";
@@ -312,8 +321,8 @@
 		B3D02ECF241D85B7009AAD20 /* List */ = {
 			isa = PBXGroup;
 			children = (
-				B3D02ED0241D8B75009AAD20 /* ListingViewController.swift */,
 				B3D02ED2241D8E1F009AAD20 /* ListingCell.swift */,
+				B3D02ED0241D8B75009AAD20 /* ListingViewController.swift */,
 				B3654E2A241F90DE00592EF8 /* ListingModel.swift */,
 				B3654E2C241F9C7E00592EF8 /* ListingViewModel.swift */,
 			);
@@ -460,7 +469,9 @@
 				B38E4EEF241AC45600B85994 /* Aliases.swift in Sources */,
 				B37B1B4824159F0D005C3702 /* Circle.swift in Sources */,
 				B3F5C66B2413B46600F7EF70 /* UIElements.swift in Sources */,
+				B375398B2424D7550051C2E6 /* AddressModel.swift in Sources */,
 				B35BA992240FEC7300BDA7C9 /* ViewControllerType.swift in Sources */,
+				B375398D2424D9B40051C2E6 /* AddressCell.swift in Sources */,
 				B37539892424C32D0051C2E6 /* UserDetailCoordinator.swift in Sources */,
 				B35BA98C240FEC5700BDA7C9 /* RegistrationViewController.swift in Sources */,
 				B3C2AD97241BBD7500CECE33 /* MainTabBarController.swift in Sources */,
@@ -469,6 +480,7 @@
 				B33B7C9A2411481600CD6719 /* UrlRequest.swift in Sources */,
 				B3D02ED4241D8E1F009AAD20 /* ListingCell.swift in Sources */,
 				B37539832424BFAC0051C2E6 /* AddressPickerViewController.swift in Sources */,
+				B375398F24262ADF0051C2E6 /* Debouncer.swift in Sources */,
 				B35BA94E240FEB4C00BDA7C9 /* SceneDelegate.swift in Sources */,
 				B3654E2D241F9C7E00592EF8 /* ListingViewModel.swift in Sources */,
 			);

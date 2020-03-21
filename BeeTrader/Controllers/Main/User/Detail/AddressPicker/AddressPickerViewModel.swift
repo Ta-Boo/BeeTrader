@@ -11,4 +11,12 @@ import Alamofire
 
 class AddressPickerViewModel {
     
+    func loadAddresses(parameters: Parameters, _ completion: @escaping (DataResult<[Address]>) -> Void) {
+        UrlRequest<[Address]>().handle(ApiConstants.baseUrl + "api/addresses",
+                                       methood: HTTPMethod.get,
+                                       parameters: parameters) { result in
+            completion(result)
+        }
+    }
+    
 }

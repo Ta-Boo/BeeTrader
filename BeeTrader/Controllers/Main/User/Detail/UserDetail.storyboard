@@ -76,14 +76,6 @@
                                                         <outlet property="delegate" destination="S8T-ve-jfu" id="pUW-rU-DIm"/>
                                                     </connections>
                                                 </textField>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="034 96" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XNa-Xs-be1">
-                                                    <rect key="frame" x="52" y="319" width="310" height="34"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <outlet property="delegate" destination="S8T-ve-jfu" id="9C6-M6-vbs"/>
-                                                    </connections>
-                                                </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="0948 194 877" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CSs-QC-L9r">
                                                     <rect key="frame" x="52" y="369" width="310" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -112,27 +104,48 @@
                                                         <action selector="sendTapped:" destination="S8T-ve-jfu" eventType="touchUpInside" id="LOf-HD-RIL"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mgc-Vc-Ss5">
+                                                    <rect key="frame" x="52" y="319" width="310" height="34"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <state key="normal" title="Your address">
+                                                        <color key="titleColor" name="TextColor"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidthV">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColorV">
+                                                            <color key="value" name="TextColor"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadiusV">
+                                                            <real key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="onAddressTapped:" destination="S8T-ve-jfu" eventType="touchUpInside" id="eyn-sa-hgd"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="FWp-S9-nII" firstAttribute="top" secondItem="BTx-uM-DE9" secondAttribute="bottom" constant="16" id="0M2-e3-9tU"/>
                                                 <constraint firstItem="FP2-cl-z5I" firstAttribute="top" secondItem="mPS-34-Hla" secondAttribute="topMargin" constant="32" id="2c9-y0-LgC"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Mgc-Vc-Ss5" secondAttribute="trailing" constant="32" id="3cf-uV-dyw"/>
                                                 <constraint firstItem="dZn-Ta-YrI" firstAttribute="leading" secondItem="7be-c9-ykr" secondAttribute="trailing" constant="16" id="4lV-Tx-DQZ"/>
                                                 <constraint firstItem="CSs-QC-L9r" firstAttribute="leading" secondItem="mPS-34-Hla" secondAttribute="leadingMargin" constant="32" id="75w-ZL-Qyr"/>
+                                                <constraint firstItem="Mgc-Vc-Ss5" firstAttribute="leading" secondItem="mPS-34-Hla" secondAttribute="leadingMargin" constant="32" id="8Om-hG-MrK"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="FWp-S9-nII" secondAttribute="trailing" constant="32" id="AeA-fI-uu2"/>
-                                                <constraint firstItem="XNa-Xs-be1" firstAttribute="leading" secondItem="mPS-34-Hla" secondAttribute="leadingMargin" constant="32" id="DqJ-qV-ytZ"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="BTx-uM-DE9" secondAttribute="trailing" constant="32" id="Glc-xK-VOJ"/>
                                                 <constraint firstItem="7be-c9-ykr" firstAttribute="leading" secondItem="mPS-34-Hla" secondAttribute="leadingMargin" constant="32" id="H4B-Vp-jLW"/>
+                                                <constraint firstItem="Mgc-Vc-Ss5" firstAttribute="top" secondItem="FWp-S9-nII" secondAttribute="bottom" constant="16" id="NJq-kL-MsN"/>
                                                 <constraint firstItem="BTx-uM-DE9" firstAttribute="leading" secondItem="mPS-34-Hla" secondAttribute="leadingMargin" constant="32" id="ady-do-mmp"/>
-                                                <constraint firstItem="CSs-QC-L9r" firstAttribute="top" secondItem="XNa-Xs-be1" secondAttribute="bottom" constant="16" id="eEX-0b-r7L"/>
                                                 <constraint firstItem="BTx-uM-DE9" firstAttribute="top" secondItem="FP2-cl-z5I" secondAttribute="bottom" constant="16" id="eMt-sO-b1m"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="XNa-Xs-be1" secondAttribute="trailing" constant="32" id="jcQ-h2-euw"/>
                                                 <constraint firstItem="FP2-cl-z5I" firstAttribute="centerX" secondItem="mPS-34-Hla" secondAttribute="centerX" id="m9J-gR-gHf"/>
                                                 <constraint firstItem="dZn-Ta-YrI" firstAttribute="top" secondItem="CSs-QC-L9r" secondAttribute="bottom" constant="16" id="qUK-cT-Sm8"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="CSs-QC-L9r" secondAttribute="trailing" constant="32" id="rrZ-v5-FcK"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="dZn-Ta-YrI" secondAttribute="trailing" constant="32" id="s0O-dl-8Hi"/>
                                                 <constraint firstItem="7be-c9-ykr" firstAttribute="top" secondItem="CSs-QC-L9r" secondAttribute="bottom" constant="16" id="uI7-AA-0di"/>
+                                                <constraint firstItem="CSs-QC-L9r" firstAttribute="top" secondItem="Mgc-Vc-Ss5" secondAttribute="bottom" constant="16" id="wDv-ws-QhK"/>
                                                 <constraint firstItem="FWp-S9-nII" firstAttribute="leading" secondItem="mPS-34-Hla" secondAttribute="leadingMargin" constant="32" id="z5P-Vo-usP"/>
-                                                <constraint firstItem="XNa-Xs-be1" firstAttribute="top" secondItem="FWp-S9-nII" secondAttribute="bottom" constant="16" id="zgV-yW-bNz"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -146,7 +159,7 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="address" destination="XNa-Xs-be1" id="Uhe-9X-6n1"/>
+                        <outlet property="address" destination="Mgc-Vc-Ss5" id="RL3-bU-KXG"/>
                         <outlet property="avatar" destination="TSU-1j-254" id="hzy-7b-dok"/>
                         <outlet property="email" destination="7be-c9-ykr" id="XFV-oP-ddi"/>
                         <outlet property="firstName" destination="BTx-uM-DE9" id="UcM-wa-ljM"/>

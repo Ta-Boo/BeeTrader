@@ -89,6 +89,10 @@ extension ListingViewController {
         cell.setData(data: listings[indexPath.row])
         return cell
     }
+    
+    func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(listings[indexPath.row])
+    }
 
     func collectionView(_: UICollectionView, layout _: UICollectionViewLayout, sizeForItemAt _: IndexPath) -> CGSize {
         let width = (view.frame.width / 2) * 0.87
@@ -100,7 +104,4 @@ extension ListingViewController {
         return 16
     }
 
-    func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(listings[indexPath.row])
-    }
 }

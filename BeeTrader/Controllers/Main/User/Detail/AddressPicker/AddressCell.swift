@@ -1,9 +1,13 @@
-//
-//  AddressCell.swift
-//  BeeTrader
-//
-//  Created by hladek on 20/03/2020.
-//  Copyright © 2020 hladek. All rights reserved.
-//
 
-import Foundation
+import UIKit
+
+class AddressCell: UITableViewCell {
+    @IBOutlet weak var address: UILabel!
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+
+    func setData(data: Address) {
+        address.text = "\(data.postalCode), \(data.name)"
+    }
+}

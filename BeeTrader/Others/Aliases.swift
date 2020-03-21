@@ -14,4 +14,5 @@ public typealias OptionalErrorClosure = (Error?) -> Void
 public typealias BoolClosure = (Bool) -> Void
 public typealias StringClosure = (String) -> Void
 public typealias DoubleClosure = (Double) -> Void
+public typealias IntegerClosure = (Int?) -> Void
 public typealias OptionalStringClosure = (String?) -> Void

@@ -33,4 +33,7 @@ public struct RequestParameters {
                 "email": email,
                 "address_id": addressID]
     }
+    static func addresses(filter: String) -> Parameters {
+        return ["filter": filter]
+    }
 }
