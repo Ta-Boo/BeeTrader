@@ -22,7 +22,7 @@ public class UserViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
         viewModel = UserViewModel()
-        if let user = globalUser {
+        if let user = GlobalUser.shared {
             loadData(email: user.email)
         }
     }

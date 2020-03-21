@@ -2,14 +2,21 @@ import UIKit
 
 //var globalUser: User?
 class GlobalUser {
-    static var shared: () -> User? =  {
-        if let user = UserDefaults.standard.object(forKey: StorageKeys.user) as? Data {
-            let decoder = JSONDecoder()
-            if let loadedUser = try? decoder.decode(User.self, from: user) {
-                return loadedUser
+    private static var _shared: User? = nil
+    static var shared : User?  {
+        get {
+            if let user = UserDefaults.standard.object(forKey: StorageKeys.user) as? Data {
+                let decoder = JSONDecoder()
+                if let loadedUser = try? decoder.decode(User.self, from: user) {
+                    _shared = loadedUser
+                    return _shared
+                }
             }
+            return nil
         }
-        return nil
+        set {
+            self._shared = newValue
+        }
     }
     private init() {}
 }
@@ -29,7 +36,7 @@ class MainCoordinator: Coordinator {
         window.makeKeyAndVisible()
         
         loadUser()
-        if let _ = globalUser {
+        if let _ = GlobalUser.shared {
             let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
             let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.mainTabBar)
             navigationController.pushViewController(controller, animated: true)
@@ -49,7 +56,7 @@ class MainCoordinator: Coordinator {
         if let user = UserDefaults.standard.object(forKey: StorageKeys.user) as? Data {
             let decoder = JSONDecoder()
             if let loadedUser = try? decoder.decode(User.self, from: user) {
-                globalUser = loadedUser
+                GlobalUser.shared = loadedUser
             }
         }
     }

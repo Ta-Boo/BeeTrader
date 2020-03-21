@@ -31,12 +31,12 @@ class UserDetailViewController: UITableViewController, UITextFieldDelegate, UINa
     }
     
     func setupData() {
-        firstName.text = globalUser?.firstName ?? ""
-        lastName.text = globalUser?.lastName ?? ""
-        address.setTitle(globalUser?.postalCode ?? "", for: .normal
+        firstName.text = GlobalUser.shared?.firstName ?? ""
+        lastName.text = GlobalUser.shared?.lastName ?? ""
+        address.setTitle(GlobalUser.shared?.postalCode ?? "", for: .normal
         )
-        phoneNumber.text = globalUser?.firstName ?? ""
-        email.text = globalUser?.email ?? ""
+        phoneNumber.text = GlobalUser.shared?.firstName ?? ""
+        email.text = GlobalUser.shared?.email ?? ""
     }
     
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
