@@ -26,14 +26,25 @@ public struct RequestParameters {
                 "lat": latitude,
                 "lon": longitude]
     }
-    static func updateUser(firstName: String, lastName: String, addressID: Int, phoneNumber: String, email: String ) -> Parameters {
+    static func updateUser(firstName: String?, lastName: String?,
+                           addressID: Int?, phoneNumber: String?, email: String?, id: Int?) -> Dictionary<String,String?> {
         return ["first_name": firstName,
                 "last_name": lastName,
                 "phone_number": phoneNumber,
                 "email": email,
-                "address_id": addressID]
+                "address_id": addressID.optionalString(),
+                "id": id.optionalString()]
     }
     static func addresses(filter: String) -> Parameters {
         return ["filter": filter]
+    }
+}
+
+extension Optional where Wrapped == Int {
+    func optionalString() -> String? {
+        guard let value = self else {
+            return nil
+        }
+        return String(value)
     }
 }

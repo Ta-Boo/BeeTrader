@@ -12,7 +12,7 @@ import Foundation
 typealias DataResult<Type: Codable> = Result<DataWrapper<Type>>
 enum ApiConstants {
     static let baseUrl = "http://localhost:8000/"
-//    static let baseUrl = "http://192.168.1.171:8000/"
+//    static let baseUrl = "http://192.168.1.3:8000/"
 }
 
 struct Image {
@@ -40,9 +40,9 @@ class UrlRequest<WrappedData: Codable> {
             })
             switch result {
             case .failure(let error):
-                print(error)
+                print("error reason : ", error)
             case .success(let data):
-                print(data.data)
+                print("RESPONSEbaseUrl: ",data.data)
             }
             print(result)
             completionHandler(result)
@@ -51,7 +51,7 @@ class UrlRequest<WrappedData: Codable> {
 
     func uploadImages(url: String,
                         images: [Image],
-                      parameters: Parameters? = nil,
+                      parameters: Dictionary<String,String?>? = nil,
                       headers: HTTPHeaders? = nil,
                       loadingProgressor: @escaping DoubleClosure,
                       successCompletion: @escaping EmptyClosure,
@@ -63,6 +63,13 @@ class UrlRequest<WrappedData: Codable> {
                     multipartFormData.append(imageData, withName: image.name, fileName: image.fileName, mimeType: "image/jpg")
                 }
             }
+            if let params = parameters {
+                for (key, value) in params {
+                    if let data = value  {
+                        multipartFormData.append(data.data(using: .utf8) ?? "".data(using: .utf8)!, withName: key)
+                    }
+                }
+            }
         }, to: url,
            method: .post) { result in
                 switch result {
@@ -72,7 +79,7 @@ class UrlRequest<WrappedData: Codable> {
                     })
                     upload.validate().responseJSON { result in
                         if let data = result.data {
-                            print(String(data: data, encoding: String.Encoding.utf8) ?? "cannot decode response")
+                            print("RESPONSE: ",String(data: data, encoding: String.Encoding.utf8) ?? "cannot decode response")
                             successCompletion()
                         }
                     }

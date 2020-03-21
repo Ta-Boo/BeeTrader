@@ -29,6 +29,10 @@
 		B375398B2424D7550051C2E6 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B375398A2424D7550051C2E6 /* AddressModel.swift */; };
 		B375398D2424D9B40051C2E6 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B375398C2424D9B40051C2E6 /* AddressCell.swift */; };
 		B375398F24262ADF0051C2E6 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B375398E24262ADF0051C2E6 /* Debouncer.swift */; };
+		B375399324269DCE0051C2E6 /* ListingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B375399224269DCE0051C2E6 /* ListingDetailViewController.swift */; };
+		B375399524269E140051C2E6 /* ListingDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B375399424269E140051C2E6 /* ListingDetailViewModel.swift */; };
+		B375399724269EB60051C2E6 /* ListingDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B375399624269EB60051C2E6 /* ListingDetail.storyboard */; };
+		B37539992426AE790051C2E6 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37539982426AE790051C2E6 /* Gradient.swift */; };
 		B37B1B4524157012005C3702 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4424157012005C3702 /* StorageKeys.swift */; };
 		B37B1B4824159F0D005C3702 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4724159F0D005C3702 /* Circle.swift */; };
 		B37B1B4D2415A68B005C3702 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4C2415A68B005C3702 /* UserViewController.swift */; };
@@ -95,6 +99,10 @@
 		B375398A2424D7550051C2E6 /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
 		B375398C2424D9B40051C2E6 /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
 		B375398E24262ADF0051C2E6 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
+		B375399224269DCE0051C2E6 /* ListingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingDetailViewController.swift; sourceTree = "<group>"; };
+		B375399424269E140051C2E6 /* ListingDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingDetailViewModel.swift; sourceTree = "<group>"; };
+		B375399624269EB60051C2E6 /* ListingDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListingDetail.storyboard; sourceTree = "<group>"; };
+		B37539982426AE790051C2E6 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		B37B1B4424157012005C3702 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
 		B37B1B4724159F0D005C3702 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		B37B1B4C2415A68B005C3702 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -257,6 +265,23 @@
 			path = AddressPicker;
 			sourceTree = "<group>";
 		};
+		B375399024269C820051C2E6 /* ListingDetail */ = {
+			isa = PBXGroup;
+			children = (
+				B375399224269DCE0051C2E6 /* ListingDetailViewController.swift */,
+				B375399424269E140051C2E6 /* ListingDetailViewModel.swift */,
+				B375399624269EB60051C2E6 /* ListingDetail.storyboard */,
+			);
+			path = ListingDetail;
+			sourceTree = "<group>";
+		};
+		B375399124269CEB0051C2E6 /* AddListing */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AddListing;
+			sourceTree = "<group>";
+		};
 		B37B1B4324156FBE005C3702 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				B37B1B4724159F0D005C3702 /* Circle.swift */,
+				B37539982426AE790051C2E6 /* Gradient.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -325,6 +351,8 @@
 				B3D02ED0241D8B75009AAD20 /* ListingViewController.swift */,
 				B3654E2A241F90DE00592EF8 /* ListingModel.swift */,
 				B3654E2C241F9C7E00592EF8 /* ListingViewModel.swift */,
+				B375399124269CEB0051C2E6 /* AddListing */,
+				B375399024269C820051C2E6 /* ListingDetail */,
 			);
 			path = List;
 			sourceTree = "<group>";
@@ -411,6 +439,7 @@
 				B3C2AD95241BBD2E00CECE33 /* MainTabBar.storyboard in Resources */,
 				B37F57B024220558001B84BB /* UserDetail.storyboard in Resources */,
 				B37539872424C0840051C2E6 /* AddressPicker.storyboard in Resources */,
+				B375399724269EB60051C2E6 /* ListingDetail.storyboard in Resources */,
 				B3EC2C15241BDB6F00F0E738 /* loading.json in Resources */,
 				B35BA98B240FEC5700BDA7C9 /* Registration.storyboard in Resources */,
 				B35BA983240FEC0100BDA7C9 /* Assets.xcassets in Resources */,
@@ -453,11 +482,13 @@
 				B37B1B5324169252005C3702 /* Coordinator.swift in Sources */,
 				B37F57AE2422050A001B84BB /* UserDetailViewModel.swift in Sources */,
 				B38E4EF1241AC74500B85994 /* Parameters+Headers.swift in Sources */,
+				B375399524269E140051C2E6 /* ListingDetailViewModel.swift in Sources */,
 				B35BA98E240FEC5700BDA7C9 /* UserModel.swift in Sources */,
 				B35BA98D240FEC5700BDA7C9 /* RegistrationViewModel.swift in Sources */,
 				B37B1B4D2415A68B005C3702 /* UserViewController.swift in Sources */,
 				B37539852424BFDA0051C2E6 /* AddressPickerViewModel.swift in Sources */,
 				B3654E2F241FC22600592EF8 /* Colors.swift in Sources */,
+				B375399324269DCE0051C2E6 /* ListingDetailViewController.swift in Sources */,
 				B33B7C982411210300CD6719 /* DataWrapperModel.swift in Sources */,
 				B35BA94C240FEB4C00BDA7C9 /* AppDelegate.swift in Sources */,
 				B37B1B4F2415A6DA005C3702 /* UserViewModel.swift in Sources */,
@@ -471,6 +502,7 @@
 				B3F5C66B2413B46600F7EF70 /* UIElements.swift in Sources */,
 				B375398B2424D7550051C2E6 /* AddressModel.swift in Sources */,
 				B35BA992240FEC7300BDA7C9 /* ViewControllerType.swift in Sources */,
+				B37539992426AE790051C2E6 /* Gradient.swift in Sources */,
 				B375398D2424D9B40051C2E6 /* AddressCell.swift in Sources */,
 				B37539892424C32D0051C2E6 /* UserDetailCoordinator.swift in Sources */,
 				B35BA98C240FEC5700BDA7C9 /* RegistrationViewController.swift in Sources */,

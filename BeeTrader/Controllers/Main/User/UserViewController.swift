@@ -36,6 +36,7 @@ public class UserViewController: UIViewController {
             case .success(let user):
                 self?.hideHUD()
                 self?.setUpInfo(user.data)
+                GlobalUser.update(user.data)
             case .failure:
                 self?.hideHUD()
             }
@@ -53,7 +54,7 @@ public class UserViewController: UIViewController {
                 UIView.animate(withDuration: 0.5, animations: {
                     self.avatar.alpha = 0
                  }, completion: nil)
-                let url = URL(string: imageUrl)
+                let url = URL(string: "\(ApiConstants.baseUrl)\(imageUrl)")
                 let data = try? Data(contentsOf: url!)
                 DispatchQueue.main.async { [weak self] in
                     UIView.animate(withDuration: 0.5, animations: {
@@ -67,7 +68,10 @@ public class UserViewController: UIViewController {
 
     @IBAction func onEditClicked(_: Any) {
         let storyboard = UIStoryboard(name: "UserDetail", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.userDetail)
+        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.userDetail) as! UserDetailViewController
+        controller.userUpdateCompletion = { [weak self] email in
+            self?.loadData(email: email)
+        }
         present(controller, animated: true)
     }
 }

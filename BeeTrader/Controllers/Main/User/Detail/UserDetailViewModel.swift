@@ -9,17 +9,33 @@ import Alamofire
 import Foundation
 
 class UserDetailViewModel {
-    func uploadData(image: UIImage, parameters: Parameters) {
+    var addressId: Int?
+    var avatarChanged = false
+
+    func uploadData(image: UIImage?, parameters: Dictionary<String,String?>, successCompletionHandler: @escaping EmptyClosure, failureCompletionHandler: @escaping EmptyClosure) {
         let url = "\(ApiConstants.baseUrl)api/user"
-        let images = [Image(name: "image", fileName: "image", data: image)]
+        var images: [Image]
+        if let img = image {
+            images = [Image(name: "image", fileName: "image", data: img)]
+        } else {
+            images = []
+        }
         
         
         UrlRequest<UploadResponse>().uploadImages(url: url, images: images, parameters: parameters, loadingProgressor: { progress in
             print(progress)
         }, successCompletion: {
-            print("success")
-        }) {
-            print("failure")
+            successCompletionHandler()
+        },failureCompletion: {
+            failureCompletionHandler()
+        })
+    }
+    
+    func avatarToUpload(_ imageView: UIImageView) -> UIImage? {
+        if avatarChanged {
+            return imageView.image
+        } else {
+            return nil
         }
     }
 }

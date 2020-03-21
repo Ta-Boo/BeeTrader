@@ -10,10 +10,11 @@ import Foundation
 import UIKit
 import Alamofire
 
-class UserDetailViewController: UITableViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+typealias ImagePickerKeyboardManager = UITableViewController & UITextFieldDelegate & UINavigationControllerDelegate & UIImagePickerControllerDelegate
+class UserDetailViewController: ImagePickerKeyboardManager {
 
     var imagePicker: UIImagePickerController!
-    var viewMModel = UserDetailViewModel()
+    var viewModel = UserDetailViewModel()
     @IBOutlet weak var avatar: UIImageView!
     @IBOutlet weak var firstName: UITextField!
     @IBOutlet weak var lastName: UITextField!
@@ -21,8 +22,7 @@ class UserDetailViewController: UITableViewController, UITextFieldDelegate, UINa
     @IBOutlet weak var phoneNumber: UITextField!
     @IBOutlet weak var email: UITextField!
     
-    var userUpdateCompletion: ((Address) -> Void)?
-
+    var userUpdateCompletion: StringClosure?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class UserDetailViewController: UITableViewController, UITextFieldDelegate, UINa
         lastName.text = GlobalUser.shared?.lastName ?? ""
         address.setTitle(GlobalUser.shared?.postalCode ?? "", for: .normal
         )
-        phoneNumber.text = GlobalUser.shared?.firstName ?? ""
+        phoneNumber.text = GlobalUser.shared?.email ?? ""
         email.text = GlobalUser.shared?.email ?? ""
     }
     
@@ -53,20 +53,30 @@ class UserDetailViewController: UITableViewController, UITextFieldDelegate, UINa
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo image: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.dismiss(animated: true, completion: nil)
+        viewModel.avatarChanged = true
         avatar.image = image[.originalImage] as? UIImage
     }
-    
+        
     @IBAction func sendTapped(_ sender: Any) {
-       
-        let parameters = RequestParameters.updateUser(firstName: firstName.text ?? "Missing", lastName: lastName.text ?? "Missing", addressID: 77, phoneNumber: phoneNumber.text ?? "Missing", email: email.text!)
-        viewMModel.uploadData(image: avatar.image!, parameters: parameters)
+        let parameters = RequestParameters.updateUser(firstName: firstName.text,
+                                                      lastName: lastName.text,
+                                                      addressID: viewModel.addressId,
+                                                      phoneNumber: phoneNumber.text,
+                                                      email: email.text,
+                                                      id: GlobalUser.shared?.id)
+        viewModel.uploadData(image: viewModel.avatarToUpload(avatar), parameters: parameters, successCompletionHandler: { [weak self] in
+            self?.userUpdateCompletion?(self?.email.text ?? GlobalUser.shared?.email ?? "")
+            self?.dismiss(animated: false)
+        }, failureCompletionHandler: { [weak self] in
+            self?.presentFailedRequestAlert()
+        })
     }
     @IBAction func onAddressTapped(_ sender: Any) {
         let storyboard = UIStoryboard(name: "AddressPicker", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.userDetailAddressPicker) as! AddressPickerViewController
         controller.addressPickCompletion =  { [weak self] address in
             self?.address.setTitle("\(address.postalCode), \(address.name)", for: .normal)
-            print(address.id)
+            self?.viewModel.addressId = address.id
         }
         present(controller, animated: true)
     }

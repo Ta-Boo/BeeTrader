@@ -2,23 +2,27 @@ import UIKit
 
 //var globalUser: User?
 class GlobalUser {
+    private init() {}
+
     private static var _shared: User? = nil
     static var shared : User?  {
         get {
-            if let user = UserDefaults.standard.object(forKey: StorageKeys.user) as? Data {
-                let decoder = JSONDecoder()
-                if let loadedUser = try? decoder.decode(User.self, from: user) {
-                    _shared = loadedUser
-                    return _shared
-                }
+            guard let user = UserDefaults.standard.object(forKey: StorageKeys.user) as? Data else {
+                return nil
             }
-            return nil
+            if let loadedUser = try? JSONDecoder().decode(User.self, from: user) {
+                _shared = loadedUser
+                return _shared
+            } else { return nil }
         }
-        set {
-            self._shared = newValue
+        set { self._shared = newValue }
+    }
+    static func update(_ user: User?) {
+        if let encoded = try? JSONEncoder().encode(user) {
+            let defaults = UserDefaults.standard
+            defaults.set(encoded, forKey: StorageKeys.user)
         }
     }
-    private init() {}
 }
 
 class MainCoordinator: Coordinator {

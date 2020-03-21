@@ -111,10 +111,7 @@ class RegistrationViewController: UIViewController {
     }
 
     private func saveUserData(user: User) {
-        if let encoded = try? JSONEncoder().encode(user) {
-            let defaults = UserDefaults.standard
-            defaults.set(encoded, forKey: StorageKeys.user)
-        }
+        GlobalUser.update(user)
     }
 
     private func sucessfulLogin(_ value: DataWrapper<User>) {

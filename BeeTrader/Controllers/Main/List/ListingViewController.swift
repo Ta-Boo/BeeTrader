@@ -91,6 +91,9 @@ extension ListingViewController {
     }
     
     func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "ListingDetail", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.listingDetailViewController) as! ListingDetailViewController
+        present(controller, animated: true)
         print(listings[indexPath.row])
     }
 
