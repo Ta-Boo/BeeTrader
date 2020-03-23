@@ -8,12 +8,13 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 extension UITextField {
     func isEmpty() -> Bool {
         return text?.isEmpty ?? true
     }
-
+    
     func isNotEmpty() -> Bool {
         return !isEmpty()
     }
@@ -55,7 +56,7 @@ extension UIView {
             layer.masksToBounds = newValue > 0
         }
     }
-
+    
     @IBInspectable var borderWidthV: CGFloat {
         get {
             return layer.borderWidth
@@ -64,13 +65,47 @@ extension UIView {
             layer.borderWidth = newValue
         }
     }
-
+    
     @IBInspectable var borderColorV: UIColor? {
         get {
             return UIColor(cgColor: layer.borderColor!)
         }
         set {
             layer.borderColor = newValue?.cgColor
+        }
+    }
+}
+
+extension UIImageView {
+    func loadImage(url imageUrl : String?,_ animated: Bool = false) {
+//        guard let url = imageUrl else {
+//            self.image = UIImage(named: "loading_placeholder")
+//            return
+//        }
+//        self.kf.setImage(with: URL(string: url))
+        guard let urlString = imageUrl else {
+            self.image = UIImage(named: "loading_placeholder")
+            return
+        }
+        DispatchQueue.global().async { [weak self] in
+            let url = URL(string: urlString)
+            let data = try? Data(contentsOf: url!)
+
+            if animated {
+                DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.2, animations: {
+                    self?.alpha = 0
+                }, completion: nil)
+                UIView.animate(withDuration: 0.3, animations: {
+                    self?.alpha = 1
+                }, completion: nil)
+                    self?.image = UIImage(data: data!)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self?.image = UIImage(data: data!)
+                }
+            }
         }
     }
 }

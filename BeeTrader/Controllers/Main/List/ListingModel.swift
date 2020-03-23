@@ -13,4 +13,5 @@ struct Listing: Codable {
     let seen: Int
     let id: Int
     let distance: Double
+    let image: String?
 }

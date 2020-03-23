@@ -27,13 +27,6 @@ class ListingViewController: CollectionManager {
         setupViews()
     }
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
-    }
-
     private func setupViews() {
         setupCollectionView()
         searchBar.underline(UIColor.Common.secondary!)
@@ -93,6 +86,8 @@ extension ListingViewController {
     func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "ListingDetail", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.listingDetailViewController) as! ListingDetailViewController
+        controller.viewModel.listingId = listings[indexPath.row].id
+        print(listings[indexPath.row].id)
         present(controller, animated: true)
         print(listings[indexPath.row])
     }

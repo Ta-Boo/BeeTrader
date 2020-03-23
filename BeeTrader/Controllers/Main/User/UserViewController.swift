@@ -30,13 +30,12 @@ public class UserViewController: UIViewController {
     func loadData(email: String) {
         let parameters = RequestParameters.userData(email: email)
         showHUD()
-        avatar.alpha = 0.45
         viewModel?.loadData(parameters: parameters) { [weak self] result in
             switch result {
             case .success(let user):
-                self?.hideHUD()
                 self?.setUpInfo(user.data)
                 GlobalUser.update(user.data)
+                self?.hideHUD()
             case .failure:
                 self?.hideHUD()
             }
@@ -51,17 +50,7 @@ public class UserViewController: UIViewController {
             address.text = "\(user.city ), \(user.postalCode)"
             phoneNumber.text = user.phoneNumber ?? "---"
             if let imageUrl = user.image {
-                UIView.animate(withDuration: 0.5, animations: {
-                    self.avatar.alpha = 0
-                 }, completion: nil)
-                let url = URL(string: "\(ApiConstants.baseUrl)\(imageUrl)")
-                let data = try? Data(contentsOf: url!)
-                DispatchQueue.main.async { [weak self] in
-                    UIView.animate(withDuration: 0.5, animations: {
-                        self?.avatar.alpha = 1
-                    }, completion: nil)
-                    self?.avatar.image = UIImage(data: data!)
-                }
+                avatar.loadImage(url: "\(ApiConstants.baseUrl)\(imageUrl)", true)
             }
         }
     }

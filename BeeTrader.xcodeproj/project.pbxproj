@@ -55,6 +55,8 @@
 		B3EC2C15241BDB6F00F0E738 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = B3EC2C14241BDB6F00F0E738 /* loading.json */; };
 		B3EC2C17241BDC7D00F0E738 /* Hud.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EC2C16241BDC7D00F0E738 /* Hud.swift */; };
 		B3F5C66B2413B46600F7EF70 /* UIElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3F5C66A2413B46600F7EF70 /* UIElements.swift */; };
+		B3FE90632426C78A005D75F6 /* ListingDetailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FE90622426C78A005D75F6 /* ListingDetailModel.swift */; };
+		B3FE90652427BF4C005D75F6 /* Primitives.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3FE90642427BF4C005D75F6 /* Primitives.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -130,6 +132,8 @@
 		B3EC2C14241BDB6F00F0E738 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		B3EC2C16241BDC7D00F0E738 /* Hud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hud.swift; sourceTree = "<group>"; };
 		B3F5C66A2413B46600F7EF70 /* UIElements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIElements.swift; sourceTree = "<group>"; };
+		B3FE90622426C78A005D75F6 /* ListingDetailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingDetailModel.swift; sourceTree = "<group>"; };
+		B3FE90642427BF4C005D75F6 /* Primitives.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Primitives.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -271,6 +275,7 @@
 				B375399224269DCE0051C2E6 /* ListingDetailViewController.swift */,
 				B375399424269E140051C2E6 /* ListingDetailViewModel.swift */,
 				B375399624269EB60051C2E6 /* ListingDetail.storyboard */,
+				B3FE90622426C78A005D75F6 /* ListingDetailModel.swift */,
 			);
 			path = ListingDetail;
 			sourceTree = "<group>";
@@ -371,6 +376,7 @@
 				B3F5C66A2413B46600F7EF70 /* UIElements.swift */,
 				B3654E2E241FC22600592EF8 /* Colors.swift */,
 				B37F57A8242159C4001B84BB /* UIViewController.swift */,
+				B3FE90642427BF4C005D75F6 /* Primitives.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -479,6 +485,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B37B1B56241692B6005C3702 /* MainCoordinator.swift in Sources */,
+				B3FE90632426C78A005D75F6 /* ListingDetailModel.swift in Sources */,
 				B37B1B5324169252005C3702 /* Coordinator.swift in Sources */,
 				B37F57AE2422050A001B84BB /* UserDetailViewModel.swift in Sources */,
 				B38E4EF1241AC74500B85994 /* Parameters+Headers.swift in Sources */,
@@ -493,6 +500,7 @@
 				B35BA94C240FEB4C00BDA7C9 /* AppDelegate.swift in Sources */,
 				B37B1B4F2415A6DA005C3702 /* UserViewModel.swift in Sources */,
 				B3EC2C17241BDC7D00F0E738 /* Hud.swift in Sources */,
+				B3FE90652427BF4C005D75F6 /* Primitives.swift in Sources */,
 				B37F57AC242204F5001B84BB /* UserDetailViewController.swift in Sources */,
 				B3D02ED1241D8B75009AAD20 /* ListingViewController.swift in Sources */,
 				B3654E2B241F90DE00592EF8 /* ListingModel.swift in Sources */,

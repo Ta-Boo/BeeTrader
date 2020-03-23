@@ -10,5 +10,14 @@ import Foundation
 import Alamofire
 
 class ListingDetailViewModel {
+    var listingId: Int?
+    var listing: ListingDetail?
+    func loadData(parameters: Parameters, _ completion: @escaping (DataResult<ListingDetail>) -> Void) {
+        UrlRequest<ListingDetail>().handle(ApiConstants.baseUrl + "api/listing",
+                                  methood: HTTPMethod.get,
+                                  parameters: parameters) { result in
+            completion(result)
+        }
+    }
     
 }

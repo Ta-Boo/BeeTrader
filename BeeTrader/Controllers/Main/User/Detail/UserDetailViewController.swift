@@ -33,9 +33,9 @@ class UserDetailViewController: ImagePickerKeyboardManager {
     func setupData() {
         firstName.text = GlobalUser.shared?.firstName ?? ""
         lastName.text = GlobalUser.shared?.lastName ?? ""
-        address.setTitle(GlobalUser.shared?.postalCode ?? "", for: .normal
+        address.setTitle( "\(GlobalUser.shared?.postalCode ?? ""), \(GlobalUser.shared?.city ?? "")", for: .normal
         )
-        phoneNumber.text = GlobalUser.shared?.email ?? ""
+        phoneNumber.text = GlobalUser.shared?.phoneNumber ?? ""
         email.text = GlobalUser.shared?.email ?? ""
     }
     

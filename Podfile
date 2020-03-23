@@ -4,6 +4,7 @@ target 'BeeTrader' do
   #use_frameworks!
 pod 'Alamofire', '4.9.1'
 pod 'lottie-ios'
+pod 'Kingfisher', '~> 5.0'
 
 
 end

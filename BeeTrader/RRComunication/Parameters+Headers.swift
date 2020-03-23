@@ -26,6 +26,11 @@ public struct RequestParameters {
                 "lat": latitude,
                 "lon": longitude]
     }
+    
+    static func listing(id: Int) -> Parameters {
+        return ["id": id]
+    }
+    
     static func updateUser(firstName: String?, lastName: String?,
                            addressID: Int?, phoneNumber: String?, email: String?, id: Int?) -> Dictionary<String,String?> {
         return ["first_name": firstName,
