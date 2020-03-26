@@ -14,5 +14,7 @@ struct ViewControllers {
     static let mainTabBar = "MainTabBarController"
     static let userDetail = "UserDetailTableViewController"
     static let userDetailAddressPicker = "AddressPickerViewController"
-    static let listingDetailViewController = "ListingDetailViewController"
+    static let listingDetail = "ListingDetailViewController"
+    static let addListing = "AddListingViewController"
+    static let listingFilter = "ListingFilterViewController"
 }

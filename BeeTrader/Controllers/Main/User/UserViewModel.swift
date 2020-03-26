@@ -9,7 +9,7 @@
 import Alamofire
 import Foundation
 
-public class UserViewModel {
+class UserViewModel {
     func loadData(parameters: Parameters, _ completion: @escaping (DataResult<User>) -> Void) {
         UrlRequest<User>().handle(ApiConstants.baseUrl + "api/userByEmail",
                                   methood: HTTPMethod.get,

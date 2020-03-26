@@ -10,7 +10,7 @@ class GradientView: UIView {
     @IBInspectable var horizontalMode:  Bool =  false { didSet { updatePoints() }}
     @IBInspectable var diagonalMode:    Bool =  false { didSet { updatePoints() }}
 
-    override public class var layerClass: AnyClass { CAGradientLayer.self }
+    override class var layerClass: AnyClass { CAGradientLayer.self }
 
     var gradientLayer: CAGradientLayer { layer as! CAGradientLayer }
 
@@ -29,7 +29,7 @@ class GradientView: UIView {
     func updateColors() {
         gradientLayer.colors = [startColor.cgColor, endColor.cgColor]
     }
-    override public func layoutSubviews() {
+    override func layoutSubviews() {
         super.layoutSubviews()
         updatePoints()
         updateLocations()

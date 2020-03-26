@@ -9,7 +9,7 @@
 import Alamofire
 import Foundation
 
-public class RegistrationViewModel {
+class RegistrationViewModel {
     func login(parameters: Parameters, _ completion: @escaping (DataResult<User>) -> Void) {
         UrlRequest<User>().handle(ApiConstants.baseUrl + "api/login",
                                            methood: HTTPMethod.post,

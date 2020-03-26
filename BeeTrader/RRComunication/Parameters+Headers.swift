@@ -9,7 +9,7 @@
 import Alamofire
 import Foundation
 
-public struct RequestParameters {
+struct RequestParameters {
     static func login(withEmail email: String, password: String) -> Parameters {
         return ["email": email, "password": password]
     }
@@ -21,10 +21,18 @@ public struct RequestParameters {
     static func userData(email: String) -> Parameters {
         return ["email": email]
     }
-    static func listingInRadius(radius: Int, latitude: Double, longitude: Double) -> Parameters {
-        return ["radius": radius,
-                "lat": latitude,
-                "lon": longitude]
+    static func listingInRadius(radius: Int?, latitude: Double?,
+                                longitude: Double?, categories: [Int]? = [],
+                                page: Int ) -> Parameters {
+        let finalRadius = radius ?? 10000
+        let finalLatitude = latitude ?? 50.0
+        let finalLongitude = longitude ?? 20.0
+        let finalCategories = categories ?? []
+        
+        return ["radius": finalRadius,
+                "lat": finalLatitude,
+                "lon": finalLongitude,
+                "categories": finalCategories ]
     }
     
     static func listing(id: Int) -> Parameters {

@@ -78,11 +78,6 @@ extension UIView {
 
 extension UIImageView {
     func loadImage(url imageUrl : String?,_ animated: Bool = false) {
-//        guard let url = imageUrl else {
-//            self.image = UIImage(named: "loading_placeholder")
-//            return
-//        }
-//        self.kf.setImage(with: URL(string: url))
         guard let urlString = imageUrl else {
             self.image = UIImage(named: "loading_placeholder")
             return

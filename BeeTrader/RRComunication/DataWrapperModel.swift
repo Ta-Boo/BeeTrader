@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct DataWrapper<T: Codable>: Codable {
+struct DataWrapper<T: Codable>: Codable {
     let status: String
     let data: T?
     let errorCode: Int?
@@ -20,5 +20,5 @@ public struct DataWrapper<T: Codable>: Codable {
     }
 }
 
-public struct RegisterResponse: Codable {}
-public struct UploadResponse: Codable {}
+struct RegisterResponse: Codable {}
+struct UploadResponse: Codable {}

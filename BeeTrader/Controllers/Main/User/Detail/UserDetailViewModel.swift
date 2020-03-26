@@ -11,6 +11,9 @@ import Foundation
 class UserDetailViewModel {
     var addressId: Int?
     var avatarChanged = false
+    var userUpdateCompletion: StringClosure?
+    var imagePicker: UIImagePickerController!
+
 
     func uploadData(image: UIImage?, parameters: Dictionary<String,String?>, successCompletionHandler: @escaping EmptyClosure, failureCompletionHandler: @escaping EmptyClosure) {
         let url = "\(ApiConstants.baseUrl)api/user"

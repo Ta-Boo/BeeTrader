@@ -66,6 +66,7 @@ class ListingDetailViewController: UIViewController, MFMailComposeViewController
         descriptionLabel.text = listing.description
         viewsImage.isHidden = false
     }
+    
     func setupGestureRecognizers() {
         let gesture = UITapGestureRecognizer(target: self, action: #selector(ListingDetailViewController.sendEmail))
         emailLabel.isUserInteractionEnabled = true
@@ -77,10 +78,13 @@ class ListingDetailViewController: UIViewController, MFMailComposeViewController
             return
         }
         let mailVC = MFMailComposeViewController()
-        mailVC.mailComposeDelegate = self
-        mailVC.setToRecipients(["\(email)"])
-        mailVC.setSubject("\(viewModel.listing?.title ?? "Your listing") (BeeTrader)")
-        present(mailVC, animated: true, completion: nil)
+        if MFMailComposeViewController.canSendMail() {
+            mailVC.mailComposeDelegate = self
+            mailVC.setToRecipients(["\(email)"])
+            mailVC.setSubject("\(viewModel.listing?.title ?? "Your listing") at BeeTrader")
+            present(mailVC, animated: true, completion: nil)
+        } else { presentFailAlert(title: "Cannot send email from this device") }
+
     }
     
 

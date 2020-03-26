@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol ViewControllerType: class {
+protocol ViewControllerType: class {
     func viewTypeDidLoad()
     func viewTypeWillAppear(_ animated: Bool)
     func viewTypeDidAppear(_ animated: Bool)
@@ -18,7 +18,7 @@ public protocol ViewControllerType: class {
     func viewTypeDidLayoutSubviews()
 }
 
-public extension ViewControllerType {
+extension ViewControllerType {
     func viewTypeDidLoad() {}
     func viewTypeWillAppear(_: Bool) {}
     func viewTypeDidAppear(_: Bool) {}

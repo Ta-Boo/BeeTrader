@@ -318,7 +318,7 @@
                                 </connections>
                             </collectionView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YPm-s9-SuB">
-                                <rect key="frame" x="88" y="44" width="262" height="27"/>
+                                <rect key="frame" x="88" y="44" width="238" height="27"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" name="SecondaryColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
@@ -332,25 +332,41 @@
                                 <color key="tintColor" name="SecondaryColor"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2A9-yz-SO2">
-                                <rect key="frame" x="330" y="729.5" width="52" height="51"/>
+                                <rect key="frame" x="346" y="729.5" width="52" height="51"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="52" id="Ldc-Xd-dl6"/>
                                     <constraint firstAttribute="height" constant="52" id="uWC-7A-QtH"/>
                                 </constraints>
                                 <color key="tintColor" name="AccentTomatoColor"/>
                                 <state key="normal" backgroundImage="plus.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="onAddlistingClicked:" destination="IrQ-vW-szY" eventType="touchUpInside" id="bBj-tl-yDH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALm-Od-f54">
+                                <rect key="frame" x="334" y="44" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="j6V-Wv-x16"/>
+                                    <constraint firstAttribute="height" constant="32" id="ysU-UU-5qe"/>
+                                </constraints>
+                                <state key="normal" image="filter"/>
+                                <connections>
+                                    <action selector="onFilterClicked:" destination="IrQ-vW-szY" eventType="touchUpInside" id="zC5-rg-0GL"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" name="PrimaryColor"/>
                         <constraints>
-                            <constraint firstItem="FlK-Ny-q92" firstAttribute="trailing" secondItem="2A9-yz-SO2" secondAttribute="trailing" constant="32" id="GW6-k1-cUJ"/>
+                            <constraint firstItem="FlK-Ny-q92" firstAttribute="trailing" secondItem="2A9-yz-SO2" secondAttribute="trailing" constant="16" id="GW6-k1-cUJ"/>
                             <constraint firstItem="YPm-s9-SuB" firstAttribute="leading" secondItem="0CU-cz-ph3" secondAttribute="trailing" constant="8" id="NbB-xZ-IK9"/>
                             <constraint firstItem="FlK-Ny-q92" firstAttribute="bottom" secondItem="2A9-yz-SO2" secondAttribute="bottom" constant="32" id="S2D-1C-b4h"/>
+                            <constraint firstItem="ALm-Od-f54" firstAttribute="top" secondItem="YPm-s9-SuB" secondAttribute="top" id="SVK-0x-Ipo"/>
                             <constraint firstItem="FlK-Ny-q92" firstAttribute="bottom" secondItem="1Ls-af-qyz" secondAttribute="bottom" id="bSa-kR-uHk"/>
                             <constraint firstItem="YPm-s9-SuB" firstAttribute="leading" secondItem="FlK-Ny-q92" secondAttribute="leading" constant="88" id="dZK-gY-xZU"/>
+                            <constraint firstItem="FlK-Ny-q92" firstAttribute="trailing" secondItem="YPm-s9-SuB" secondAttribute="trailing" constant="88" id="eLk-26-VMS"/>
                             <constraint firstItem="YPm-s9-SuB" firstAttribute="top" secondItem="FlK-Ny-q92" secondAttribute="top" id="gjm-ev-5Ik"/>
-                            <constraint firstItem="FlK-Ny-q92" firstAttribute="trailing" secondItem="YPm-s9-SuB" secondAttribute="trailing" constant="64" id="jsl-v4-bXC"/>
                             <constraint firstItem="FlK-Ny-q92" firstAttribute="trailing" secondItem="1Ls-af-qyz" secondAttribute="trailing" constant="16" id="kjB-3u-AtU"/>
+                            <constraint firstItem="ALm-Od-f54" firstAttribute="leading" secondItem="YPm-s9-SuB" secondAttribute="trailing" constant="8" id="mpn-hq-tSi"/>
                             <constraint firstItem="1Ls-af-qyz" firstAttribute="top" secondItem="FlK-Ny-q92" secondAttribute="top" constant="-32" id="nbh-l3-2Mr"/>
                             <constraint firstItem="1Ls-af-qyz" firstAttribute="leading" secondItem="FlK-Ny-q92" secondAttribute="leading" constant="16" id="ppD-Ef-tz6"/>
                             <constraint firstItem="0CU-cz-ph3" firstAttribute="bottom" secondItem="YPm-s9-SuB" secondAttribute="bottom" id="rI6-Q9-RHv"/>
@@ -394,6 +410,7 @@
         <image name="avatar" width="520" height="520"/>
         <image name="edit" width="384" height="384"/>
         <image name="eye" catalog="system" width="64" height="40"/>
+        <image name="filter" width="464" height="464"/>
         <image name="loading_placeholder" width="451" height="519"/>
         <image name="magnifyingglass" catalog="system" width="64" height="56"/>
         <image name="message" catalog="system" width="64" height="56"/>

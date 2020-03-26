@@ -14,9 +14,6 @@ class ListingCell: UICollectionViewCell {
     @IBOutlet var distance: UILabel!
     @IBOutlet var views: UILabel!
     @IBOutlet var price: UILabel!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
 
     func setData(data: Listing) {
         if let listingImage = data.image {

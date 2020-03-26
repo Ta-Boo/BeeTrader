@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 class RegistrationViewController: UIViewController {
-    public var viewModel = RegistrationViewModel()
+    var viewModel = RegistrationViewModel()
 
     @IBOutlet var emailLabel: UITextField!
     @IBOutlet var passwordLabel: UITextField!
@@ -37,7 +37,7 @@ class RegistrationViewController: UIViewController {
         super.viewDidLoad()
     }
 
-    public override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         #if DEBUG
             emailLabel.text = "tobias@hladek.com"

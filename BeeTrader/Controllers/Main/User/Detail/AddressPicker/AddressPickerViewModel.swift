@@ -10,7 +10,9 @@ import Foundation
 import Alamofire
 
 class AddressPickerViewModel {
-    
+    var addresses: [Address] = []
+    var searchDebouncer: Debouncer?
+
     func loadAddresses(parameters: Parameters, _ completion: @escaping (DataResult<[Address]>) -> Void) {
         UrlRequest<[Address]>().handle(ApiConstants.baseUrl + "api/addresses",
                                        methood: HTTPMethod.get,
@@ -18,5 +20,4 @@ class AddressPickerViewModel {
             completion(result)
         }
     }
-    
 }

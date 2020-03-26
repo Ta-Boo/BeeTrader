@@ -11,11 +11,11 @@ import UIKit
 
 extension UIColor {
     enum Common {
-        public static let primary = UIColor(named: "PrimaryColor")
-        public static let secondary = UIColor(named: "SecondaryColor")
-        public static let accent = UIColor(named: "AccentColor")
-        public static let accentTomato = UIColor(named: "AccentTomatoColor")
-        public static let text = UIColor(named: "TextColor")
+        static let primary = UIColor(named: "PrimaryColor")
+        static let secondary = UIColor(named: "SecondaryColor")
+        static let accent = UIColor(named: "AccentColor")
+        static let accentTomato = UIColor(named: "AccentTomatoColor")
+        static let text = UIColor(named: "TextColor")
 
     }
 }

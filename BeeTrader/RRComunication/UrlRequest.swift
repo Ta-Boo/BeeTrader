@@ -11,8 +11,8 @@ import Foundation
 
 typealias DataResult<Type: Codable> = Result<DataWrapper<Type>>
 enum ApiConstants {
-//    static let baseUrl = "http://localhost:8000/"
-    static let baseUrl = "http://192.168.0.100:8000/"
+    static let baseUrl = "http://localhost:8000/"
+//    static let baseUrl = "http://192.168.0.100:8000/"
 }
 
 struct Image {

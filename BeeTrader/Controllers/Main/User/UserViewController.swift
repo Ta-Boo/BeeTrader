@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-public class UserViewController: UIViewController {
-    public var viewModel: UserViewModel?
+class UserViewController: UIViewController {
+    var viewModel = UserViewModel()
     @IBOutlet var firstName: UITextField!
     @IBOutlet var lastName: UITextField!
     @IBOutlet var email: UITextField!
@@ -19,23 +19,25 @@ public class UserViewController: UIViewController {
     @IBOutlet var avatar: UIImageView!
     @IBOutlet var editButton: UIButton!
 
-    public override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = UserViewModel()
-        if let user = GlobalUser.shared {
-            loadData(email: user.email)
-        }
+        loadData()
     }
 
-    func loadData(email: String) {
+    func loadData() {
+        guard let email = GlobalUser.shared?.email else{
+            presentFailAlert(title: "Something went wrong")
+            return
+        }
         let parameters = RequestParameters.userData(email: email)
         showHUD()
-        viewModel?.loadData(parameters: parameters) { [weak self] result in
+        viewModel.loadData(parameters: parameters) { [weak self] result in
             switch result {
             case .success(let user):
                 self?.setUpInfo(user.data)
                 GlobalUser.update(user.data)
                 self?.hideHUD()
+                
             case .failure:
                 self?.hideHUD()
             }
@@ -58,8 +60,8 @@ public class UserViewController: UIViewController {
     @IBAction func onEditClicked(_: Any) {
         let storyboard = UIStoryboard(name: "UserDetail", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.userDetail) as! UserDetailViewController
-        controller.userUpdateCompletion = { [weak self] email in
-            self?.loadData(email: email)
+        controller.viewModel.userUpdateCompletion = { [weak self] email in
+            self?.loadData()
         }
         present(controller, animated: true)
     }
