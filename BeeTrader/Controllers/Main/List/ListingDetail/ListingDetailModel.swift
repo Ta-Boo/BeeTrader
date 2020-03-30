@@ -30,7 +30,7 @@ struct ListingDetail: Codable {
         case image
         case views = "seen"
         case location = "is_in"
-        case userName = "first_nameee"
+        case userName = "first_name"
         case email
         case phone = "phone_number"
     }

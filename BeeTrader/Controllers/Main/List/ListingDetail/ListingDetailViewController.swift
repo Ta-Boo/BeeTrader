@@ -19,6 +19,7 @@ class ListingDetailViewController: UIViewController, MFMailComposeViewController
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
+    @IBOutlet weak var userNameLabel: UILabel!
     
     @IBOutlet weak var viewsImage: UIImageView!
     
@@ -64,6 +65,7 @@ class ListingDetailViewController: UIViewController, MFMailComposeViewController
         titleLabel.text = listing.title
         priceLabel.text = listing.price.toPrice()
         descriptionLabel.text = listing.description
+        userNameLabel.text = listing.userName
         viewsImage.isHidden = false
     }
     

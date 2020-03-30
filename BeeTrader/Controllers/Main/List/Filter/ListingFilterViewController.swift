@@ -40,7 +40,7 @@ class ListingFilterViewController: ListingManager {
     
     @IBAction func onSubmitClicked(_ sender: Any) {
         let categories = viewModel.filterTypes?.filter{ $0.isChoosen ?? false }.map{ $0.id }
-        let filterData = ListingData(radius: Int(distanceSlider?.value ?? 500),
+        let filterData = ListingData(radius: Int(distanceSlider.value),
                                      categories: categories)
         viewModel.submitCompletion?(filterData)
         dismiss(animated: true)

@@ -19,7 +19,7 @@ class FilterTypeCell : UITableViewCell {
         choosenSwitch.onTintColor = UIColor(named: "PrimaryColor")
     }
     
-    func setData(data: FilterTypeModel) {
+    func setData(data: Category) {
         choosenSwitch.isOn = data.isChoosen ?? false
         type.text = data.type
     }

@@ -31,7 +31,19 @@
                                                     </imageView>
                                                     <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="g9i-aI-s2e" customClass="GradientView" customModule="BeeTrader" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="414" height="380"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tSD-er-umB">
+                                                                <rect key="frame" x="398" y="372" width="0.0" height="0.0"/>
+                                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                                                <color key="textColor" name="TextColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="trailing" secondItem="tSD-er-umB" secondAttribute="trailing" constant="16" id="DZa-8W-Vnz"/>
+                                                            <constraint firstAttribute="bottom" secondItem="tSD-er-umB" secondAttribute="bottom" constant="8" id="qjo-T4-rKS"/>
+                                                        </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="startColor">
                                                                 <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -168,6 +180,7 @@
                         <outlet property="phoneLabel" destination="6VZ-Vu-xyV" id="M0L-ua-ZkM"/>
                         <outlet property="priceLabel" destination="eaK-lA-bRj" id="cYN-nw-fcr"/>
                         <outlet property="titleLabel" destination="Y3T-fB-lij" id="ku4-st-tjE"/>
+                        <outlet property="userNameLabel" destination="tSD-er-umB" id="yaC-no-Dd9"/>
                         <outlet property="viewsImage" destination="QZj-vM-9z0" id="NJu-FK-Wsx"/>
                         <outlet property="viewsLabel" destination="d9d-bb-Fih" id="yTU-Zw-YU5"/>
                     </connections>

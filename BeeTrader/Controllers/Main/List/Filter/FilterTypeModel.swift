@@ -9,7 +9,7 @@
 import Foundation
 
 
-struct FilterTypeModel: Codable {
+struct Category: Codable {
     let id: Int
     let type: String
     var isChoosen: Bool? = false

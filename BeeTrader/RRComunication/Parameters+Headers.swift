@@ -32,7 +32,8 @@ struct RequestParameters {
         return ["radius": finalRadius,
                 "lat": finalLatitude,
                 "lon": finalLongitude,
-                "categories": finalCategories ]
+                "categories": finalCategories,
+                "page": page]
     }
     
     static func listing(id: Int) -> Parameters {

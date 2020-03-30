@@ -18,12 +18,11 @@ class ListingViewModel {
     let refreshControl = UIRefreshControl()
     var listings: [Listing] = []
     var listingData = ListingData()
-//    var parameters = RequestParameters.listingInRadius(radius: 500, latitude: GlobalUser.shared?.latitude, longitude:  GlobalUser.shared?.longitude, page: 1)
     
     var parameters: Parameters  {
         get {
             return RequestParameters.listingInRadius(radius: listingData.radius, latitude: GlobalUser.shared?.latitude,
-                                                     longitude: GlobalUser.shared?.longitude, page: listingData.page)
+                                                     longitude: GlobalUser.shared?.longitude, categories: listingData.categories, page: listingData.page)
         }
     }
     

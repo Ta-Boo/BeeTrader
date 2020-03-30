@@ -11,10 +11,10 @@ import Foundation
 
 class ListingFilterViewModel {
     var submitCompletion: ((ListingData) -> Void)?
-    var filterTypes: [FilterTypeModel]? = []
+    var filterTypes: [Category]? = []
 
-    func loadCategories(_ completion: @escaping (DataResult<[FilterTypeModel]>) -> Void) {
-        UrlRequest<[FilterTypeModel]>().handle(ApiConstants.baseUrl + "api/categories",
+    func loadCategories(_ completion: @escaping (DataResult<[Category]>) -> Void) {
+        UrlRequest<[Category]>().handle(ApiConstants.baseUrl + "api/categories",
                                        methood: HTTPMethod.get) { result in
             completion(result)
         }
