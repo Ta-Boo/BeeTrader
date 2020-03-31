@@ -11,52 +11,22 @@ import UIKit
 
 typealias ListingManager = UIViewController & UITableViewDataSource & UITableViewDelegate
 
-class AddressPickerViewController: ListingManager {
+class AddressPickerViewController: UIViewController, UITableViewDataSource {
     let viewModel = AddressPickerViewModel()
     var addressPickCompletion: ((Address) -> Void)?
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-    
-    func loadAddresses(filter: String) {
-        let parameters = RequestParameters.addresses(filter: filter)
-        showHUD()
-        viewModel.loadAddresses(parameters: parameters) { [weak self] result in
-            switch result {
-            case .success(let data):
-                self?.viewModel.addresses = data.data ?? []
-                self?.tableView.reloadData()
-                self?.hideHUD()
-            case.failure:
-                self?.hideHUD()
-                self?.presentFailedRequestAlert()
-            }
-        }
+        viewModel.delegate = self
     }
     
     @IBAction func onFilterChanged(_ sender: UITextField) {
-        guard let filter = sender.text else { return }
-        let debounceHandler: () -> Void = { [weak self] in
-            if filter.isEmpty || filter.count < 3 { return }
-            self?.loadAddresses(filter: filter)
-        }
-        
-        guard let searchDebouncer = self.viewModel.searchDebouncer else {
-            let debouncer = Debouncer(handler: {})
-            self.viewModel.searchDebouncer = debouncer
-            onFilterChanged(sender)
-            return
-        }
-        
-        searchDebouncer.invalidate()
-        searchDebouncer.handler = debounceHandler
-        searchDebouncer.call()
+        onFilterChangedHandler(sender)
     }
 }
 
-extension AddressPickerViewController {
+extension AddressPickerViewController: UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.addresses.count
@@ -72,4 +42,44 @@ extension AddressPickerViewController {
         addressPickCompletion?(viewModel.addresses[indexPath.row])
         dismiss(animated: true)
     }
+}
+
+extension AddressPickerViewController: AddressPickerViewDelegate {
+    
+    func loadAddressesWithFilter(_ filter: String) {
+        let parameters = RequestParameters.addresses(filter: filter)
+        showHUD()
+        viewModel.loadAddresses(parameters: parameters)
+    }
+    
+    func addressesLoadedFailure() {
+        hideHUD()
+        presentFailedRequestAlert()
+    }
+    
+    func addressesLoadedSuccess(addresses: [Address]) {
+        viewModel.addresses = addresses
+        tableView.reloadData()
+        hideHUD()
+    }
+    
+    func onFilterChangedHandler(_ sender: UITextField) {
+        guard let filter = sender.text else { return }
+        let debounceHandler: () -> Void = { [weak self] in
+            if filter.isEmpty || filter.count < 3 { return }
+            self?.loadAddressesWithFilter(filter)
+        }
+        
+        guard let searchDebouncer = self.viewModel.searchDebouncer else {
+            let debouncer = Debouncer(handler: {})
+            self.viewModel.searchDebouncer = debouncer
+            onFilterChangedHandler(sender)
+            return
+        }
+        
+        searchDebouncer.invalidate()
+        searchDebouncer.handler = debounceHandler
+        searchDebouncer.call()
+    }
+
 }

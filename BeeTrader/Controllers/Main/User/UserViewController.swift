@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Alamofire
 
 class UserViewController: UIViewController {
     var viewModel = UserViewModel()
@@ -21,27 +22,8 @@ class UserViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
-    }
-
-    func loadData() {
-        guard let email = GlobalUser.shared?.email else{
-            presentFailAlert(title: "Something went wrong")
-            return
-        }
-        let parameters = RequestParameters.userData(email: email)
-        showHUD()
-        viewModel.loadData(parameters: parameters) { [weak self] result in
-            switch result {
-            case .success(let user):
-                self?.setUpInfo(user.data)
-                GlobalUser.update(user.data)
-                self?.hideHUD()
-                
-            case .failure:
-                self?.hideHUD()
-            }
-        }
+        viewModel.delegate = self
+        loadUser()
     }
 
     func setUpInfo(_ user: User?) {
@@ -51,9 +33,7 @@ class UserViewController: UIViewController {
             email.text = user.email
             address.text = "\(user.city ), \(user.postalCode)"
             phoneNumber.text = user.phoneNumber ?? "---"
-            if let imageUrl = user.image {
-                avatar.loadImage(url: "\(ApiConstants.baseUrl)\(imageUrl)", true)
-            }
+            loadUserImage(user.image)
         }
     }
 
@@ -61,8 +41,38 @@ class UserViewController: UIViewController {
         let storyboard = UIStoryboard(name: "UserDetail", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.userDetail) as! UserDetailViewController
         controller.viewModel.userUpdateCompletion = { [weak self] email in
-            self?.loadData()
+            self?.loadUser()
         }
         present(controller, animated: true)
     }
+}
+
+extension UserViewController: UserViewModelDelegate {
+    func loadUserImage(_ image: String?) {
+        if let imageUrl = image {
+            avatar.loadImage(url: "\(ApiConstants.baseUrl)\(imageUrl)", true)
+        }
+    }
+    
+    func userLoaded(_ user: User) {
+        setUpInfo(user)
+        GlobalUser.update(user)
+        hideHUD()
+    }
+    
+    func userLoadFailure() {
+        presentFailedRequestAlert()
+        hideHUD()
+    }
+    
+    func loadUser() {
+        guard let email = GlobalUser.shared?.email else{
+            presentFailAlert(title: "Something went wrong")
+            return
+        }
+        let parameters = RequestParameters.userData(email: email)
+        showHUD()
+        viewModel.loadData(parameters: parameters)
+    }
+    
 }
