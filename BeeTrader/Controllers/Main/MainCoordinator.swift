@@ -24,6 +24,9 @@ class GlobalUser {
             defaults.set(encoded, forKey: StorageKeys.user)
         }
     }
+    static func dispose() {
+        UserDefaults.standard.set(nil, forKey: StorageKeys.user)
+    }
 }
 
 
@@ -35,18 +38,22 @@ protocol MainCoordinatorType {
 class MainCoordinator: Coordinator {
     let window: UIWindow
     let navigationController: UINavigationController
+    
     var mainTabBarController: UIViewController {
         let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.mainTabBar)
+        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.mainTabBar) as! MainTabBarController
+        controller.handleLogOut = { [weak self] in
+            GlobalUser.dispose()
+            self?.navigationController.setViewControllers([self!.registrationController], animated: true)
+        }
         return controller
     }
+    
     var registrationController: UIViewController {
-    let storyboard = UIStoryboard(name: "Registration", bundle: nil)
-    let controller: RegistrationViewController = storyboard.instantiateViewController(withIdentifier: ViewControllers.registration) as! RegistrationViewController
-        controller.successfulLoginHandler = {
-            let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.mainTabBar)
-            self.navigationController.pushViewController(controller, animated: true)
+        let storyboard = UIStoryboard(name: "Registration", bundle: nil)
+        let controller: RegistrationViewController = storyboard.instantiateViewController(withIdentifier: ViewControllers.registration) as! RegistrationViewController
+        controller.successfulLoginHandler = { [weak self] in
+            self?.navigationController.setViewControllers([self!.mainTabBarController], animated: true)
         }
         return controller
     }

@@ -45,7 +45,7 @@ class UserViewController: UIViewController {
         viewModel.handleEditController()
     }
     @IBAction func logOutTapped(_ sender: Any) {
-        viewModel.handleLogOut?()
+        (tabBarController as! MainTabBarController).handleLogOut?()
     }
 }
 

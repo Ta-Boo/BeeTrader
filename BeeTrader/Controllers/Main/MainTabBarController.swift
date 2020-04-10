@@ -11,9 +11,10 @@ import UIKit
 
 class MainTabBarController: UITabBarController {
     var handleLogOut: EmptyClosure?
-
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("asdasdasdd")
+    var userController: UserViewController?
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        userController = viewControllers?[0] as? UserViewController
     }
+    
 }

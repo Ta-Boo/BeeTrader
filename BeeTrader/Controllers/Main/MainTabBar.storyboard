@@ -161,14 +161,13 @@
                                     <constraint firstItem="gAi-WR-CFW" firstAttribute="centerX" secondItem="Ozw-Ie-LLY" secondAttribute="centerX" id="zXf-ZH-Mww"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55W-wR-VmW">
-                                <rect key="frame" x="335" y="12" width="63" height="34"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5m-yp-s2t">
+                                <rect key="frame" x="346" y="60" width="52" height="30"/>
                                 <state key="normal" title="Log out">
                                     <color key="titleColor" name="AccentTomatoColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="logOutTapped:" destination="Qm9-zx-1rA" eventType="touchUpInside" id="q3X-35-qGm"/>
+                                    <action selector="logOutTapped:" destination="Qm9-zx-1rA" eventType="touchUpInside" id="I30-rm-ydY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -180,14 +179,14 @@
                             <constraint firstItem="aLV-ZI-UKT" firstAttribute="centerX" secondItem="sHv-fq-JiW" secondAttribute="centerX" id="CYz-JD-y2A"/>
                             <constraint firstAttribute="trailing" secondItem="0eH-8K-8sB" secondAttribute="trailing" constant="-360" id="Pq9-cA-lxo"/>
                             <constraint firstItem="0eH-8K-8sB" firstAttribute="top" secondItem="aLV-ZI-UKT" secondAttribute="bottom" constant="42" id="QtW-1b-17J"/>
+                            <constraint firstItem="Khf-Re-CXt" firstAttribute="trailing" secondItem="e5m-yp-s2t" secondAttribute="trailing" constant="16" id="SoA-Xi-KvM"/>
                             <constraint firstItem="Khf-Re-CXt" firstAttribute="bottom" secondItem="Ozw-Ie-LLY" secondAttribute="bottom" constant="16" id="Yrf-uR-xq6"/>
-                            <constraint firstItem="Khf-Re-CXt" firstAttribute="trailing" secondItem="55W-wR-VmW" secondAttribute="trailing" constant="16" id="cHW-mD-asi"/>
                             <constraint firstItem="aLV-ZI-UKT" firstAttribute="top" secondItem="Khf-Re-CXt" secondAttribute="top" constant="24" id="fUP-Nl-qDi"/>
                             <constraint firstItem="Khf-Re-CXt" firstAttribute="trailing" secondItem="Ozw-Ie-LLY" secondAttribute="trailing" constant="16" id="fsQ-3g-KmV"/>
                             <constraint firstItem="0eH-8K-8sB" firstAttribute="leading" secondItem="sHv-fq-JiW" secondAttribute="leading" constant="-360" id="h4t-mO-3Ep"/>
                             <constraint firstItem="Ozw-Ie-LLY" firstAttribute="leading" secondItem="Khf-Re-CXt" secondAttribute="leading" constant="16" id="hKq-DO-fVr"/>
+                            <constraint firstItem="e5m-yp-s2t" firstAttribute="top" secondItem="Khf-Re-CXt" secondAttribute="top" constant="16" id="k1X-RZ-NaR"/>
                             <constraint firstAttribute="bottom" secondItem="0eH-8K-8sB" secondAttribute="bottom" constant="-383" id="yNG-eG-aBY"/>
-                            <constraint firstItem="55W-wR-VmW" firstAttribute="top" secondItem="Khf-Re-CXt" secondAttribute="top" constant="-32" id="zAs-Be-2AJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Khf-Re-CXt"/>
                     </view>
