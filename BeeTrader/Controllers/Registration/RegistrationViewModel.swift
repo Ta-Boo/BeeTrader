@@ -11,15 +11,15 @@ import Foundation
 
 class RegistrationViewModel {
     func login(parameters: Parameters, _ completion: @escaping (DataResult<User>) -> Void) {
-        UrlRequest<User>().handle(ApiConstants.baseUrl + "api/login",
-                                           methood: HTTPMethod.post,
-                                           parameters: parameters) { result in
+        UrlRequest<User>().handle(ApiConstants.baseUrl + "login",
+                                  methood: HTTPMethod.post,
+                                  parameters: parameters) { result in
             completion(result)
         }
     }
 
     func register(parameters: Parameters, _ completion: @escaping (DataResult<RegisterResponse>) -> Void) {
-        UrlRequest<RegisterResponse>().handle(ApiConstants.baseUrl + "api/register",
+        UrlRequest<RegisterResponse>().handle(ApiConstants.baseUrl + "register",
                                               methood: HTTPMethod.post,
                                               parameters: parameters) { result in
             completion(result)

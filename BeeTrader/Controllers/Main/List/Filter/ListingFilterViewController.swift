@@ -9,58 +9,51 @@
 import Foundation
 import UIKit
 
-class ListingFilterViewController: ListingManager {
-    @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var distanceSlider: UISlider!
-    @IBOutlet weak var distance: UILabel!
+protocol ListingFilterViewDelegate: Delegate {
+    func showCategories()
+}
+
+class ListingFilterViewController: UIViewController {
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var distanceSlider: UISlider!
+    @IBOutlet var distance: UILabel!
     let viewModel = ListingFilterViewModel()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadCategories()
+        viewModel.delegate = self
+        viewModel.viewModelDidLoad()
     }
-    
-    func loadCategories() {
-        showHUD()
-        viewModel.loadCategories() { [weak self] response in
-            switch response {
-            case .success(let value) :
-                self?.viewModel.filterTypes = value.data
-                self?.tableView.reloadData()
-            case .failure:
-                self?.presentFailedRequestAlert()
-            }
-            self?.hideHUD()
-        }
-    }
-    
+
     @IBAction func onDistanceChanged(_ sender: UISlider) {
         distance.text = "\(String(format: "%.2f", sender.value)) Km"
     }
-    
-    @IBAction func onSubmitClicked(_ sender: Any) {
-        let categories = viewModel.filterTypes?.filter{ $0.isChoosen ?? false }.map{ $0.id }
-        let filterData = ListingData(radius: Int(distanceSlider.value),
-                                     categories: categories)
-        viewModel.submitCompletion?(filterData)
+
+    @IBAction func onSubmitClicked(_: Any) {
+        viewModel.handleSubmit(distance: Int(distanceSlider.value))
         dismiss(animated: true)
     }
-    
+}
+// MARK: Delegate
+extension ListingFilterViewController: ListingFilterViewDelegate {
+    func showCategories() {
+        tableView.reloadData()
+    }
 }
 
-extension ListingFilterViewController {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+// MARK: TableView
+
+extension ListingFilterViewController: ListingManager {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return viewModel.filterTypes?.count ?? 0
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "FilterCell") as! FilterTypeCell
+    func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FilterCell") as! FilterTypeCell
         cell.setData(data: viewModel.filterTypes![indexPath.row])
         cell.onSwitchTapped = { [weak self] isOn in
             self?.viewModel.filterTypes![indexPath.row].isChoosen = isOn
         }
         return cell
     }
-
 }

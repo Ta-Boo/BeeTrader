@@ -9,4 +9,11 @@
 import Foundation
 import UIKit
 
-class MainTabBarController: UITabBarController {}
+class MainTabBarController: UITabBarController {
+    var handleLogOut: EmptyClosure?
+
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        print("asdasdasdd")
+    }
+}

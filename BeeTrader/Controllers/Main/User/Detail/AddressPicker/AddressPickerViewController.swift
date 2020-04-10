@@ -9,77 +9,49 @@
 import Foundation
 import UIKit
 
-typealias ListingManager = UIViewController & UITableViewDataSource & UITableViewDelegate
+protocol AddressPickerViewDelegate: Delegate {
+    func reloadTableView(addresses: [Address])
+}
 
-class AddressPickerViewController: UIViewController, UITableViewDataSource {
+typealias ListingManager = UITableViewDataSource & UITableViewDelegate
+class AddressPickerViewController: UIViewController {
     let viewModel = AddressPickerViewModel()
     var addressPickCompletion: ((Address) -> Void)?
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
+        viewModel.viewModelDidLoad()
     }
-    
+
     @IBAction func onFilterChanged(_ sender: UITextField) {
-        onFilterChangedHandler(sender)
+        viewModel.onFilterChangedHandler(search: sender.text)
     }
 }
 
-extension AddressPickerViewController: UITableViewDelegate{
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension AddressPickerViewController: ListingManager {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return viewModel.addresses.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "AddressCell") as! AddressCell
+    func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell") as! AddressCell
         cell.setData(data: viewModel.addresses[indexPath.row])
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         addressPickCompletion?(viewModel.addresses[indexPath.row])
         dismiss(animated: true)
     }
 }
 
 extension AddressPickerViewController: AddressPickerViewDelegate {
-    
-    func loadAddressesWithFilter(_ filter: String) {
-        let parameters = RequestParameters.addresses(filter: filter)
-        showHUD()
-        viewModel.loadAddresses(parameters: parameters)
+    func reloadTableView(addresses _: [Address]) {
+        UIView.transition(with: tableView,
+                          duration: 0.35,
+                          options: .transitionCrossDissolve,
+                          animations: { [weak self] in self?.tableView.reloadData() })
     }
-    
-    func addressesLoadedFailure() {
-        hideHUD()
-        presentFailedRequestAlert()
-    }
-    
-    func addressesLoadedSuccess(addresses: [Address]) {
-        viewModel.addresses = addresses
-        tableView.reloadData()
-        hideHUD()
-    }
-    
-    func onFilterChangedHandler(_ sender: UITextField) {
-        guard let filter = sender.text else { return }
-        let debounceHandler: () -> Void = { [weak self] in
-            if filter.isEmpty || filter.count < 3 { return }
-            self?.loadAddressesWithFilter(filter)
-        }
-        
-        guard let searchDebouncer = self.viewModel.searchDebouncer else {
-            let debouncer = Debouncer(handler: {})
-            self.viewModel.searchDebouncer = debouncer
-            onFilterChangedHandler(sender)
-            return
-        }
-        
-        searchDebouncer.invalidate()
-        searchDebouncer.handler = debounceHandler
-        searchDebouncer.call()
-    }
-
 }

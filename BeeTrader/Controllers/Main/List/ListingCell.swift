@@ -16,13 +16,12 @@ class ListingCell: UICollectionViewCell {
     @IBOutlet var price: UILabel!
 
     func setData(data: Listing) {
+        image.image = UIImage(named: "loading_placeholder")
         if let listingImage = data.image {
             image.loadImage(url: "\(ApiConstants.baseUrl)\(listingImage)", true)
-        } else {
-            image.loadImage(url: nil)
         }
         title.text = data.title
-        distance.text = String(data.distance)
+        distance.text = "\(data.distance)Km"
         views.text = String(data.seen)
         price.text = data.price.toPrice()
     }

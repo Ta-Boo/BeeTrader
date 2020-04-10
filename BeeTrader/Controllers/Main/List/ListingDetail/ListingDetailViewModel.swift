@@ -6,18 +6,35 @@
 //  Copyright © 2020 hladek. All rights reserved.
 //
 
-import Foundation
 import Alamofire
+import Foundation
+
+protocol ListingDetailDelegate {
+    func loadListing()
+    func listingLoadedSuccess(listing: ListingDetail)
+    func listingLoadedFailure()
+    func sendEmailHandler(sender: UITapGestureRecognizer)
+    func setupViewsHandler()
+}
 
 class ListingDetailViewModel {
+    var delegate: ListingDetailDelegate?
     var listingId: Int?
     var listing: ListingDetail?
-    func loadData(parameters: Parameters, _ completion: @escaping (DataResult<ListingDetail>) -> Void) {
-        UrlRequest<ListingDetail>().handle(ApiConstants.baseUrl + "api/listing",
-                                  methood: HTTPMethod.get,
-                                  parameters: parameters) { result in
-            completion(result)
+    func loadData(parameters: Parameters) {
+        UrlRequest<ListingDetail>().handle(ApiConstants.baseUrl + "listing",
+                                           methood: HTTPMethod.get,
+                                           parameters: parameters) { [weak self] result in
+            switch result {
+            case let .success(response):
+                guard let data = response.data else {
+                    self?.delegate?.listingLoadedFailure()
+                    return
+                }
+                self?.delegate?.listingLoadedSuccess(listing: data)
+            case .failure:
+                self?.delegate?.listingLoadedFailure()
+            }
         }
     }
-    
 }

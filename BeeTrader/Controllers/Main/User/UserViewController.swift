@@ -1,17 +1,32 @@
-//
-//  UserViewController.swift
-//  BeeTrader
-//
-//  Created by hladek on 08/03/2020.
-//  Copyright © 2020 hladek. All rights reserved.
-//
-
+import Alamofire
 import Foundation
 import UIKit
-import Alamofire
+
+protocol Delegate {
+    func showHUD()
+    func hideHUD()
+    func presentFailure()
+    func presentFailAlert(_ title: String)
+}
+
+extension Delegate where Self: UIViewController {
+    func presentFailure() {
+        presentFailedRequestAlert()
+    }
+
+    func presentFailAlert(_ title: String = "Something went wrong!") {
+        presentFailAlert(title: title)
+    }
+}
+
+protocol UserViewDelegate: Delegate {
+    func showUserInfo(_ user: User)
+    func presetnEditController(_ controller: UIViewController)
+}
 
 class UserViewController: UIViewController {
     var viewModel = UserViewModel()
+
     @IBOutlet var firstName: UITextField!
     @IBOutlet var lastName: UITextField!
     @IBOutlet var email: UITextField!
@@ -23,56 +38,34 @@ class UserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
-        loadUser()
-    }
-
-    func setUpInfo(_ user: User?) {
-        if let user = user {
-            firstName.text = user.firstName
-            lastName.text = user.lastName
-            email.text = user.email
-            address.text = "\(user.city ), \(user.postalCode)"
-            phoneNumber.text = user.phoneNumber ?? "---"
-            loadUserImage(user.image)
-        }
+        viewModel.viewModelDidLoad()
     }
 
     @IBAction func onEditClicked(_: Any) {
-        let storyboard = UIStoryboard(name: "UserDetail", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.userDetail) as! UserDetailViewController
-        controller.viewModel.userUpdateCompletion = { [weak self] email in
-            self?.loadUser()
-        }
-        present(controller, animated: true)
+        viewModel.handleEditController()
+    }
+    @IBAction func logOutTapped(_ sender: Any) {
+        viewModel.handleLogOut?()
     }
 }
 
-extension UserViewController: UserViewModelDelegate {
-    func loadUserImage(_ image: String?) {
-        if let imageUrl = image {
+extension UserViewController: UserViewDelegate {
+    func presetnEditController(_ controller: UIViewController) {
+        present(controller, animated: true)
+    }
+
+    func presentFailure() {
+        presentFailedRequestAlert()
+    }
+
+    func showUserInfo(_ user: User) {
+        firstName.text = user.firstName
+        lastName.text = user.lastName
+        email.text = user.email
+        address.text = "\(user.city), \(user.postalCode)"
+        phoneNumber.text = user.phoneNumber ?? "---"
+        if let imageUrl = user.image {
             avatar.loadImage(url: "\(ApiConstants.baseUrl)\(imageUrl)", true)
         }
     }
-    
-    func userLoaded(_ user: User) {
-        setUpInfo(user)
-        GlobalUser.update(user)
-        hideHUD()
-    }
-    
-    func userLoadFailure() {
-        presentFailedRequestAlert()
-        hideHUD()
-    }
-    
-    func loadUser() {
-        guard let email = GlobalUser.shared?.email else{
-            presentFailAlert(title: "Something went wrong")
-            return
-        }
-        let parameters = RequestParameters.userData(email: email)
-        showHUD()
-        viewModel.loadData(parameters: parameters)
-    }
-    
 }

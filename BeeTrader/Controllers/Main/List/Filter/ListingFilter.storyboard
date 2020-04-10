@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="arz-cS-ZBB">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1000" minValue="0.0" maxValue="1000" translatesAutoresizingMaskIntoConstraints="NO" id="arz-cS-ZBB">
                                 <rect key="frame" x="30" y="108" width="354" height="31"/>
                                 <color key="tintColor" name="PrimaryColor"/>
                                 <connections>
@@ -29,14 +29,14 @@
                                 <color key="textColor" name="TextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50 Km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u9E-jp-muZ">
-                                <rect key="frame" x="123" y="76" width="62" height="24"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000 Km" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u9E-jp-muZ">
+                                <rect key="frame" x="123" y="76" width="86" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" name="TextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gi6-OV-aEk">
-                                <rect key="frame" x="32" y="170" width="350" height="342"/>
+                                <rect key="frame" x="32" y="170" width="350" height="442"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" name="PrimaryColor"/>
                                 <prototypes>
@@ -103,7 +103,7 @@
                         </subviews>
                         <color key="backgroundColor" name="AccentTomatoColor"/>
                         <constraints>
-                            <constraint firstItem="YfY-6d-ela" firstAttribute="bottom" secondItem="gi6-OV-aEk" secondAttribute="bottom" constant="350" id="6iT-AA-c7g"/>
+                            <constraint firstItem="YfY-6d-ela" firstAttribute="bottom" secondItem="gi6-OV-aEk" secondAttribute="bottom" constant="250" id="6iT-AA-c7g"/>
                             <constraint firstItem="xsp-Ty-mvt" firstAttribute="top" secondItem="YfY-6d-ela" secondAttribute="top" constant="32" id="ADy-Nx-6PW"/>
                             <constraint firstItem="u9E-jp-muZ" firstAttribute="leading" secondItem="xsp-Ty-mvt" secondAttribute="trailing" constant="4" id="Dsq-oq-yNK"/>
                             <constraint firstItem="xsp-Ty-mvt" firstAttribute="leading" secondItem="YfY-6d-ela" secondAttribute="leading" constant="32" id="FC9-eu-IhR"/>

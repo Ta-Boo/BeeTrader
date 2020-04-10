@@ -161,6 +161,16 @@
                                     <constraint firstItem="gAi-WR-CFW" firstAttribute="centerX" secondItem="Ozw-Ie-LLY" secondAttribute="centerX" id="zXf-ZH-Mww"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55W-wR-VmW">
+                                <rect key="frame" x="335" y="12" width="63" height="34"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <state key="normal" title="Log out">
+                                    <color key="titleColor" name="AccentTomatoColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="logOutTapped:" destination="Qm9-zx-1rA" eventType="touchUpInside" id="q3X-35-qGm"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" name="PrimaryColor"/>
                         <constraints>
@@ -171,11 +181,13 @@
                             <constraint firstAttribute="trailing" secondItem="0eH-8K-8sB" secondAttribute="trailing" constant="-360" id="Pq9-cA-lxo"/>
                             <constraint firstItem="0eH-8K-8sB" firstAttribute="top" secondItem="aLV-ZI-UKT" secondAttribute="bottom" constant="42" id="QtW-1b-17J"/>
                             <constraint firstItem="Khf-Re-CXt" firstAttribute="bottom" secondItem="Ozw-Ie-LLY" secondAttribute="bottom" constant="16" id="Yrf-uR-xq6"/>
+                            <constraint firstItem="Khf-Re-CXt" firstAttribute="trailing" secondItem="55W-wR-VmW" secondAttribute="trailing" constant="16" id="cHW-mD-asi"/>
                             <constraint firstItem="aLV-ZI-UKT" firstAttribute="top" secondItem="Khf-Re-CXt" secondAttribute="top" constant="24" id="fUP-Nl-qDi"/>
                             <constraint firstItem="Khf-Re-CXt" firstAttribute="trailing" secondItem="Ozw-Ie-LLY" secondAttribute="trailing" constant="16" id="fsQ-3g-KmV"/>
                             <constraint firstItem="0eH-8K-8sB" firstAttribute="leading" secondItem="sHv-fq-JiW" secondAttribute="leading" constant="-360" id="h4t-mO-3Ep"/>
                             <constraint firstItem="Ozw-Ie-LLY" firstAttribute="leading" secondItem="Khf-Re-CXt" secondAttribute="leading" constant="16" id="hKq-DO-fVr"/>
                             <constraint firstAttribute="bottom" secondItem="0eH-8K-8sB" secondAttribute="bottom" constant="-383" id="yNG-eG-aBY"/>
+                            <constraint firstItem="55W-wR-VmW" firstAttribute="top" secondItem="Khf-Re-CXt" secondAttribute="top" constant="-32" id="zAs-Be-2AJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Khf-Re-CXt"/>
                     </view>
@@ -425,7 +437,7 @@
             <color red="0.9179999828338623" green="0.82400000095367432" blue="0.67500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="AccentTomatoColor">
-            <color red="0.93699997663497925" green="0.39599999785423279" blue="0.28600001335144043" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.93699997663497925" green="0.3459999978542328" blue="0.2860000252723694" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="PrimaryColor">
             <color red="1" green="0.88599997758865356" blue="0.012000000104308128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

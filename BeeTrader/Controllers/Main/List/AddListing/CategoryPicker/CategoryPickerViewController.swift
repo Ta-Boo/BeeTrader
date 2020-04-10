@@ -9,31 +9,41 @@
 import Foundation
 import UIKit
 
-class CategoryPickerViewController: ListingManager {
-    @IBOutlet var tableView: UITableView!
-    var categoryPickCompletion: ((Category) -> Void)?
 
-    let viewModel = CategoryPickerViewModel()
+protocol  CategoryPickerViewDelegate: Delegate{
+    func reloadData()
+}
+extension CategoryPickerViewController: CategoryPickerViewDelegate {
+    func reloadData() {
+        tableView.reloadData()
+    }
 }
 
-extension CategoryPickerViewController {
+class CategoryPickerViewController: UIViewController {
+    @IBOutlet var tableView: UITableView!
+
+    let viewModel = CategoryPickerViewModel()
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel.delegate = self
+        viewModel.viewModelDidLoad()
+    }
+}
+
+extension CategoryPickerViewController: ListingManager {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return viewModel.categories.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "CategoryCell") as! CategoryCell
-        cell.setupData(category: viewModel.categories[indexPath.row])
+    func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryPickerCell") as! CategoryPickerCell
+        cell.setData(data: viewModel.categories[indexPath.row])
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.categoryPickCompletion?(viewModel.categories[indexPath.row])
         dismiss(animated: true)
-        categoryPickCompletion?(viewModel.categories[indexPath.row])
     }
 }
-
-
-
-

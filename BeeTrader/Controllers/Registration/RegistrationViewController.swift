@@ -33,7 +33,7 @@ class RegistrationViewController: UIViewController {
     private let shrinkedOffset: CGFloat = 64
     private let stretchedOffset: CGFloat = 8
 
-     override func viewDidLoad() {
+    override func viewDidLoad() {
         super.viewDidLoad()
     }
 

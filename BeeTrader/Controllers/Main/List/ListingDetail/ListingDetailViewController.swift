@@ -7,54 +7,78 @@
 //
 
 import Foundation
-import UIKit
 import MessageUI
+import UIKit
 
 class ListingDetailViewController: UIViewController, MFMailComposeViewControllerDelegate {
-    @IBOutlet weak var image: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var viewsLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    @IBOutlet weak var emailLabel: UILabel!
-    @IBOutlet weak var phoneLabel: UILabel!
-    @IBOutlet weak var userNameLabel: UILabel!
-    
-    @IBOutlet weak var viewsImage: UIImageView!
-    
+    @IBOutlet var image: UIImageView!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var priceLabel: UILabel!
+    @IBOutlet var descriptionLabel: UILabel!
+    @IBOutlet var viewsLabel: UILabel!
+    @IBOutlet var addressLabel: UILabel!
+    @IBOutlet var emailLabel: UILabel!
+    @IBOutlet var phoneLabel: UILabel!
+    @IBOutlet var userNameLabel: UILabel!
+    @IBOutlet var viewsImage: UIImageView!
     let viewModel = ListingDetailViewModel()
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadData()
+        viewModel.delegate = self
+        loadListing()
         setupGestureRecognizers()
     }
-    
-    func loadData() {
-        guard let id = viewModel.listingId else {
-            return
-        }
-        let parameters = RequestParameters.listing(id:id )
-        showHUD()
-        viewModel.loadData(parameters: parameters) { [weak self] result in
-            switch result {
-            case .success(let response):
-                self?.viewModel.listing = response.data
-                self?.setupViews()
-                self?.hideHUD()
-            case .failure:
-                self?.hideHUD()
-                self?.presentFailedRequestAlert()
-            }
-        }
-    }
-    
+
     func setupViews() {
-        guard let listing = viewModel.listing  else {
-            return
-        }
+        setupViewsHandler()
+    }
+
+    func setupGestureRecognizers() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(ListingDetailViewController.sendEmail))
+        emailLabel.isUserInteractionEnabled = true
+        emailLabel.addGestureRecognizer(gesture)
+    }
+
+    @IBAction func sendEmail(sender: UITapGestureRecognizer) {
+        sendEmailHandler(sender: sender)
+    }
+}
+
+// MARK: Delegate
+
+extension ListingDetailViewController: ListingDetailDelegate {
+    func loadListing() {
+        guard let id = viewModel.listingId else { return }
+        let parameters = RequestParameters.listing(id: id)
+        showHUD()
+        viewModel.loadData(parameters: parameters)
+    }
+
+    func listingLoadedSuccess(listing: ListingDetail) {
+        viewModel.listing = listing
+        setupViews()
+        hideHUD()
+    }
+
+    func listingLoadedFailure() {
+        hideHUD()
+        presentFailedRequestAlert()
+    }
+
+    func sendEmailHandler(sender _: UITapGestureRecognizer) {
+        guard let email = viewModel.listing?.email else { return }
+        let mailVC = MFMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            mailVC.mailComposeDelegate = self
+            mailVC.setToRecipients(["\(email)"])
+            mailVC.setSubject("\(viewModel.listing?.title ?? "Your listing") at BeeTrader")
+            present(mailVC, animated: true, completion: nil)
+        } else { presentFailAlert(title: "Cannot send email from this device") }
+    }
+
+    func setupViewsHandler() {
+        guard let listing = viewModel.listing else { return }
         if let listingImage = listing.image {
             image.loadImage(url: "\(ApiConstants.baseUrl)\(listingImage)", true)
         }
@@ -68,26 +92,4 @@ class ListingDetailViewController: UIViewController, MFMailComposeViewController
         userNameLabel.text = listing.userName
         viewsImage.isHidden = false
     }
-    
-    func setupGestureRecognizers() {
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(ListingDetailViewController.sendEmail))
-        emailLabel.isUserInteractionEnabled = true
-        emailLabel.addGestureRecognizer(gesture)
-    }
-    
-    @IBAction func sendEmail(sender: UITapGestureRecognizer) {
-        guard let email = viewModel.listing?.email else {
-            return
-        }
-        let mailVC = MFMailComposeViewController()
-        if MFMailComposeViewController.canSendMail() {
-            mailVC.mailComposeDelegate = self
-            mailVC.setToRecipients(["\(email)"])
-            mailVC.setSubject("\(viewModel.listing?.title ?? "Your listing") at BeeTrader")
-            present(mailVC, animated: true, completion: nil)
-        } else { presentFailAlert(title: "Cannot send email from this device") }
-
-    }
-    
-
 }

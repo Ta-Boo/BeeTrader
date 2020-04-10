@@ -8,7 +8,6 @@
 
 import Foundation
 
-
 struct User: Codable {
     let firstName: String
     let lastName: String
@@ -21,7 +20,7 @@ struct User: Codable {
     let token: String?
     let image: String?
     let id: Int
-    
+
     enum CodingKeys: String, CodingKey {
         case firstName = "first_name"
         case lastName = "last_name"
@@ -36,4 +35,3 @@ struct User: Codable {
         case id
     }
 }
-

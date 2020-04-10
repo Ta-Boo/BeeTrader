@@ -9,32 +9,48 @@
 import Alamofire
 import Foundation
 
-protocol AddressPickerViewDelegate {
-    func loadAddressesWithFilter(_ filter: String)
-    func addressesLoadedFailure()
-    func addressesLoadedSuccess(addresses: [Address])
-    func onFilterChangedHandler(_ sender: UITextField)
-}
-
-class AddressPickerViewModel {
+class AddressPickerViewModel: ViewModel {
     var delegate: AddressPickerViewDelegate?
     var addresses: [Address] = []
     var searchDebouncer: Debouncer?
 
+    func viewModelDidLoad() {}
+
+    func onFilterChangedHandler(search: String?) {
+        guard let filter = search else { return }
+        let debounceHandler: () -> Void = { [weak self] in
+            if filter.isEmpty || filter.count < 3 { return }
+            self?.loadAddresses(parameters: RequestParameters.addresses(filter: filter))
+        }
+        guard let searchDebouncer = searchDebouncer else {
+            let debouncer = Debouncer(handler: {})
+            self.searchDebouncer = debouncer
+            onFilterChangedHandler(search: search)
+            return
+        }
+
+        searchDebouncer.invalidate()
+        searchDebouncer.handler = debounceHandler
+        searchDebouncer.call()
+    }
+
     func loadAddresses(parameters: Parameters) {
-        UrlRequest<[Address]>().handle(ApiConstants.baseUrl + "api/addresses",
+        delegate?.showHUD()
+        UrlRequest<[Address]>().handle(ApiConstants.baseUrl + "addresses",
                                        methood: HTTPMethod.get,
                                        parameters: parameters) { [weak self] result in
             switch result {
             case let .success(response):
                 guard let addresses = response.data else {
-                    self?.delegate?.addressesLoadedFailure()
+                    self?.delegate?.presentFailure()
                     return
                 }
-                self?.delegate?.addressesLoadedSuccess(addresses: addresses)
+                self?.addresses = addresses
+                self?.delegate?.reloadTableView(addresses: addresses)
             case .failure:
-                self?.delegate?.addressesLoadedFailure()
+                self?.delegate?.presentFailure()
             }
+            self?.delegate?.hideHUD()
         }
     }
 }

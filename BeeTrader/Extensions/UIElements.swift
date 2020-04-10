@@ -79,7 +79,6 @@ extension UIView {
 extension UIImageView {
     func loadImage(url imageUrl : String?,_ animated: Bool = false) {
         guard let urlString = imageUrl else {
-            self.image = UIImage(named: "loading_placeholder")
             return
         }
         DispatchQueue.global().async { [weak self] in

@@ -9,90 +9,81 @@
 import Foundation
 import UIKit
 
-typealias CollectionManager = UIViewController & UICollectionViewDataSource & UICollectionViewDelegate & UICollectionViewDelegateFlowLayout
-
-class ListingViewController: CollectionManager {
+protocol ListingViewDelegate: Delegate {
+//    func loadListings(completion: @escaping EmptyClosure)
+//    func listingLoadFailure()
+//    func listingLoadSuccess(listings: [Listing], completionHandler: @escaping EmptyClosure)
+//    func filterChangedHandler()
     
+    func showListings()
+}
+
+class ListingViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var searchBar: UITextField!
-    
-    var viewModel = ListingViewModel()
 
+    var viewModel = ListingViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = ListingViewModel()
+        viewModel.delegate = self
+        viewModel.viewModelDidLoad()
         setupViews()
     }
 
     private func setupViews() {
         setupCollectionView()
         searchBar.underline(UIColor.Common.secondary!)
-        showHUD()
-        loadListings { [weak self] in
-            self?.hideHUD()
-        }
     }
 
-    func loadListings(completion: @escaping EmptyClosure) {
-        viewModel.loadListings(parameters: viewModel.parameters) { [weak self] result in
-            switch result {
-            case let .success(dbListings):
-                self?.successfullyLoaded(dbListings: dbListings.data!, completion: completion)
-            case .failure:
-                completion()
-            }
-        }
-    }
 
-    func successfullyLoaded(dbListings: [Listing], completion: @escaping EmptyClosure) {
-        viewModel.listings = dbListings
-        collectionView.reloadData()
-        DispatchQueue.main.async { [weak self] in
-            UIView.animate(withDuration: 0.5, animations: { [weak self] in
-                self?.collectionView.alpha = 1
-            }) { _ in
-                completion()
-            }
-        }
-    }
-
-    @IBAction func onAddlistingClicked(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "AddListing", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.addListing)
-        
-        present(controller, animated: true)
-    }
-    @IBAction func onFilterClicked(_ sender: Any) {
-    let storyboard = UIStoryboard(name: "ListingFilter", bundle: nil)
-        let controller = storyboard.instantiateViewController(identifier: ViewControllers.listingFilter) as! ListingFilterViewController
-        controller.viewModel.submitCompletion = { [weak self] parameters in
-            self?.viewModel.changeFilter(parameters: parameters)
-            self?.showHUD()
-            self?.loadListings { [weak self] in
-                self?.hideHUD()
-            }
-        }
-        present(controller, animated: true)
-    }
-    
     func setupCollectionView() {
         collectionView.refreshControl = viewModel.refreshControl
         viewModel.refreshControl.addTarget(self, action: #selector(refreshListings(_:)), for: .valueChanged)
     }
+    
+    func revealCollectionView() {
+        DispatchQueue.main.async { [weak self] in
+            UIView.animate(withDuration: 0.35, animations: { [weak self] in
+                self?.collectionView.alpha = 1
+                   })
+        }
+    }
+
+
+    @IBAction func onAddlistingClicked(_: Any) {
+        present(viewModel.addListingController, animated: true)
+    }
+
+    @IBAction func onFilterClicked(_: Any) {
+        present(viewModel.filterListingController, animated: true)
+    }
 
     @objc private func refreshListings(_: Any) {
-        loadListings { [weak self] in
+        viewModel.loadListings { [weak self] in
             self?.viewModel.refreshControl.endRefreshing()
         }
     }
 }
 
-extension ListingViewController {
-    var spacing: CGFloat {
-        get { return 16 }
+// MARK: DELEGATE
+
+extension ListingViewController: ListingViewDelegate {
+    func showListings() {
+        collectionView.reloadData()
+        revealCollectionView()
     }
     
+
+}
+
+// MARK: COLLECTION MANAGER
+
+typealias CollectionManager = UICollectionViewDataSource & UICollectionViewDelegate & UICollectionViewDelegateFlowLayout
+
+extension ListingViewController: CollectionManager {
+    var spacing: CGFloat { return 16 }
+
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
         return viewModel.listings.count
     }
@@ -102,7 +93,7 @@ extension ListingViewController {
         cell.setData(data: viewModel.listings[indexPath.row])
         return cell
     }
-    
+
     func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "ListingDetail", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.listingDetail) as! ListingDetailViewController
@@ -119,6 +110,4 @@ extension ListingViewController {
     func collectionView(_: UICollectionView, layout _: UICollectionViewLayout, minimumLineSpacingForSectionAt _: Int) -> CGFloat {
         return spacing
     }
-
 }
-

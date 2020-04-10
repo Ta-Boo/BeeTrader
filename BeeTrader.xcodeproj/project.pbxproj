@@ -33,6 +33,7 @@
 		B375399524269E140051C2E6 /* ListingDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B375399424269E140051C2E6 /* ListingDetailViewModel.swift */; };
 		B375399724269EB60051C2E6 /* ListingDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B375399624269EB60051C2E6 /* ListingDetail.storyboard */; };
 		B37539992426AE790051C2E6 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37539982426AE790051C2E6 /* Gradient.swift */; };
+		B37ACC7624407D7D001A8765 /* CategorypickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37ACC7524407D7D001A8765 /* CategorypickerCell.swift */; };
 		B37B1B4524157012005C3702 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4424157012005C3702 /* StorageKeys.swift */; };
 		B37B1B4824159F0D005C3702 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4724159F0D005C3702 /* Circle.swift */; };
 		B37B1B4D2415A68B005C3702 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4C2415A68B005C3702 /* UserViewController.swift */; };
@@ -117,6 +118,7 @@
 		B375399424269E140051C2E6 /* ListingDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingDetailViewModel.swift; sourceTree = "<group>"; };
 		B375399624269EB60051C2E6 /* ListingDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListingDetail.storyboard; sourceTree = "<group>"; };
 		B37539982426AE790051C2E6 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
+		B37ACC7524407D7D001A8765 /* CategorypickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorypickerCell.swift; sourceTree = "<group>"; };
 		B37B1B4424157012005C3702 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
 		B37B1B4724159F0D005C3702 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		B37B1B4C2415A68B005C3702 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
@@ -307,10 +309,10 @@
 		B375399124269CEB0051C2E6 /* AddListing */ = {
 			isa = PBXGroup;
 			children = (
-				B39C967D242CB71400B4101E /* CategoryPicker */,
 				B3CC696B2428EAEB00DAF451 /* AddListingViewController.swift */,
 				B3CC696D2428EB4D00DAF451 /* AddListingViewModel.swift */,
 				B3CC696F2428EC5E00DAF451 /* AddListing.storyboard */,
+				B39C967D242CB71400B4101E /* CategoryPicker */,
 			);
 			path = AddListing;
 			sourceTree = "<group>";
@@ -384,6 +386,7 @@
 				B39C9680242CB7B200B4101E /* CategoryPickerViewModel.swift */,
 				B39C9682242CB9B200B4101E /* CategoryCell.swift */,
 				B39C9684242CBAE900B4101E /* CategoryPicker.storyboard */,
+				B37ACC7524407D7D001A8765 /* CategorypickerCell.swift */,
 			);
 			path = CategoryPicker;
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 				B35BA98E240FEC5700BDA7C9 /* UserModel.swift in Sources */,
 				B35BA98D240FEC5700BDA7C9 /* RegistrationViewModel.swift in Sources */,
 				B37B1B4D2415A68B005C3702 /* UserViewController.swift in Sources */,
+				B37ACC7624407D7D001A8765 /* CategorypickerCell.swift in Sources */,
 				B37539852424BFDA0051C2E6 /* AddressPickerViewModel.swift in Sources */,
 				B3CC699D242A56F900DAF451 /* FilterTypeCell.swift in Sources */,
 				B39C9683242CB9B200B4101E /* CategoryCell.swift in Sources */,

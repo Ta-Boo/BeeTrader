@@ -1,26 +1,88 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tCB-83-bto">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Category Picker View Controller-->
         <scene sceneID="mYd-gQ-Yfb">
             <objects>
-                <viewController id="tCB-83-bto" sceneMemberID="viewController">
+                <viewController id="tCB-83-bto" customClass="CategoryPickerViewController" customModule="BeeTrader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oRq-vN-xgl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="obz-2G-QSY">
+                                <rect key="frame" x="0.0" y="108" width="414" height="754"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryPickerCell" id="rWV-Hx-eGe" customClass="CategoryPickerCell" customModule="BeeTrader" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rWV-Hx-eGe" id="AlY-bf-rNR">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lV1-B2-WSD">
+                                                    <rect key="frame" x="45" y="11.5" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="lV1-B2-WSD" firstAttribute="centerY" secondItem="AlY-bf-rNR" secondAttribute="centerY" id="KAs-3g-IZc"/>
+                                                <constraint firstItem="lV1-B2-WSD" firstAttribute="leading" secondItem="AlY-bf-rNR" secondAttribute="leadingMargin" constant="25" id="x0c-7F-JZd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="category" destination="lV1-B2-WSD" id="2Ol-hK-ETU"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="tCB-83-bto" id="kvN-c9-GnP"/>
+                                    <outlet property="delegate" destination="tCB-83-bto" id="ceS-dc-Z0k"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="moa-Q7-lwm">
+                                <rect key="frame" x="101.5" y="60" width="211.5" height="32"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <color key="textColor" name="TextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="AccentTomatoColor"/>
+                        <constraints>
+                            <constraint firstItem="obz-2G-QSY" firstAttribute="top" secondItem="moa-Q7-lwm" secondAttribute="bottom" constant="16" id="1Co-Tp-5rf"/>
+                            <constraint firstItem="obz-2G-QSY" firstAttribute="top" secondItem="lfl-50-RPA" secondAttribute="top" constant="64" id="BHF-G2-vdG"/>
+                            <constraint firstItem="moa-Q7-lwm" firstAttribute="centerX" secondItem="oRq-vN-xgl" secondAttribute="centerX" id="GnA-fn-NT5"/>
+                            <constraint firstItem="lfl-50-RPA" firstAttribute="bottom" secondItem="obz-2G-QSY" secondAttribute="bottom" id="Jfu-lw-XQD"/>
+                            <constraint firstItem="moa-Q7-lwm" firstAttribute="top" secondItem="lfl-50-RPA" secondAttribute="top" constant="16" id="NdO-wm-RbR"/>
+                            <constraint firstItem="lfl-50-RPA" firstAttribute="trailing" secondItem="obz-2G-QSY" secondAttribute="trailing" id="k1D-Xv-tXG"/>
+                            <constraint firstItem="obz-2G-QSY" firstAttribute="leading" secondItem="lfl-50-RPA" secondAttribute="leading" id="nNE-Gd-ReB"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="lfl-50-RPA"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="obz-2G-QSY" id="5ZX-V4-WJ4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WY-RY-s3e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-319" y="16"/>
+            <point key="canvasLocation" x="-320.28985507246381" y="15.401785714285714"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="AccentTomatoColor">
+            <color red="0.93699997663497925" green="0.39599999785423279" blue="0.28600001335144043" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="TextColor">
+            <color red="0.94900000095367432" green="0.9570000171661377" blue="0.95300000905990601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

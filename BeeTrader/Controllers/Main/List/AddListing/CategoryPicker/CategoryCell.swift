@@ -11,7 +11,5 @@ import Foundation
 import UIKit
 
 class CategoryCell: UITableViewCell {
-    func setupData(category: Category) {
-        
-    }
+    func setupData(category _: Category) {}
 }

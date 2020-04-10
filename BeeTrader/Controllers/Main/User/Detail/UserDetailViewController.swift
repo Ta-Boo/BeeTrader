@@ -6,84 +6,88 @@
 //  Copyright © 2020 hladek. All rights reserved.
 //
 
+import Alamofire
 import Foundation
 import UIKit
-import Alamofire
+
+protocol UserDetailViewDelegate: Delegate {
+    var parameters: [String: String?] { get }
+
+    func setupViews(user: User)
+    func presentController(_ controller: UIViewController)
+    func addressPickerCompletionHandler(address: Address)
+    func completionHandler()
+}
 
 typealias ImagePickerKeyboardManager = UITableViewController & UITextFieldDelegate & UINavigationControllerDelegate & UIImagePickerControllerDelegate
 class UserDetailViewController: ImagePickerKeyboardManager {
-
     var viewModel = UserDetailViewModel()
-    @IBOutlet weak var avatar: UIImageView!
-    @IBOutlet weak var firstName: UITextField!
-    @IBOutlet weak var lastName: UITextField!
-    @IBOutlet weak var address: UIButton!
-    @IBOutlet weak var phoneNumber: UITextField!
-    @IBOutlet weak var email: UITextField!
-    
-    
+    @IBOutlet var avatar: UIImageView!
+    @IBOutlet var firstName: UITextField!
+    @IBOutlet var lastName: UITextField!
+    @IBOutlet var address: UIButton!
+    @IBOutlet var phoneNumber: UITextField!
+    @IBOutlet var email: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupData()
+        viewModel.delegate = self
+        viewModel.viewModelDidLoad()
     }
-    
-    func setupData() {
-        guard let globalUser = GlobalUser.shared else  {
-            presentFailAlert()
-            return
-        }
-        firstName.text = globalUser.firstName
-        lastName.text = globalUser.lastName
-        address.setTitle( "\(globalUser.postalCode), \(globalUser.city)", for: .normal)
-        phoneNumber.text = globalUser.phoneNumber ?? ""
-        email.text = globalUser.email
-    }
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    textField.resignFirstResponder()
-    return true
-}
-    
-    @IBAction func takePhoto(_ sender: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            viewModel.imagePicker =  UIImagePickerController()
-            viewModel.imagePicker.delegate = self
-            viewModel.imagePicker.sourceType = .camera
-            present(viewModel.imagePicker, animated: true, completion: nil)
-        } else {
-            presentFailAlert(title: "No camera detected")
-        }
+        textField.resignFirstResponder()
+        return true
     }
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo image: [UIImagePickerController.InfoKey : Any]) {
-        viewModel.imagePicker.dismiss(animated: true, completion: nil)
-        viewModel.avatarChanged = true
+
+    @IBAction func takePhoto(_: Any) {
+        viewModel.takePhoto()
+    }
+
+    func imagePickerController(_: UIImagePickerController, didFinishPickingMediaWithInfo image: [UIImagePickerController.InfoKey: Any]) {
         avatar.image = image[.originalImage] as? UIImage
+        viewModel.handleChangedPhoto()
     }
-        
-    @IBAction func sendTapped(_ sender: Any) {
-        let parameters = RequestParameters.updateUser(firstName: firstName.text,
-                                                      lastName: lastName.text,
-                                                      addressID: viewModel.addressId,
-                                                      phoneNumber: phoneNumber.text,
-                                                      email: email.text,
-                                                      id: GlobalUser.shared?.id)
-        
-        viewModel.uploadData(image: viewModel.avatarToUpload(avatar), parameters: parameters, successCompletionHandler: { [weak self] in
-            self?.viewModel.userUpdateCompletion?(self?.email.text ?? GlobalUser.shared?.email ?? "")
-            self?.dismiss(animated: false)
-        }, failureCompletionHandler: { [weak self] in
-            self?.presentFailedRequestAlert()
-        })
+
+    @IBAction func sendTapped(_: Any) {
+        viewModel.uploadData(image: viewModel.avatarToUpload(avatar))
     }
-    
-    @IBAction func onAddressTapped(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "AddressPicker", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.userDetailAddressPicker) as! AddressPickerViewController
-        controller.addressPickCompletion =  { [weak self] address in
-            self?.address.setTitle("\(address.postalCode), \(address.name)", for: .normal)
-            self?.viewModel.addressId = address.id
-        }
+
+    @IBAction func onAddressTapped(_: Any) {
+        viewModel.handleAddressTapped()
+    }
+}
+
+extension UserDetailViewController: UserDetailViewDelegate {
+    var parameters: [String: String?] {
+        return RequestParameters.updateUser(firstName: firstName.text,
+                                            lastName: lastName.text,
+                                            addressID: viewModel.addressId,
+                                            phoneNumber: phoneNumber.text,
+                                            email: email.text,
+                                            id: GlobalUser.shared?.id)
+    }
+
+    func completionHandler() {
+        viewModel.userUpdateCompletion?(email.text ?? GlobalUser.shared?.email ?? "")
+        dismiss(animated: false)
+    }
+
+    func addressPickerCompletionHandler(address: Address) {
+        self.address.setTitle("\(address.postalCode), \(address.name)", for: .normal)
+        viewModel.addressId = address.id
+    }
+
+    func presentController(_ controller: UIViewController) {
         present(controller, animated: true)
+    }
+
+
+    func setupViews(user: User) {
+        firstName.text = user.firstName
+        lastName.text = user.lastName
+        address.setTitle("\(user.postalCode), \(user.city)", for: .normal)
+        phoneNumber.text = user.phoneNumber ?? ""
+        email.text = user.email
     }
 }

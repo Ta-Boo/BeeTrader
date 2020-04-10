@@ -40,12 +40,12 @@
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Title for your listing" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ul4-g5-g1u">
                                                     <rect key="frame" x="22" y="336" width="370" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 </textField>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XRK-2q-Jec">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Price in €" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XRK-2q-Jec">
                                                     <rect key="frame" x="22" y="378" width="152" height="34"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" textContentType="tel"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NBk-jH-N3h">
                                                     <rect key="frame" x="22" y="420" width="370" height="34"/>
@@ -64,6 +64,9 @@
                                                             <real key="value" value="4"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="categoryTapped:" destination="d21-Gc-2WO" eventType="touchUpInside" id="AG9-7r-djy"/>
+                                                    </connections>
                                                 </button>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mo6-MD-gUY">
                                                     <rect key="frame" x="22" y="462" width="370" height="128"/>
@@ -95,6 +98,16 @@
                                                         <action selector="takePhoto:" destination="d21-Gc-2WO" eventType="touchUpInside" id="9E3-UP-NlY"/>
                                                     </connections>
                                                 </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbM-Yk-0TN">
+                                                    <rect key="frame" x="341" y="602" width="51" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                                    <state key="normal" title="Submit">
+                                                        <color key="titleColor" name="TextColor"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="submitActiontapped:" destination="d21-Gc-2WO" eventType="touchUpInside" id="XKk-zI-jUG"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -111,6 +124,7 @@
                                                 <constraint firstAttribute="trailingMargin" secondItem="Ul4-g5-g1u" secondAttribute="trailing" constant="2" id="O0g-3n-f9c"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="NBk-jH-N3h" secondAttribute="trailing" constant="2" id="OTz-kI-dtq"/>
                                                 <constraint firstItem="C8h-eb-Rgf" firstAttribute="leading" secondItem="lka-eX-Uwm" secondAttribute="leading" id="TDB-MT-WPa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="AbM-Yk-0TN" secondAttribute="trailing" constant="2" id="Tnw-FK-9Jg"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="mo6-MD-gUY" secondAttribute="bottom" constant="36" id="VAw-Co-pgx"/>
                                                 <constraint firstItem="mo6-MD-gUY" firstAttribute="leading" secondItem="lka-eX-Uwm" secondAttribute="leadingMargin" constant="2" id="aIx-bf-246"/>
                                                 <constraint firstItem="XDg-vw-vbT" firstAttribute="top" secondItem="lka-eX-Uwm" secondAttribute="top" id="aNS-9C-tpX"/>
@@ -120,6 +134,7 @@
                                                 <constraint firstItem="XDg-vw-vbT" firstAttribute="height" secondItem="C8h-eb-Rgf" secondAttribute="height" id="hep-wq-c7P"/>
                                                 <constraint firstAttribute="trailing" secondItem="C8h-eb-Rgf" secondAttribute="trailing" id="kN4-bV-wAq"/>
                                                 <constraint firstItem="NBk-jH-N3h" firstAttribute="top" secondItem="XRK-2q-Jec" secondAttribute="bottom" constant="8" id="loO-SK-F2z"/>
+                                                <constraint firstItem="AbM-Yk-0TN" firstAttribute="top" secondItem="mo6-MD-gUY" secondAttribute="bottom" constant="12" id="n6h-hT-RHS"/>
                                                 <constraint firstItem="C8h-eb-Rgf" firstAttribute="top" secondItem="lka-eX-Uwm" secondAttribute="top" id="pg5-Rv-keF"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -134,7 +149,10 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="listingDescription" destination="mo6-MD-gUY" id="6vp-lZ-TO2"/>
                         <outlet property="listingImage" destination="C8h-eb-Rgf" id="NCC-yt-6RH"/>
+                        <outlet property="listingPrice" destination="XRK-2q-Jec" id="ZRs-hX-WqY"/>
+                        <outlet property="listingTitle" destination="Ul4-g5-g1u" id="0Nj-Xj-nBd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbW-AS-uLS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

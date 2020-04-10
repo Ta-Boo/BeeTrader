@@ -20,7 +20,7 @@ struct ListingDetail: Codable {
     let userName: String?
     let email: String?
     let phone: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case title
         case price

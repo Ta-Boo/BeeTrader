@@ -9,14 +9,39 @@
 import Alamofire
 import Foundation
 
-class ListingFilterViewModel {
+class ListingFilterViewModel: ViewModel {
+    
+    var delegate: ListingFilterViewDelegate?
     var submitCompletion: ((ListingData) -> Void)?
     var filterTypes: [Category]? = []
+    
+    func viewModelDidLoad() {
+        loadCategories()
+    }
 
-    func loadCategories(_ completion: @escaping (DataResult<[Category]>) -> Void) {
-        UrlRequest<[Category]>().handle(ApiConstants.baseUrl + "api/categories",
-                                       methood: HTTPMethod.get) { result in
-            completion(result)
+    func loadCategories() {
+        delegate?.showHUD()
+        UrlRequest<[Category]>().handle(ApiConstants.baseUrl + "categories",
+                                        methood: HTTPMethod.get) { [weak self] result in
+                                            self?.delegate?.hideHUD()
+                                            switch result {
+                                            case .failure:
+                                                self?.delegate?.presentFailure()
+                                            case .success(let response):
+                                                guard let categories = response.data else {
+                                                    self?.delegate?.presentFailure()
+                                                    return
+                                                }
+                                                self?.filterTypes = categories
+                                                self?.delegate?.showCategories()
+                                            }
         }
     }
+    func handleSubmit(distance: Int) {
+        let categories = filterTypes?.filter { $0.isChoosen ?? false }.map { $0.id }
+        let filterData = ListingData(radius: distance, categories: categories)
+        submitCompletion?(filterData)
+    }
+    
+    
 }

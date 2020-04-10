@@ -1,11 +1,11 @@
 import UIKit
 
-//var globalUser: User?
+// var globalUser: User?
 class GlobalUser {
     private init() {}
 
-    private static var _shared: User? = nil
-    static var shared : User?  {
+    private static var _shared: User?
+    static var shared: User? {
         get {
             guard let user = UserDefaults.standard.object(forKey: StorageKeys.user) as? Data else {
                 return nil
@@ -15,8 +15,9 @@ class GlobalUser {
                 return _shared
             } else { return nil }
         }
-        set { self._shared = newValue }
+        set { _shared = newValue }
     }
+
     static func update(_ user: User?) {
         if let encoded = try? JSONEncoder().encode(user) {
             let defaults = UserDefaults.standard
@@ -25,9 +26,31 @@ class GlobalUser {
     }
 }
 
+
+protocol MainCoordinatorType {
+    var mainTabBarController: UIViewController { get }
+    var registrationController: UIViewController { get }
+}
+
 class MainCoordinator: Coordinator {
     let window: UIWindow
     let navigationController: UINavigationController
+    var mainTabBarController: UIViewController {
+        let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.mainTabBar)
+        return controller
+    }
+    var registrationController: UIViewController {
+    let storyboard = UIStoryboard(name: "Registration", bundle: nil)
+    let controller: RegistrationViewController = storyboard.instantiateViewController(withIdentifier: ViewControllers.registration) as! RegistrationViewController
+        controller.successfulLoginHandler = {
+            let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
+            let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.mainTabBar)
+            self.navigationController.pushViewController(controller, animated: true)
+        }
+        return controller
+    }
+
 
     init(window: UIWindow) {
         self.window = window
@@ -38,24 +61,16 @@ class MainCoordinator: Coordinator {
     func start() {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
-        
+
         loadUser()
+        
         if let _ = GlobalUser.shared {
-            let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
-            let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.mainTabBar)
-            navigationController.pushViewController(controller, animated: true)
+            navigationController.pushViewController(mainTabBarController, animated: true)
         } else {
-            let storyboard = UIStoryboard(name: "Registration", bundle: nil)
-            let controller: RegistrationViewController = storyboard.instantiateViewController(withIdentifier: ViewControllers.registration) as! RegistrationViewController
-            controller.successfulLoginHandler = {
-                let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
-                let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.mainTabBar)
-                self.navigationController.pushViewController(controller, animated: true)
-            }
-            navigationController.presentInFullScreen(controller, animated: false)
+            navigationController.presentInFullScreen(registrationController, animated: false)
         }
     }
-    
+
     private func loadUser() {
         if let user = UserDefaults.standard.object(forKey: StorageKeys.user) as? Data {
             let decoder = JSONDecoder()

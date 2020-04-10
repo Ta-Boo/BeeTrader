@@ -11,8 +11,8 @@ import Foundation
 
 typealias DataResult<Type: Codable> = Result<DataWrapper<Type>>
 enum ApiConstants {
-    static let baseUrl = "http://localhost:8000/"
-//    static let baseUrl = "http://192.168.0.100:8000/"
+//    static let baseUrl = "http://localhost:8000/api/"
+    static let baseUrl = "http://10.55.166.129:8000/api/"
 }
 
 struct Image {
@@ -44,7 +44,6 @@ class UrlRequest<WrappedData: Codable> {
             case .success(let data):
                 print("RESPONSE: ",data.data ?? "no data")
             }
-            print(result)
             completionHandler(result)
         }
     }
