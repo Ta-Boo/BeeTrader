@@ -8,11 +8,14 @@
 
 import Alamofire
 import Foundation
+import KeychainSwift
 
 typealias DataResult<Type: Codable> = Result<DataWrapper<Type>>
-enum ApiConstants {
-//    static let baseUrl = "http://localhost:8000/api/"
-    static let baseUrl = "http://10.55.166.129:8000/api/"
+
+
+struct ApiConstants {
+    static let baseUrl = "http://localhost:8000/api/"
+//    static let baseUrl = "http://10.55.166.129:8000/api/"
 }
 
 struct Image {
@@ -32,7 +35,8 @@ class UrlRequest<WrappedData: Codable> {
             url,
             method: methood,
             parameters: parameters,
-            encoding: encoding
+            encoding: encoding,
+            headers: ["Authorization": KeychainSwift().get("bearer_token") ?? ""]
         ).validate().responseJSON { response in
             print(response)
             let result = Result<DataWrapper<WrappedData>>(value: {
@@ -70,7 +74,8 @@ class UrlRequest<WrappedData: Codable> {
                 }
             }
         }, to: url,
-           method: .post) { result in
+           method: .post,
+           headers: ["Authorization": KeychainSwift().get("bearer_token") ?? ""]) { result in
                 switch result {
                 case .success(let upload, _, _):
                     upload.uploadProgress(closure: { (progress) in

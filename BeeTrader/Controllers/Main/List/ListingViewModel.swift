@@ -9,7 +9,7 @@
 import Alamofire
 import Foundation
 
-struct ListingData {
+struct ListingFilter {
     var radius: Int?
     var page: Int = 1
     var categories: [Int]?
@@ -20,7 +20,8 @@ class ListingViewModel: ViewModel{
     var delegate: ListingViewDelegate?
     let refreshControl = UIRefreshControl()
     var listings: [Listing] = []
-    var listingData = ListingData()
+    var listingFilter = ListingFilter()
+    var isLoading = false
 
     var addListingController: UIViewController {
         let storyboard = UIStoryboard(name: "AddListing", bundle: nil)
@@ -40,17 +41,16 @@ class ListingViewModel: ViewModel{
         let controller = storyboard.instantiateViewController(identifier: ViewControllers.listingFilter) as! ListingFilterViewController
         controller.viewModel.submitCompletion = { [weak self] parameters in
             self?.changeFilter(parameters: parameters)
-//            self?.delegate?.filterChangedHandler()
         }
         return controller
     }
 
     var parameters: Parameters {
-        return RequestParameters.listingInRadius(radius: listingData.radius,
+        return RequestParameters.listingInRadius(radius: listingFilter.radius,
                                                  latitude: GlobalUser.shared?.latitude,
                                                  longitude: GlobalUser.shared?.longitude,
-                                                 categories: listingData.categories,
-                                                 page: listingData.page)
+                                                 categories: listingFilter.categories,
+                                                 page: listingFilter.page)
     }
     
     func viewModelDidLoad() {
@@ -67,6 +67,7 @@ class ListingViewModel: ViewModel{
     }
 
     func loadListings(_ completionHandler: @escaping EmptyClosure) {
+        isLoading = true
         UrlRequest<[Listing]>().handle(ApiConstants.baseUrl + "listings/inRadius",
                                        methood: HTTPMethod.get,
                                        parameters: parameters) { [weak self] result in
@@ -82,12 +83,18 @@ class ListingViewModel: ViewModel{
                 self?.delegate?.showListings()
                 completionHandler()
             }
+        self?.isLoading = false
         }
     }
+    
+    
+    func requestListings() {
+        
+    }
 
-    func changeFilter(parameters: ListingData) {
-        listingData.categories = parameters.categories
-        listingData.radius = parameters.radius
+    func changeFilter(parameters: ListingFilter) {
+        listingFilter.categories = parameters.categories
+        listingFilter.radius = parameters.radius
         delegate?.showHUD()
         loadListings { [weak self] in
             self?.delegate?.hideHUD()

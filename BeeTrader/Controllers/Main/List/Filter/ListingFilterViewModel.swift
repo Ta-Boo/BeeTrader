@@ -12,7 +12,7 @@ import Foundation
 class ListingFilterViewModel: ViewModel {
     
     var delegate: ListingFilterViewDelegate?
-    var submitCompletion: ((ListingData) -> Void)?
+    var submitCompletion: ((ListingFilter) -> Void)?
     var filterTypes: [Category]? = []
     
     func viewModelDidLoad() {
@@ -39,7 +39,7 @@ class ListingFilterViewModel: ViewModel {
     }
     func handleSubmit(distance: Int) {
         let categories = filterTypes?.filter { $0.isChoosen ?? false }.map { $0.id }
-        let filterData = ListingData(radius: distance, categories: categories)
+        let filterData = ListingFilter(radius: distance, categories: categories)
         submitCompletion?(filterData)
     }
     

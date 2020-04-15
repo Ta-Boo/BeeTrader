@@ -53,6 +53,7 @@
 		B39C9681242CB7B200B4101E /* CategoryPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39C9680242CB7B200B4101E /* CategoryPickerViewModel.swift */; };
 		B39C9683242CB9B200B4101E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39C9682242CB9B200B4101E /* CategoryCell.swift */; };
 		B39C9685242CBAE900B4101E /* CategoryPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39C9684242CBAE900B4101E /* CategoryPicker.storyboard */; };
+		B3AA33B42447716A0043EAF4 /* GlobalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA33B32447716A0043EAF4 /* GlobalUser.swift */; };
 		B3C2AD95241BBD2E00CECE33 /* MainTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C2AD94241BBD2E00CECE33 /* MainTabBar.storyboard */; };
 		B3C2AD97241BBD7500CECE33 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C2AD96241BBD7500CECE33 /* MainTabBarController.swift */; };
 		B3CC696C2428EAEB00DAF451 /* AddListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3CC696B2428EAEB00DAF451 /* AddListingViewController.swift */; };
@@ -143,6 +144,8 @@
 		B39C9680242CB7B200B4101E /* CategoryPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewModel.swift; sourceTree = "<group>"; };
 		B39C9682242CB9B200B4101E /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		B39C9684242CBAE900B4101E /* CategoryPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CategoryPicker.storyboard; sourceTree = "<group>"; };
+		B3AA33B124476D180043EAF4 /* BeeTrader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeeTrader.entitlements; sourceTree = "<group>"; };
+		B3AA33B32447716A0043EAF4 /* GlobalUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalUser.swift; sourceTree = "<group>"; };
 		B3C2AD94241BBD2E00CECE33 /* MainTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBar.storyboard; sourceTree = "<group>"; };
 		B3C2AD96241BBD7500CECE33 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		B3CC696B2428EAEB00DAF451 /* AddListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddListingViewController.swift; sourceTree = "<group>"; };
@@ -230,6 +233,8 @@
 		B35BA94A240FEB4C00BDA7C9 /* BeeTrader */ = {
 			isa = PBXGroup;
 			children = (
+				B3AA33B22447715C0043EAF4 /* Services */,
+				B3AA33B124476D180043EAF4 /* BeeTrader.entitlements */,
 				B38E4EED241AC44700B85994 /* Others */,
 				B37B1B4624159EF9005C3702 /* CustomUI */,
 				B37B1B4324156FBE005C3702 /* Constants */,
@@ -391,6 +396,14 @@
 			path = CategoryPicker;
 			sourceTree = "<group>";
 		};
+		B3AA33B22447715C0043EAF4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B3AA33B32447716A0043EAF4 /* GlobalUser.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		B3CC6993242A518800DAF451 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
@@ -543,6 +556,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B37B1B56241692B6005C3702 /* MainCoordinator.swift in Sources */,
+				B3AA33B42447716A0043EAF4 /* GlobalUser.swift in Sources */,
 				B3FE90632426C78A005D75F6 /* ListingDetailModel.swift in Sources */,
 				B37B1B5324169252005C3702 /* Coordinator.swift in Sources */,
 				B37F57AE2422050A001B84BB /* UserDetailViewModel.swift in Sources */,
@@ -716,6 +730,7 @@
 			baseConfigurationReference = 392DE9F024D1E313D6C6AD47 /* Pods-BeeTrader.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BeeTrader/BeeTrader.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZJZYDWBNWH;
@@ -737,6 +752,7 @@
 			baseConfigurationReference = 976A236BFE4F04EB31A85055 /* Pods-BeeTrader.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = BeeTrader/BeeTrader.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZJZYDWBNWH;

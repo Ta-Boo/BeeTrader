@@ -115,7 +115,7 @@ class RegistrationViewController: UIViewController {
     }
 
     private func sucessfulLogin(_ value: DataWrapper<User>) {
-        if let data = value.data {
+        if var data = value.data {
             saveUserData(user: data)
             successfulLoginHandler?()
             dismiss(animated: true, completion: nil)

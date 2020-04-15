@@ -44,7 +44,8 @@ class UserViewController: UIViewController {
     @IBAction func onEditClicked(_: Any) {
         viewModel.handleEditController()
     }
-    @IBAction func logOutTapped(_ sender: Any) {
+    
+    @objc func logOutTapped(_ sender: UIBarButtonItem) {
         (tabBarController as! MainTabBarController).handleLogOut?()
     }
 }
@@ -65,7 +66,7 @@ extension UserViewController: UserViewDelegate {
         address.text = "\(user.city), \(user.postalCode)"
         phoneNumber.text = user.phoneNumber ?? "---"
         if let imageUrl = user.image {
-            avatar.loadImage(url: "\(ApiConstants.baseUrl)\(imageUrl)", true)
+            avatar.imageFromUrl("\(ApiConstants.baseUrl)\(imageUrl)", true)
         }
     }
 }

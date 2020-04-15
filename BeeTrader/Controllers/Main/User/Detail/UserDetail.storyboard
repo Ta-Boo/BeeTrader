@@ -176,7 +176,7 @@
         <image name="avatar" width="520" height="520"/>
         <image name="paperplane.fill" catalog="system" width="64" height="60"/>
         <namedColor name="AccentTomatoColor">
-            <color red="0.93699997663497925" green="0.39599999785423279" blue="0.28600001335144043" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.80392156862745101" green="0.27058823529411763" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="SecondaryColor">
             <color red="0.1289999932050705" green="0.16099999845027924" blue="0.16899999976158142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

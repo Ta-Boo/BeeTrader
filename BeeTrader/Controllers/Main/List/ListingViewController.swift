@@ -87,6 +87,16 @@ extension ListingViewController: CollectionManager {
     func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
         return viewModel.listings.count
     }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if (indexPath.row == viewModel.listings.count - 1 ) && (!viewModel.isLoading) {
+            viewModel.listingFilter.page += 1
+            showHUD()
+            viewModel.loadListings { [weak self] in
+                self?.hideHUD()
+            }
+         }
+    }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListingCell", for: indexPath) as! ListingCell

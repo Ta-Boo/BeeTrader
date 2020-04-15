@@ -9,12 +9,36 @@
 import Foundation
 import UIKit
 
-class MainTabBarController: UITabBarController {
+class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     var handleLogOut: EmptyClosure?
-    var userController: UserViewController?
     override func viewDidLoad() {
         super.viewDidLoad()
-        userController = viewControllers?[0] as? UserViewController
+        delegate = self
+        notifyInit()
+        }
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+         let tabBarIndex = tabBarController.selectedIndex
+        switch tabBarIndex {
+        case 0:
+            tabBarController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .done, target: self, action: #selector(logOutTapped))
+        default:
+            clearNavBarItems()
+        }
+    }
+    
+    @objc func logOutTapped(_ sender: UIBarButtonItem) {
+        handleLogOut?()
+    }
+    
+    func notifyInit() {
+        self.selectedIndex = 0
+        self.tabBarController(self, didSelect: self.viewControllers![0])
+    }
+    
+    func clearNavBarItems() {
+        navigationItem.rightBarButtonItem = nil
+        navigationItem.leftBarButtonItem = nil
     }
     
 }

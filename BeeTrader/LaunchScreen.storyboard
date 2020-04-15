@@ -43,7 +43,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="app_icon" width="200" height="170"/>
+        <image name="app_icon" width="2043" height="2033"/>
         <image name="app_title" width="189" height="27"/>
         <namedColor name="PrimaryColor">
             <color red="1" green="0.88599997758865356" blue="0.012000000104308128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

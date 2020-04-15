@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -14,11 +14,11 @@
             <objects>
                 <viewController id="b2B-37-OMx" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="clA-6e-93d">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="todo" translatesAutoresizingMaskIntoConstraints="NO" id="vv5-zg-Mgi">
-                                <rect key="frame" x="40" y="64" width="334" height="448"/>
+                                <rect key="frame" x="40" y="20" width="334" height="366"/>
                                 <color key="tintColor" name="AccentColor"/>
                             </imageView>
                         </subviews>
@@ -42,12 +42,23 @@
             <objects>
                 <viewController id="Qm9-zx-1rA" customClass="UserViewController" customModule="BeeTrader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sHv-fq-JiW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0eH-8K-8sB" customClass="Circle" customModule="BeeTrader" customModuleProvider="target">
-                                <rect key="frame" x="-360" y="238" width="1134" height="1041"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0eH-8K-8sB">
+                                <rect key="frame" x="0.0" y="194" width="414" height="493"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_background" translatesAutoresizingMaskIntoConstraints="NO" id="3Hs-oS-mMO">
+                                        <rect key="frame" x="0.0" y="-64" width="414" height="589"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="3Hs-oS-mMO" secondAttribute="trailing" id="B8m-F6-uAA"/>
+                                    <constraint firstItem="3Hs-oS-mMO" firstAttribute="leading" secondItem="0eH-8K-8sB" secondAttribute="leading" id="bEY-b2-IeJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="3Hs-oS-mMO" secondAttribute="bottom" constant="-32" id="nZY-Me-kKk"/>
+                                    <constraint firstItem="3Hs-oS-mMO" firstAttribute="top" secondItem="0eH-8K-8sB" secondAttribute="top" constant="-64" id="yEo-A0-kaH"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="mainColor">
                                         <color key="value" name="AccentTomatoColor"/>
@@ -58,7 +69,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="aLV-ZI-UKT">
-                                <rect key="frame" x="143" y="68" width="128" height="128"/>
+                                <rect key="frame" x="143" y="24" width="128" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="128" id="K8D-dZ-pAY"/>
@@ -71,7 +82,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ozw-Ie-LLY">
-                                <rect key="frame" x="16" y="270" width="382" height="527"/>
+                                <rect key="frame" x="16" y="226" width="382" height="445"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v2x-Q6-B7Q">
                                         <rect key="frame" x="188" y="8" width="6" height="32"/>
@@ -161,15 +172,6 @@
                                     <constraint firstItem="gAi-WR-CFW" firstAttribute="centerX" secondItem="Ozw-Ie-LLY" secondAttribute="centerX" id="zXf-ZH-Mww"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5m-yp-s2t">
-                                <rect key="frame" x="346" y="60" width="52" height="30"/>
-                                <state key="normal" title="Log out">
-                                    <color key="titleColor" name="AccentTomatoColor"/>
-                                </state>
-                                <connections>
-                                    <action selector="logOutTapped:" destination="Qm9-zx-1rA" eventType="touchUpInside" id="I30-rm-ydY"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" name="PrimaryColor"/>
                         <constraints>
@@ -177,16 +179,14 @@
                             <constraint firstItem="0eH-8K-8sB" firstAttribute="centerX" secondItem="sHv-fq-JiW" secondAttribute="centerX" id="5qt-QW-acl"/>
                             <constraint firstItem="0eH-8K-8sB" firstAttribute="centerX" secondItem="sHv-fq-JiW" secondAttribute="centerX" id="8dv-Do-7Nv"/>
                             <constraint firstItem="aLV-ZI-UKT" firstAttribute="centerX" secondItem="sHv-fq-JiW" secondAttribute="centerX" id="CYz-JD-y2A"/>
-                            <constraint firstAttribute="trailing" secondItem="0eH-8K-8sB" secondAttribute="trailing" constant="-360" id="Pq9-cA-lxo"/>
+                            <constraint firstItem="Khf-Re-CXt" firstAttribute="trailing" secondItem="0eH-8K-8sB" secondAttribute="trailing" id="Pq9-cA-lxo"/>
                             <constraint firstItem="0eH-8K-8sB" firstAttribute="top" secondItem="aLV-ZI-UKT" secondAttribute="bottom" constant="42" id="QtW-1b-17J"/>
-                            <constraint firstItem="Khf-Re-CXt" firstAttribute="trailing" secondItem="e5m-yp-s2t" secondAttribute="trailing" constant="16" id="SoA-Xi-KvM"/>
                             <constraint firstItem="Khf-Re-CXt" firstAttribute="bottom" secondItem="Ozw-Ie-LLY" secondAttribute="bottom" constant="16" id="Yrf-uR-xq6"/>
                             <constraint firstItem="aLV-ZI-UKT" firstAttribute="top" secondItem="Khf-Re-CXt" secondAttribute="top" constant="24" id="fUP-Nl-qDi"/>
                             <constraint firstItem="Khf-Re-CXt" firstAttribute="trailing" secondItem="Ozw-Ie-LLY" secondAttribute="trailing" constant="16" id="fsQ-3g-KmV"/>
-                            <constraint firstItem="0eH-8K-8sB" firstAttribute="leading" secondItem="sHv-fq-JiW" secondAttribute="leading" constant="-360" id="h4t-mO-3Ep"/>
+                            <constraint firstItem="0eH-8K-8sB" firstAttribute="leading" secondItem="Khf-Re-CXt" secondAttribute="leading" id="h4t-mO-3Ep"/>
                             <constraint firstItem="Ozw-Ie-LLY" firstAttribute="leading" secondItem="Khf-Re-CXt" secondAttribute="leading" constant="16" id="hKq-DO-fVr"/>
-                            <constraint firstItem="e5m-yp-s2t" firstAttribute="top" secondItem="Khf-Re-CXt" secondAttribute="top" constant="16" id="k1X-RZ-NaR"/>
-                            <constraint firstAttribute="bottom" secondItem="0eH-8K-8sB" secondAttribute="bottom" constant="-383" id="yNG-eG-aBY"/>
+                            <constraint firstItem="Khf-Re-CXt" firstAttribute="bottom" secondItem="0eH-8K-8sB" secondAttribute="bottom" id="yNG-eG-aBY"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Khf-Re-CXt"/>
                     </view>
@@ -205,28 +205,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fZ0-KA-b1Y" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-397" y="48"/>
+            <point key="canvasLocation" x="-397.10144927536237" y="47.544642857142854"/>
         </scene>
         <!--Listing View Controller-->
         <scene sceneID="xa8-A8-ZN6">
             <objects>
                 <viewController id="IrQ-vW-szY" customClass="ListingViewController" customModule="BeeTrader" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="A0V-eb-RMA">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.20000000000000001" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1Ls-af-qyz">
-                                <rect key="frame" x="16" y="12" width="382" height="801"/>
+                                <rect key="frame" x="16" y="-32" width="382" height="719"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jII-uh-pZp">
                                     <size key="itemSize" width="183" height="235"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="40" maxX="0.0" maxY="12"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ListingCell" id="S1j-j0-Gev" customClass="ListingCell" customModule="BeeTrader" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="183" height="235"/>
+                                        <rect key="frame" x="0.0" y="40" width="183" height="235"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="j1C-An-AKz">
                                             <rect key="frame" x="0.0" y="0.0" width="183" height="235"/>
@@ -260,7 +260,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eye" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Cbn-Ck-uGR">
-                                                            <rect key="frame" x="8" y="43.5" width="20" height="16.5"/>
+                                                            <rect key="frame" x="8" y="44.333333333333329" width="20" height="16"/>
                                                             <color key="tintColor" name="TextColor"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="20" id="FXS-wI-846"/>
@@ -268,7 +268,7 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="views" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g5q-Wj-Dl2">
-                                                            <rect key="frame" x="36" y="42" width="36.5" height="17"/>
+                                                            <rect key="frame" x="36" y="42" width="36.666666666666657" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <color key="textColor" name="TextColor"/>
                                                             <nil key="highlightedColor"/>
@@ -329,9 +329,9 @@
                                 </connections>
                             </collectionView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="YPm-s9-SuB">
-                                <rect key="frame" x="88" y="44" width="238" height="27"/>
+                                <rect key="frame" x="88" y="0.0" width="238" height="27"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="textColor" name="SecondaryColor"/>
+                                <color key="textColor" name="AccentTomatoColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -339,11 +339,11 @@
                                 </connections>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="magnifyingglass" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0CU-cz-ph3">
-                                <rect key="frame" x="60" y="52" width="20" height="18"/>
+                                <rect key="frame" x="60" y="7.6666666666666643" width="20" height="17.999999999999986"/>
                                 <color key="tintColor" name="SecondaryColor"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2A9-yz-SO2">
-                                <rect key="frame" x="346" y="729.5" width="52" height="51"/>
+                                <rect key="frame" x="346" y="604" width="52" height="50.666666666666686"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="52" id="Ldc-Xd-dl6"/>
                                     <constraint firstAttribute="height" constant="52" id="uWC-7A-QtH"/>
@@ -355,7 +355,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALm-Od-f54">
-                                <rect key="frame" x="334" y="44" width="32" height="32"/>
+                                <rect key="frame" x="334" y="0.0" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="j6V-Wv-x16"/>
                                     <constraint firstAttribute="height" constant="32" id="ysU-UU-5qe"/>
@@ -432,11 +432,12 @@
         <image name="rectangle.grid.3x2" catalog="system" width="64" height="50"/>
         <image name="rectangle.grid.3x2.fill" catalog="system" width="64" height="50"/>
         <image name="todo" width="167" height="84"/>
+        <image name="user_background" width="265" height="222"/>
         <namedColor name="AccentColor">
             <color red="0.9179999828338623" green="0.82400000095367432" blue="0.67500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="AccentTomatoColor">
-            <color red="0.93699997663497925" green="0.3459999978542328" blue="0.2860000252723694" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.80392156862745101" green="0.27058823529411763" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="PrimaryColor">
             <color red="1" green="0.88599997758865356" blue="0.012000000104308128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

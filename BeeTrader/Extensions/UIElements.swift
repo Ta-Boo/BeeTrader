@@ -8,7 +8,8 @@
 
 import Foundation
 import UIKit
-import Kingfisher
+import Alamofire
+import KeychainSwift
 
 extension UITextField {
     func isEmpty() -> Bool {
@@ -84,7 +85,6 @@ extension UIImageView {
         DispatchQueue.global().async { [weak self] in
             let url = URL(string: urlString)
             let data = try? Data(contentsOf: url!)
-
             if animated {
                 DispatchQueue.main.async {
                 UIView.animate(withDuration: 0.2, animations: {
@@ -100,6 +100,22 @@ extension UIImageView {
                     self?.image = UIImage(data: data!)
                 }
             }
+        }
+    }
+    
+    func imageFromUrl(_ url : String?, _ animated: Bool = false) {
+        guard let url = url else {
+            return
+        }
+        Alamofire.request(url, headers: ["Authorization" : KeychainSwift().get("bearer_token") ?? ""])
+            .validate()
+            .responseData { [weak self] response in
+                switch response.value {
+                case .none:
+                    return
+                case .some(let data):
+                    self?.image = UIImage(data: data)
+                }
         }
     }
 }
