@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+import Alamofire
 
 typealias EmptyClosure = () -> Void
 typealias ErrorClosure = (Error) -> Void
@@ -16,3 +18,10 @@ typealias StringClosure = (String) -> Void
 typealias DoubleClosure = (Double) -> Void
 typealias IntegerClosure = (Int?) -> Void
 typealias OptionalStringClosure = (String?) -> Void
+
+typealias ImagePickerKeyboardManager = UITableViewController & UITextFieldDelegate
+typealias ImagePickerManager = UIImagePickerControllerDelegate & UINavigationControllerDelegate
+
+typealias DataResult<Type: Codable> = Result<DataWrapper<Type>>
+typealias ListingManager = UITableViewDataSource & UITableViewDelegate
+typealias CollectionManager = UICollectionViewDataSource & UICollectionViewDelegate & UICollectionViewDelegateFlowLayout

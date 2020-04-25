@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 
 class RegistrationViewController: UIViewController {
-    var viewModel = RegistrationViewModel()
+    let viewModel = RegistrationViewModel()
 
     @IBOutlet var emailLabel: UITextField!
     @IBOutlet var passwordLabel: UITextField!
@@ -127,8 +127,8 @@ class RegistrationViewController: UIViewController {
     }
 
     func failedLogin() {
-        let alert = UIAlertController(title: "Check your internet conection", message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        let alert = UIAlertController(title: L10n.Alert.noConnection, message: nil, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: L10n.Common.cancel, style: .cancel))
         present(alert, animated: true)
     }
 

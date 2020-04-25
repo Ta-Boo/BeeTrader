@@ -1,0 +1,47 @@
+/* 
+  Localizable.strings
+  BeeTrader
+
+  Created by hladek on 25/04/2020.
+  Copyright © 2020 hladek. All rights reserved.
+*/
+"Welcome.Password" = "Password";
+"Welcome.FirstTime" = "Your first time ?";
+"Welcome.FirstName" = "First name";
+"Welcome.LastName" = "Last name";
+"Welcome.ConfimrPassword" = "Confirm your password";
+
+"User.LogOut" = "Log out";
+"User.ChangeAvatar" = "Change me!";
+"User.AddressHint" = "Type your postal code or city name.";
+
+"Listing.Add.Title" = "Title";
+"Listing.Add.Price" = "Price in €";
+"Listing.Add.ChangeImage" = "Change your listing image.";
+"Listing.Add.Description" = "Type some aditional info to describe what you are selling.";
+"Listing.Add.Submit" = "Submit";
+"Listing.Add.Category.Title" = "Choose your category";
+
+"Listing.CannotEdit" = "You cannot edit this listing.";
+"Listing.Edit.RemoveDialogTitle" = "You are about to delete this listing.";
+
+"Listing.Filter.Distance" = "Distance";
+"Listing.Filter.Submit" = "Submit";
+
+"Common.Ok" = "Ok";
+"Common.Cancel" = "Cancel";
+"Common.Yes" = "Yes";
+
+"Alert.UnknownFail" = "Something went wrong.";
+"Alert.TryAgain" = "Try again later.";
+"Alert.Confirm" = "Are you sure? ";
+"Alert.FutureEfect" = "This action will affext usage of this app in future.";
+"Alert.Fill" = "Fill all fields and upload image!";
+"Alert.NoCamera" = "No camera detected!";
+"Alert.EmailMissing" = "Cannot send email from this device.";
+"Alert.NoConnection" = "Check your internet conection.";
+
+
+"Email.SubjectPlaceholder" = "Your listing!";
+"Email.Subject" = "Your listing!";
+

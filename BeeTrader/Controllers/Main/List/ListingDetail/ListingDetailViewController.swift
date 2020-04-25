@@ -72,9 +72,9 @@ extension ListingDetailViewController: ListingDetailDelegate {
         if MFMailComposeViewController.canSendMail() {
             mailVC.mailComposeDelegate = self
             mailVC.setToRecipients(["\(email)"])
-            mailVC.setSubject("\(viewModel.listing?.title ?? "Your listing") at BeeTrader")
+            mailVC.setSubject("\(viewModel.listing?.title ?? L10n.Email.subjectPlaceholder) \(L10n.Email.subject)")
             present(mailVC, animated: true, completion: nil)
-        } else { presentFailAlert(title: "Cannot send email from this device") }
+        } else { presentFailAlert(title: L10n.Alert.emailMissing) }
     }
 
     func setupViewsHandler() {

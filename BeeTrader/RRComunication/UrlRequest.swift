@@ -10,7 +10,6 @@ import Alamofire
 import Foundation
 import KeychainSwift
 
-typealias DataResult<Type: Codable> = Result<DataWrapper<Type>>
 
 
 struct ApiConstants {

@@ -25,7 +25,7 @@ class AddListingViewModel: ViewModel {
             return
         }
         if !delegate.isFilled {
-            delegate.presentFailAlert("Fill all fields and upload image!")
+            delegate.presentFailAlert(L10n.Alert.fill)
             return
         }
         let url = "\(ApiConstants.baseUrl)listing"
@@ -33,7 +33,7 @@ class AddListingViewModel: ViewModel {
         delegate.changeAccessibility(to: false)
         delegate.showHUD()
 
-        UrlRequest<UploadResponse>().uploadImages(url: url, images: images, parameters: delegate.parameters, loadingProgressor: { _ in
+        UrlRequest<Dump>().uploadImages(url: url, images: images, parameters: delegate.parameters, loadingProgressor: { _ in
         }, successCompletion: { [weak self] in
             self?.delegate?.dismiss(animated: true, completion: nil)
             self?.completionHandler?()

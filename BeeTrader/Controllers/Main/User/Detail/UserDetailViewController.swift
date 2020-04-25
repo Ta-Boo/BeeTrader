@@ -12,14 +12,13 @@ import UIKit
 
 protocol UserDetailViewDelegate: Delegate {
     var parameters: [String: String?] { get }
-
     func setupViews(user: User)
     func presentController(_ controller: UIViewController)
     func addressPickerCompletionHandler(address: Address)
     func completionHandler()
 }
 
-typealias ImagePickerKeyboardManager = UITableViewController & UITextFieldDelegate & UINavigationControllerDelegate & UIImagePickerControllerDelegate
+
 class UserDetailViewController: ImagePickerKeyboardManager {
     var viewModel = UserDetailViewModel()
     @IBOutlet var avatar: UIImageView!
@@ -28,25 +27,36 @@ class UserDetailViewController: ImagePickerKeyboardManager {
     @IBOutlet var address: UIButton!
     @IBOutlet var phoneNumber: UITextField!
     @IBOutlet var email: UITextField!
+    @IBOutlet weak var changeAvatarLabel: UIButton!
+    
+    var imagePicker: UIImagePickerController!
 
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
         viewModel.viewModelDidLoad()
+        localize()
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
-
-    @IBAction func takePhoto(_: Any) {
-        viewModel.takePhoto()
+    
+    func localize() {
+        changeAvatarLabel.setTitle(L10n.User.changeAvatar, for: .normal)
     }
 
-    func imagePickerController(_: UIImagePickerController, didFinishPickingMediaWithInfo image: [UIImagePickerController.InfoKey: Any]) {
-        avatar.image = image[.originalImage] as? UIImage
-        viewModel.handleChangedPhoto()
+    @IBAction func takePhoto(_: Any) {
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera
+            present(imagePicker,animated: true)
+        } else {
+            presentFailAlert("No camera detected")
+        }
     }
 
     @IBAction func sendTapped(_: Any) {
@@ -57,6 +67,17 @@ class UserDetailViewController: ImagePickerKeyboardManager {
         viewModel.handleAddressTapped()
     }
 }
+//MARK: Delegates (ImagePickerManager)
+
+extension UserDetailViewController: ImagePickerManager {
+    func imagePickerController(_: UIImagePickerController, didFinishPickingMediaWithInfo image: [UIImagePickerController.InfoKey: Any]) {
+        avatar.image = image[.originalImage] as? UIImage
+        imagePicker.dismiss(animated: true, completion: nil)
+        viewModel.avatarChanged = true
+    }
+}
+
+//MARK: Delegates (UserDetailViewDelegate)
 
 extension UserDetailViewController: UserDetailViewDelegate {
     var parameters: [String: String?] {

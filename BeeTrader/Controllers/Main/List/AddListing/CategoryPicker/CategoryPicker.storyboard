@@ -70,6 +70,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="obz-2G-QSY" id="5ZX-V4-WJ4"/>
+                        <outlet property="titleLabel" destination="moa-Q7-lwm" id="uR9-PH-hf2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4WY-RY-s3e" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

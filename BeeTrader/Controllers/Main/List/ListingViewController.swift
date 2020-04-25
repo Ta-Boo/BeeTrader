@@ -18,7 +18,7 @@ class ListingViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var searchBar: UITextField!
     let refreshControl = UIRefreshControl()
-    var viewModel = ListingViewModel()
+    let viewModel = ListingViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +55,10 @@ class ListingViewController: UIViewController {
         }
         present(controller, animated: true)
     }
-
+    @IBAction func onSearchChanged(_ sender: UITextField) {
+        viewModel.onFilterChangedHandler(search: sender.text)
+    }
+    
     @objc private func refreshListings(_: Any) {
         viewModel.resetData()
         collectionView.reloadData()
@@ -95,10 +98,18 @@ extension ListingViewController: UIGestureRecognizerDelegate {
             if let index = indexPath?.row {
                 if GlobalUser.shared.user?.email == viewModel.listings[index].email {
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                    presentFailAlert("you are the author")
+                    let storyboard = UIStoryboard(name: "EditListing", bundle: nil)
+                    let controller = storyboard.instantiateInitialViewController() as! EditListingViewController
+                    controller.viewModel.listingId = viewModel.listings[index].id
+                    controller.viewModel.completionHandler = { [weak self] in
+                        self?.viewModel.resetData()
+                        self?.viewModel.loadListings()
+                    }
+                    present(controller, animated: true)
                 }
                 else {
-                    presentFailAlert("You cannot edit this listing.")
+                    UIImpactFeedbackGenerator(style: .rigid).impactOccurred()
+                    presentFailAlert(L10n.Listing.cannotEdit)
                 }
             }
             
@@ -110,7 +121,6 @@ extension ListingViewController: UIGestureRecognizerDelegate {
 
 // MARK: COLLECTION MANAGER
 
-typealias CollectionManager = UICollectionViewDataSource & UICollectionViewDelegate & UICollectionViewDelegateFlowLayout
 
 extension ListingViewController: CollectionManager {
     var spacing: CGFloat { return 16 }

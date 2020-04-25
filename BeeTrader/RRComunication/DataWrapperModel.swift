@@ -21,4 +21,6 @@ struct DataWrapper<T: Codable>: Codable {
 }
 
 struct RegisterResponse: Codable {}
-struct UploadResponse: Codable {}
+struct Dump: Codable {}
+
+

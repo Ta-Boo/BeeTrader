@@ -14,7 +14,7 @@ extension Delegate where Self: UIViewController {
         presentFailedRequestAlert()
     }
 
-    func presentFailAlert(_ title: String = "Something went wrong!") {
+    func presentFailAlert(_ title: String) {
         presentFailAlert(title: title)
     }
 }
@@ -25,7 +25,7 @@ protocol UserViewDelegate: Delegate {
 }
 
 class UserViewController: UIViewController {
-    var viewModel = UserViewModel()
+    let viewModel = UserViewModel()
 
     @IBOutlet var firstName: UITextField!
     @IBOutlet var lastName: UITextField!

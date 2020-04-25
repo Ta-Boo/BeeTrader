@@ -13,18 +13,22 @@ protocol AddressPickerViewDelegate: Delegate {
     func reloadTableView(addresses: [Address])
 }
 
-typealias ListingManager = UITableViewDataSource & UITableViewDelegate
 class AddressPickerViewController: UIViewController {
     let viewModel = AddressPickerViewModel()
     var addressPickCompletion: ((Address) -> Void)?
 
+    @IBOutlet weak var searchBar: UITextField!
     @IBOutlet var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
         viewModel.viewModelDidLoad()
+        localize()
     }
 
+    func localize() {
+        searchBar.placeholder = L10n.User.addressHint
+    }
     @IBAction func onFilterChanged(_ sender: UITextField) {
         viewModel.onFilterChangedHandler(search: sender.text)
     }

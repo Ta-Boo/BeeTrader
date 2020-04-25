@@ -21,7 +21,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
          let tabBarIndex = tabBarController.selectedIndex
         switch tabBarIndex {
         case 0:
-            tabBarController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .done, target: self, action: #selector(logOutTapped))
+            tabBarController.navigationItem.rightBarButtonItem = UIBarButtonItem(title: L10n.User.logOut, style: .done, target: self, action: #selector(logOutTapped))
         default:
             clearNavBarItems()
         }

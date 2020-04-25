@@ -1,0 +1,6 @@
+strings:
+  inputs: BeeTrader/Resources/en.lproj/Localizable.strings
+  outputs:
+    - templateName: structured-swift4
+      output: BeeTrader/Generated/Strings+Localization.swift
+  

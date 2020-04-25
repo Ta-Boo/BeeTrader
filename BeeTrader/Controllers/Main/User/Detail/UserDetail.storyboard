@@ -161,6 +161,7 @@
                     <connections>
                         <outlet property="address" destination="Mgc-Vc-Ss5" id="RL3-bU-KXG"/>
                         <outlet property="avatar" destination="TSU-1j-254" id="hzy-7b-dok"/>
+                        <outlet property="changeAvatarLabel" destination="ECc-we-gf4" id="7TZ-a6-sS0"/>
                         <outlet property="email" destination="7be-c9-ykr" id="XFV-oP-ddi"/>
                         <outlet property="firstName" destination="BTx-uM-DE9" id="UcM-wa-ljM"/>
                         <outlet property="lastName" destination="FWp-S9-nII" id="ZQE-WC-LMT"/>

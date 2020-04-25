@@ -24,9 +24,9 @@ struct RequestParameters {
         return ["email": email]
     }
 
-    static func listingInRadius(radius: Int?, latitude: Double?,
+    static func listings(radius: Int?, latitude: Double?,
                                 longitude: Double?, categories: [Int]? = [],
-                                page: Int) -> Parameters {
+                                page: Int, text: String) -> Parameters {
         let finalRadius = radius ?? 10000
         let finalLatitude = latitude ?? 50.0
         let finalLongitude = longitude ?? 20.0
@@ -36,7 +36,8 @@ struct RequestParameters {
                 "lat": finalLatitude,
                 "lon": finalLongitude,
                 "categories": finalCategories,
-                "page": page]
+                "page": page,
+                "text": text]
     }
 
     static func listing(id: Int) -> Parameters {
@@ -60,6 +61,14 @@ struct RequestParameters {
     static func addListing(title : String?, userId: Int?, typeId: Int?, description : String?, price : Int?) -> [String: String?] {
         return ["title": title,
                 "user_id": userId.optionalString(),
+                "description": description,
+                "state_id": "1",
+                "type_id": typeId.optionalString(),
+                "price": price.optionalString()]
+    }
+    static func updateListing(listingId: Int,title : String?, typeId: Int?, description : String?, price : Int?) -> [String: String?] {
+        return ["title": title,
+                "id": "\(listingId)",
                 "description": description,
                 "state_id": "1",
                 "type_id": typeId.optionalString(),

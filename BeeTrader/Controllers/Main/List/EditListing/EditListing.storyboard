@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Add Listing View Controller-->
+        <!--Edit Listing View Controller-->
         <scene sceneID="KtB-v1-pSt">
             <objects>
-                <tableViewController storyboardIdentifier="AddListingViewController" id="d21-Gc-2WO" customClass="AddListingViewController" customModule="BeeTrader" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="AddListingViewController" id="d21-Gc-2WO" customClass="EditListingViewController" customModule="BeeTrader" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6Wt-DG-vw5">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -65,7 +65,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <action selector="categoryTapped:" destination="d21-Gc-2WO" eventType="touchUpInside" id="AG9-7r-djy"/>
+                                                        <action selector="categoryTapped:" destination="d21-Gc-2WO" eventType="touchUpInside" id="OgW-N8-dIG"/>
                                                     </connections>
                                                 </button>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="mo6-MD-gUY">
@@ -94,7 +94,7 @@
                                                         <color key="titleColor" name="TextColor"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="takePhoto:" destination="d21-Gc-2WO" eventType="touchUpInside" id="9E3-UP-NlY"/>
+                                                        <action selector="changeImageTapped:" destination="d21-Gc-2WO" eventType="touchUpInside" id="FXx-D9-Cah"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AbM-Yk-0TN">
@@ -104,7 +104,15 @@
                                                         <color key="titleColor" name="TextColor"/>
                                                     </state>
                                                     <connections>
-                                                        <action selector="submitActiontapped:" destination="d21-Gc-2WO" eventType="touchUpInside" id="XKk-zI-jUG"/>
+                                                        <action selector="submitTapped:" destination="d21-Gc-2WO" eventType="touchUpInside" id="1Rx-vm-xZc"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0Q-cQ-6aQ">
+                                                    <rect key="frame" x="362" y="266" width="20" height="22"/>
+                                                    <color key="tintColor" name="PrimaryColor"/>
+                                                    <state key="normal" image="trash.fill" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="deleteTapped:" destination="d21-Gc-2WO" eventType="touchUpInside" id="y1Z-OB-LtJ"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -113,12 +121,14 @@
                                                 <constraint firstAttribute="trailing" secondItem="XDg-vw-vbT" secondAttribute="trailing" id="0qq-Z0-upk"/>
                                                 <constraint firstItem="mo6-MD-gUY" firstAttribute="top" secondItem="NBk-jH-N3h" secondAttribute="bottom" constant="8" id="2YW-kd-YPK"/>
                                                 <constraint firstItem="Sdc-la-OWD" firstAttribute="leading" secondItem="lka-eX-Uwm" secondAttribute="leading" id="7ay-Qz-Kj3"/>
+                                                <constraint firstItem="C8h-eb-Rgf" firstAttribute="bottom" secondItem="i0Q-cQ-6aQ" secondAttribute="bottom" constant="32" id="8I3-7Z-OA9"/>
                                                 <constraint firstItem="XRK-2q-Jec" firstAttribute="top" secondItem="Ul4-g5-g1u" secondAttribute="bottom" constant="8" id="9cn-Dx-ah9"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="XRK-2q-Jec" secondAttribute="trailing" constant="220" id="AXK-DZ-C9g"/>
                                                 <constraint firstItem="NBk-jH-N3h" firstAttribute="leading" secondItem="lka-eX-Uwm" secondAttribute="leadingMargin" constant="2" id="DNR-BW-F59"/>
                                                 <constraint firstItem="Sdc-la-OWD" firstAttribute="top" secondItem="lka-eX-Uwm" secondAttribute="top" id="DjN-Qr-FlV"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="mo6-MD-gUY" secondAttribute="trailing" constant="2" id="FFf-Vb-UFg"/>
                                                 <constraint firstItem="Ul4-g5-g1u" firstAttribute="top" secondItem="Sdc-la-OWD" secondAttribute="bottom" constant="16" id="Grb-5V-Tta"/>
+                                                <constraint firstAttribute="trailing" secondItem="i0Q-cQ-6aQ" secondAttribute="trailing" constant="32" id="IgP-WK-zoZ"/>
                                                 <constraint firstItem="XDg-vw-vbT" firstAttribute="leading" secondItem="lka-eX-Uwm" secondAttribute="leading" id="JCi-6j-K6D"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Ul4-g5-g1u" secondAttribute="trailing" constant="2" id="O0g-3n-f9c"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="NBk-jH-N3h" secondAttribute="trailing" constant="2" id="OTz-kI-dtq"/>
@@ -148,11 +158,12 @@
                         </connections>
                     </tableView>
                     <connections>
-                        <outlet property="changeImageButton" destination="XDg-vw-vbT" id="TTF-Ro-Xtv"/>
-                        <outlet property="listingDescription" destination="mo6-MD-gUY" id="6vp-lZ-TO2"/>
-                        <outlet property="listingImage" destination="C8h-eb-Rgf" id="NCC-yt-6RH"/>
-                        <outlet property="listingPrice" destination="XRK-2q-Jec" id="ZRs-hX-WqY"/>
-                        <outlet property="listingTitle" destination="Ul4-g5-g1u" id="0Nj-Xj-nBd"/>
+                        <outlet property="categoryButton" destination="NBk-jH-N3h" id="oqN-3H-MON"/>
+                        <outlet property="changeButton" destination="XDg-vw-vbT" id="pYp-g7-qMA"/>
+                        <outlet property="descriptionTextView" destination="mo6-MD-gUY" id="wrL-Fv-Gcy"/>
+                        <outlet property="image" destination="C8h-eb-Rgf" id="aOH-aA-Pen"/>
+                        <outlet property="priceLabel" destination="XRK-2q-Jec" id="ZIG-WZ-SqK"/>
+                        <outlet property="titleLabel" destination="Ul4-g5-g1u" id="PqK-0U-mQC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbW-AS-uLS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -162,8 +173,12 @@
     </scenes>
     <resources>
         <image name="loading_placeholder" width="451" height="519"/>
+        <image name="trash.fill" catalog="system" width="60" height="64"/>
         <namedColor name="AccentTomatoColor">
             <color red="0.80392156862745101" green="0.27058823529411763" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="PrimaryColor">
+            <color red="1" green="0.88599997758865356" blue="0.012000000104308128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryColor">
             <color red="0.1289999932050705" green="0.16099999845027924" blue="0.16899999976158142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

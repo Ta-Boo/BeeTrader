@@ -12,7 +12,6 @@ class UserDetailViewModel: ViewModel {
     var addressId: Int?
     var avatarChanged = false
     var userUpdateCompletion: StringClosure?
-    var imagePicker: UIImagePickerController!
     var delegate: UserDetailViewDelegate?
 
     func viewModelDidLoad() {
@@ -27,10 +26,6 @@ class UserDetailViewModel: ViewModel {
         delegate?.setupViews(user: globalUser)
     }
 
-    func handleChangedPhoto() {
-        imagePicker.dismiss(animated: true, completion: nil)
-        avatarChanged = true
-    }
 
     func handleAddressTapped() {
         let storyboard = UIStoryboard(name: "AddressPicker", bundle: nil)
@@ -39,17 +34,6 @@ class UserDetailViewModel: ViewModel {
             self?.delegate?.addressPickerCompletionHandler(address: address)
         }
         delegate?.presentController(controller)
-    }
-
-    func takePhoto() {
-        if let delegate = delegate, UIImagePickerController.isSourceTypeAvailable(.camera) {
-            imagePicker = UIImagePickerController()
-            imagePicker.delegate = delegate.self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
-            imagePicker.sourceType = .camera
-            delegate.presentController(imagePicker)
-        } else {
-            delegate?.presentFailAlert("No camera detected")
-        }
     }
 
     func uploadData(image: UIImage?) {
@@ -61,7 +45,7 @@ class UserDetailViewModel: ViewModel {
             images = []
         }
 
-        UrlRequest<UploadResponse>().uploadImages(url: url, images: images, parameters: delegate?.parameters, loadingProgressor: { _ in
+        UrlRequest<Dump>().uploadImages(url: url, images: images, parameters: delegate?.parameters, loadingProgressor: { _ in
         }, successCompletion: { [weak self] in
             self?.delegate?.completionHandler()
         }, failureCompletion: { [weak self] in

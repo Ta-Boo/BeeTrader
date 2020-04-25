@@ -26,18 +26,22 @@ class AddListingViewController: ImagePickerKeyboardManager {
     @IBOutlet weak var listingTitle: UITextField!
     @IBOutlet weak var listingPrice: UITextField!
     @IBOutlet weak var listingDescription: UITextView!
+    @IBOutlet weak var changeImageButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
         viewModel.viewModelDidLoad()
+        localize()
+    }
+
+    
+    func localize() {
+        changeImageButton.setTitle(L10n.Listing.Add.changeImage, for: .normal)
+        listingTitle.placeholder = L10n.Listing.Add.title
+        listingPrice.placeholder = L10n.Listing.Add.price
     }
     
-    func imagePickerController(_: UIImagePickerController, didFinishPickingMediaWithInfo image: [UIImagePickerController.InfoKey: Any]) {
-        viewModel.imageSet = true
-        imagePicker.dismiss(animated: true)
-        listingImage.image = image[.originalImage] as? UIImage
-    }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
@@ -52,8 +56,9 @@ class AddListingViewController: ImagePickerKeyboardManager {
             imagePicker.sourceType = .camera
             present(imagePicker, animated: true)
         } else {
-            presentFailAlert("No camera detected")
-        }    }
+            presentFailAlert(L10n.Alert.noCamera)
+        }
+    }
     
     @IBAction func categoryTapped(_ sender: Any) {
         let storyboard = UIStoryboard.init(name: "CategoryPicker", bundle: nil)
@@ -66,6 +71,14 @@ class AddListingViewController: ImagePickerKeyboardManager {
     
     @IBAction func submitActiontapped(_ sender: Any) {
         viewModel.uploadListing(image: listingImage.image)
+    }
+}
+//MARK: Delegates
+extension AddListingViewController: ImagePickerManager {
+    func imagePickerController(_: UIImagePickerController, didFinishPickingMediaWithInfo image: [UIImagePickerController.InfoKey: Any]) {
+        viewModel.imageSet = true
+        imagePicker.dismiss(animated: true)
+        listingImage.image = image[.originalImage] as? UIImage
     }
 }
 

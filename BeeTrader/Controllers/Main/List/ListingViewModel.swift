@@ -13,6 +13,7 @@ struct ListingFilter {
     var radius: Int?
     var page: Int = 1
     var categories: [Int]?
+    var text: String = ""
 }
 
 class ListingViewModel: ViewModel{
@@ -23,15 +24,40 @@ class ListingViewModel: ViewModel{
     var isLoading = false
     var endReached = false
     var longTapTimer : Date?
+    var searchDebouncer: Debouncer?
+
+    
+    
+    func onFilterChangedHandler(search: String?) {
+        guard let filter = search else { return }
+        let debounceHandler: () -> Void = { [weak self] in
+//            if filter.isEmpty || filter.count < 3 { return }
+            self?.listingFilter.text = search ?? ""
+            self?.resetData()
+            self?.loadListings()
+            
+        }
+        guard let searchDebouncer = searchDebouncer else {
+            let debouncer = Debouncer(handler: {})
+            self.searchDebouncer = debouncer
+            onFilterChangedHandler(search: search)
+            return
+        }
+
+        searchDebouncer.invalidate()
+        searchDebouncer.handler = debounceHandler
+        searchDebouncer.call()
+    }
 
 
 
     var parameters: Parameters {
-        return RequestParameters.listingInRadius(radius: listingFilter.radius,
-                                                 latitude: GlobalUser.shared.user?.latitude,
-                                                 longitude: GlobalUser.shared.user?.longitude,
-                                                 categories: listingFilter.categories,
-                                                 page: listingFilter.page)
+        return RequestParameters.listings(radius: listingFilter.radius,
+                                          latitude: GlobalUser.shared.user?.latitude,
+                                          longitude: GlobalUser.shared.user?.longitude,
+                                          categories: listingFilter.categories,
+                                          page: listingFilter.page,
+                                          text: listingFilter.text)
     }
     
     func viewModelDidLoad() {
@@ -94,6 +120,7 @@ class ListingViewModel: ViewModel{
     func changeFilter(parameters: ListingFilter) {
         listingFilter.categories = parameters.categories
         listingFilter.radius = parameters.radius
+        resetData()
         delegate?.showHUD()
         loadListings { [weak self] in
             self?.delegate?.hideHUD()

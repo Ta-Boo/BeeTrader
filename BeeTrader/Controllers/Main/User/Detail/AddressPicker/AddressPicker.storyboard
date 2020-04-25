@@ -73,6 +73,7 @@
                         <viewLayoutGuide key="safeArea" id="JDl-mH-Ty8"/>
                     </view>
                     <connections>
+                        <outlet property="searchBar" destination="qHZ-CI-vJ9" id="HJT-45-HF4"/>
                         <outlet property="tableView" destination="olX-Lb-JSD" id="n5A-0j-Siq"/>
                     </connections>
                 </viewController>
@@ -83,7 +84,7 @@
     </scenes>
     <resources>
         <namedColor name="AccentTomatoColor">
-            <color red="0.93699997663497925" green="0.39599999785423279" blue="0.28600001335144043" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.80392156862745101" green="0.27058823529411763" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

@@ -20,6 +20,7 @@ struct ListingDetail: Codable {
     let userName: String?
     let email: String?
     let phone: String?
+    let category: Int
 
     enum CodingKeys: String, CodingKey {
         case title
@@ -33,5 +34,6 @@ struct ListingDetail: Codable {
         case userName = "first_name"
         case email
         case phone = "phone_number"
+        case category = "type_id"
     }
 }

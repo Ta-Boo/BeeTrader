@@ -21,13 +21,19 @@ extension CategoryPickerViewController: CategoryPickerViewDelegate {
 
 class CategoryPickerViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
-
+    @IBOutlet weak var titleLabel: UILabel!
+    
     let viewModel = CategoryPickerViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
         viewModel.viewModelDidLoad()
+        localize()
+    }
+    
+    func localize() {
+        titleLabel.text = L10n.Listing.Add.Category.title
     }
 }
 
