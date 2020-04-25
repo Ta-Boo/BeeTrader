@@ -13,12 +13,14 @@ import Alamofire
 protocol AddListingViewDelegate: Delegate {
     var parameters: [String: String?] { get }
     var isFilled: Bool { get }
-    func presentController(_ controller: UIViewController)
+    func changeAccessibility(to: Bool)
     func dismiss(animated : Bool, completion: EmptyClosure?)
 }
 
 class AddListingViewController: ImagePickerKeyboardManager {
     let viewModel = AddListingViewModel()
+    var imagePicker: UIImagePickerController!
+
 //    var imagePicker: UIImagePickerController!
     @IBOutlet var listingImage: UIImageView!
     @IBOutlet weak var listingTitle: UITextField!
@@ -30,8 +32,10 @@ class AddListingViewController: ImagePickerKeyboardManager {
         viewModel.delegate = self
         viewModel.viewModelDidLoad()
     }
+    
     func imagePickerController(_: UIImagePickerController, didFinishPickingMediaWithInfo image: [UIImagePickerController.InfoKey: Any]) {
-        viewModel.handlePhotoChanged()
+        viewModel.imageSet = true
+        imagePicker.dismiss(animated: true)
         listingImage.image = image[.originalImage] as? UIImage
     }
 
@@ -40,12 +44,24 @@ class AddListingViewController: ImagePickerKeyboardManager {
         return true
     }
 
+
     @IBAction func takePhoto(_: Any) {
-        viewModel.takePhoto()
-    }
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera
+            present(imagePicker, animated: true)
+        } else {
+            presentFailAlert("No camera detected")
+        }    }
     
     @IBAction func categoryTapped(_ sender: Any) {
-        viewModel.categoryTappedHandle()
+        let storyboard = UIStoryboard.init(name: "CategoryPicker", bundle: nil)
+        let controller = storyboard.instantiateInitialViewController()! as! CategoryPickerViewController
+        controller.viewModel.categoryPickCompletion = { [weak self] category in
+            self?.viewModel.category = category.id
+               }
+        present(controller, animated: true)
     }
     
     @IBAction func submitActiontapped(_ sender: Any) {
@@ -58,9 +74,10 @@ extension AddListingViewController: AddListingViewDelegate {
         return listingTitle.isNotEmpty() && listingPrice.isNotEmpty() && viewModel.category != nil && viewModel.imageSet
     }
     
-    func presentController(_ controller: UIViewController) {
-        present(controller, animated: true)
+    func changeAccessibility(to: Bool) {
+        view.isUserInteractionEnabled = to
     }
+    
     
     var parameters: [String: String?] {
         return RequestParameters.addListing(title: listingTitle.text, userId: GlobalUser.shared.user?.id, typeId: viewModel.category, description: listingDescription.text, price: Int(listingPrice.text!)!*100)

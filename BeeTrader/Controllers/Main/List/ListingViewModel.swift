@@ -22,6 +22,8 @@ class ListingViewModel: ViewModel{
     var listingFilter = ListingFilter()
     var isLoading = false
     var endReached = false
+    var longTapTimer : Date?
+
 
 
     var parameters: Parameters {

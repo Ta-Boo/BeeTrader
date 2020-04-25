@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import AudioToolbox
 
 protocol ListingViewDelegate: Delegate {
     func showListings(at indexPath: [IndexPath])
@@ -29,6 +30,7 @@ class ListingViewController: UIViewController {
     private func setupViews() {
         setupCollectionView()
         searchBar.underline(UIColor.Common.secondary!)
+        setupUiHandlers()
     }
 
     func setupCollectionView() {
@@ -61,6 +63,7 @@ class ListingViewController: UIViewController {
             self?.refreshControl.endRefreshing()
         }
     }
+    
 }
 
 // MARK: DELEGATE
@@ -68,6 +71,40 @@ class ListingViewController: UIViewController {
 extension ListingViewController: ListingViewDelegate {
     func showListings(at indexPath: [IndexPath]) {
         collectionView.insertItems(at: indexPath)
+    }
+}
+
+extension ListingViewController: UIGestureRecognizerDelegate {
+    func setupUiHandlers() {
+        let longTapHandler = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))
+        longTapHandler.minimumPressDuration = 0.5
+        longTapHandler.numberOfTouchesRequired = 1
+        longTapHandler.delaysTouchesBegan = true
+        longTapHandler.delegate = self
+        collectionView.addGestureRecognizer(longTapHandler)
+    }
+    
+    @objc func handleLongPress(_ gestureReconizer: UILongPressGestureRecognizer) {
+        if let time = viewModel.longTapTimer  {
+            if time > Date() {
+                return
+            }
+            viewModel.longTapTimer = nil
+                
+            let indexPath = self.collectionView.indexPathForItem(at: gestureReconizer.location(in: self.collectionView))
+            if let index = indexPath?.row {
+                if GlobalUser.shared.user?.email == viewModel.listings[index].email {
+                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                    presentFailAlert("you are the author")
+                }
+                else {
+                    presentFailAlert("You cannot edit this listing.")
+                }
+            }
+            
+        } else {
+            viewModel.longTapTimer = Date(timeIntervalSinceNow: TimeInterval(0.5))
+        }
     }
 }
 

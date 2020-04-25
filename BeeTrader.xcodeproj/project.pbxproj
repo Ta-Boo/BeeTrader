@@ -201,6 +201,13 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		B3188C3224547C830058E74E /* EditListing */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = EditListing;
+			sourceTree = "<group>";
+		};
 		B33B7C96241120E200CD6719 /* RRComunication */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,6 +432,7 @@
 				B3654E2A241F90DE00592EF8 /* ListingModel.swift */,
 				B3CC6993242A518800DAF451 /* Filter */,
 				B375399124269CEB0051C2E6 /* AddListing */,
+				B3188C3224547C830058E74E /* EditListing */,
 				B375399024269C820051C2E6 /* ListingDetail */,
 			);
 			path = List;

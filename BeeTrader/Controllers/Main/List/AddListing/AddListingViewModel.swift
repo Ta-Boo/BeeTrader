@@ -12,7 +12,6 @@ import Alamofire
 
 class AddListingViewModel: ViewModel {
     var delegate: AddListingViewDelegate?
-    var imagePicker: UIImagePickerController!
     var category: Int?
     var imageSet: Bool = false
     
@@ -31,38 +30,19 @@ class AddListingViewModel: ViewModel {
         }
         let url = "\(ApiConstants.baseUrl)listing"
         let images = [Image(name: "image", fileName: "image", data: image!)]
+        delegate.changeAccessibility(to: false)
+        delegate.showHUD()
 
         UrlRequest<UploadResponse>().uploadImages(url: url, images: images, parameters: delegate.parameters, loadingProgressor: { _ in
         }, successCompletion: { [weak self] in
             self?.delegate?.dismiss(animated: true, completion: nil)
             self?.completionHandler?()
+            self?.delegate?.hideHUD()
         }, failureCompletion: { [weak self] in
             self?.delegate?.presentFailure()
+            self?.delegate?.changeAccessibility(to: true)
+            self?.delegate?.hideHUD()
         })
     }
     
-    func takePhoto() {
-        if let delegate = delegate, UIImagePickerController.isSourceTypeAvailable(.camera) {
-            imagePicker = UIImagePickerController()
-            imagePicker.delegate = delegate.self as? UIImagePickerControllerDelegate & UINavigationControllerDelegate
-            imagePicker.sourceType = .camera
-            delegate.presentController(imagePicker)
-        } else {
-            delegate?.presentFailAlert("No camera detected")
-        }
-    }
-    
-    func handlePhotoChanged() {
-        imageSet = true
-        imagePicker.dismiss(animated: true, completion: nil)
-    }
-    
-    func categoryTappedHandle() {
-        let storyboard = UIStoryboard.init(name: "CategoryPicker", bundle: nil)
-        let controller = storyboard.instantiateInitialViewController()! as! CategoryPickerViewController
-        controller.viewModel.categoryPickCompletion = { [weak self] category in
-            self?.category = category.id
-        }
-        delegate?.presentController(controller)
-    }
 }
