@@ -50,6 +50,7 @@
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user_background" translatesAutoresizingMaskIntoConstraints="NO" id="3Hs-oS-mMO">
                                         <rect key="frame" x="0.0" y="-64" width="414" height="589"/>
+                                        <color key="tintColor" red="0.56862745100000001" green="0.1764705882" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -82,7 +83,7 @@
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ozw-Ie-LLY">
-                                <rect key="frame" x="16" y="226" width="382" height="445"/>
+                                <rect key="frame" x="16" y="258" width="382" height="413"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v2x-Q6-B7Q">
                                         <rect key="frame" x="188" y="8" width="6" height="32"/>
@@ -175,7 +176,7 @@
                         </subviews>
                         <color key="backgroundColor" name="PrimaryColor"/>
                         <constraints>
-                            <constraint firstItem="Ozw-Ie-LLY" firstAttribute="top" secondItem="0eH-8K-8sB" secondAttribute="top" constant="32" id="2DE-mL-Mme"/>
+                            <constraint firstItem="Ozw-Ie-LLY" firstAttribute="top" secondItem="0eH-8K-8sB" secondAttribute="top" constant="64" id="2DE-mL-Mme"/>
                             <constraint firstItem="0eH-8K-8sB" firstAttribute="centerX" secondItem="sHv-fq-JiW" secondAttribute="centerX" id="5qt-QW-acl"/>
                             <constraint firstItem="0eH-8K-8sB" firstAttribute="centerX" secondItem="sHv-fq-JiW" secondAttribute="centerX" id="8dv-Do-7Nv"/>
                             <constraint firstItem="aLV-ZI-UKT" firstAttribute="centerX" secondItem="sHv-fq-JiW" secondAttribute="centerX" id="CYz-JD-y2A"/>
@@ -215,7 +216,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" alpha="0.20000000000000001" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1Ls-af-qyz">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1Ls-af-qyz">
                                 <rect key="frame" x="16" y="-32" width="382" height="719"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jII-uh-pZp">

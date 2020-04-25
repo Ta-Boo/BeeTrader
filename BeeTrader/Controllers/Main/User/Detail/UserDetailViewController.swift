@@ -65,11 +65,11 @@ extension UserDetailViewController: UserDetailViewDelegate {
                                             addressID: viewModel.addressId,
                                             phoneNumber: phoneNumber.text,
                                             email: email.text,
-                                            id: GlobalUser.shared?.id)
+                                            id: GlobalUser.shared.user?.id)
     }
 
     func completionHandler() {
-        viewModel.userUpdateCompletion?(email.text ?? GlobalUser.shared?.email ?? "")
+        viewModel.userUpdateCompletion?(email.text ?? GlobalUser.shared.user?.email ?? "")
         dismiss(animated: false)
     }
 

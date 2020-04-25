@@ -80,7 +80,7 @@ extension ListingDetailViewController: ListingDetailDelegate {
     func setupViewsHandler() {
         guard let listing = viewModel.listing else { return }
         if let listingImage = listing.image {
-            image.imageFromUrl("\(ApiConstants.baseUrl)\(listingImage)", true)
+            image.imageFromUrl("\(ApiConstants.baseUrl)\(listingImage)", useCached: true, true)
         }
         viewsLabel.text = "\(listing.views)"
         addressLabel.text = listing.location

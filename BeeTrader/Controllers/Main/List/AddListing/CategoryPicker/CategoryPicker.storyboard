@@ -79,7 +79,7 @@
     </scenes>
     <resources>
         <namedColor name="AccentTomatoColor">
-            <color red="0.93699997663497925" green="0.39599999785423279" blue="0.28600001335144043" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.80392156862745101" green="0.27058823529411763" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <namedColor name="TextColor">
             <color red="0.94900000095367432" green="0.9570000171661377" blue="0.95300000905990601" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

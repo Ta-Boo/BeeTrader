@@ -20,7 +20,7 @@ class UserDetailViewModel: ViewModel {
     }
 
     func setupViews() {
-        guard let globalUser = GlobalUser.shared else {
+        guard let globalUser = GlobalUser.shared.user else {
             delegate?.presentFailure()
             return
         }

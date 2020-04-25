@@ -14,8 +14,8 @@ typealias DataResult<Type: Codable> = Result<DataWrapper<Type>>
 
 
 struct ApiConstants {
-    static let baseUrl = "http://localhost:8000/api/"
-//    static let baseUrl = "http://10.55.166.129:8000/api/"
+//    static let baseUrl = "http://localhost:8000/api/"
+    static let baseUrl = "http://192.168.0.110:8000/api/"
 }
 
 struct Image {

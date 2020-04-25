@@ -18,37 +18,16 @@ struct ListingFilter {
 class ListingViewModel: ViewModel{
     
     var delegate: ListingViewDelegate?
-    let refreshControl = UIRefreshControl()
     var listings: [Listing] = []
     var listingFilter = ListingFilter()
     var isLoading = false
+    var endReached = false
 
-    var addListingController: UIViewController {
-        let storyboard = UIStoryboard(name: "AddListing", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.addListing) as! AddListingViewController
-        controller.viewModel.completionHandler = { [weak self] in
-            self?.delegate?.showHUD()
-            self?.loadListings { [weak self] in
-                self?.delegate?.hideHUD()
-            }
-        }
-
-        return controller
-    }
-
-    var filterListingController: ListingFilterViewController {
-        let storyboard = UIStoryboard(name: "ListingFilter", bundle: nil)
-        let controller = storyboard.instantiateViewController(identifier: ViewControllers.listingFilter) as! ListingFilterViewController
-        controller.viewModel.submitCompletion = { [weak self] parameters in
-            self?.changeFilter(parameters: parameters)
-        }
-        return controller
-    }
 
     var parameters: Parameters {
         return RequestParameters.listingInRadius(radius: listingFilter.radius,
-                                                 latitude: GlobalUser.shared?.latitude,
-                                                 longitude: GlobalUser.shared?.longitude,
+                                                 latitude: GlobalUser.shared.user?.latitude,
+                                                 longitude: GlobalUser.shared.user?.longitude,
                                                  categories: listingFilter.categories,
                                                  page: listingFilter.page)
     }
@@ -56,18 +35,21 @@ class ListingViewModel: ViewModel{
     func viewModelDidLoad() {
         setupViews()
     }
-    
 
-    
     func setupViews() {
         delegate?.showHUD()
         loadListings { [weak self] in
             self?.delegate?.hideHUD()
         }
     }
+    func shouldLoad() -> Bool {
+        return !isLoading && !endReached
+    }
 
-    func loadListings(_ completionHandler: @escaping EmptyClosure) {
+    func loadListings(_ completionHandler: EmptyClosure? = nil) {
+        if !shouldLoad() { return }
         isLoading = true
+        delegate?.showHUD()
         UrlRequest<[Listing]>().handle(ApiConstants.baseUrl + "listings/inRadius",
                                        methood: HTTPMethod.get,
                                        parameters: parameters) { [weak self] result in
@@ -79,18 +61,33 @@ class ListingViewModel: ViewModel{
                     self?.delegate?.presentFailure()
                     return
                 }
-                self?.listings = listings
-                self?.delegate?.showListings()
-                completionHandler()
+                if listings.count < 8 {
+                    self?.endReached = true
+                }
+                self?.listings += listings
+                let indexpath = ((self!.listings.count  - listings.count)..<self!.listings.count).map{ IndexPath(item: $0, section: 0) }
+                self?.delegate?.showListings(at: indexpath)
+                completionHandler?()
             }
+        self?.delegate?.hideHUD()
         self?.isLoading = false
         }
     }
     
-    
-    func requestListings() {
-        
+    func loadMoreListings(_ completion: EmptyClosure? = nil) {
+        if !shouldLoad() { return }
+        listingFilter.page += 1
+        loadListings {
+            completion?()
+        }
     }
+    
+    func resetData() {
+        listings.removeAll()
+        endReached = false
+        listingFilter.page = 1
+    }
+    
 
     func changeFilter(parameters: ListingFilter) {
         listingFilter.categories = parameters.categories

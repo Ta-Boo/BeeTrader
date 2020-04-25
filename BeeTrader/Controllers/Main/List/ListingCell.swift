@@ -18,7 +18,7 @@ class ListingCell: UICollectionViewCell {
     func setData(data: Listing) {
         image.image = UIImage(named: "loading_placeholder")
         if let listingImage = data.image {
-            image.imageFromUrl("\(ApiConstants.baseUrl)\(listingImage)", true)
+            image.imageFromUrl("\(ApiConstants.baseUrl)\(listingImage)", useCached: true, true)
         }
         title.text = data.title
         distance.text = "\(data.distance)Km"

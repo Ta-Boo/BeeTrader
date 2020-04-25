@@ -63,7 +63,7 @@ extension AddListingViewController: AddListingViewDelegate {
     }
     
     var parameters: [String: String?] {
-        return RequestParameters.addListing(title: listingTitle.text, userId: GlobalUser.shared?.id, typeId: viewModel.category, description: listingDescription.text, price: Int(listingPrice.text!)!*100)
+        return RequestParameters.addListing(title: listingTitle.text, userId: GlobalUser.shared.user?.id, typeId: viewModel.category, description: listingDescription.text, price: Int(listingPrice.text!)!*100)
     }
     
 }

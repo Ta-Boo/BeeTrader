@@ -10,18 +10,13 @@ import Foundation
 import UIKit
 
 protocol ListingViewDelegate: Delegate {
-//    func loadListings(completion: @escaping EmptyClosure)
-//    func listingLoadFailure()
-//    func listingLoadSuccess(listings: [Listing], completionHandler: @escaping EmptyClosure)
-//    func filterChangedHandler()
-    
-    func showListings()
+    func showListings(at indexPath: [IndexPath])
 }
 
 class ListingViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var searchBar: UITextField!
-
+    let refreshControl = UIRefreshControl()
     var viewModel = ListingViewModel()
 
     override func viewDidLoad() {
@@ -36,32 +31,34 @@ class ListingViewController: UIViewController {
         searchBar.underline(UIColor.Common.secondary!)
     }
 
-
     func setupCollectionView() {
-        collectionView.refreshControl = viewModel.refreshControl
-        viewModel.refreshControl.addTarget(self, action: #selector(refreshListings(_:)), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
+        refreshControl.alpha = 0
+        refreshControl.addTarget(self, action: #selector(refreshListings(_:)), for: .valueChanged)
     }
-    
-    func revealCollectionView() {
-        DispatchQueue.main.async { [weak self] in
-            UIView.animate(withDuration: 0.35, animations: { [weak self] in
-                self?.collectionView.alpha = 1
-                   })
-        }
-    }
-
 
     @IBAction func onAddlistingClicked(_: Any) {
-        present(viewModel.addListingController, animated: true)
+        let controller = UIStoryboard(name: "AddListing", bundle: nil).instantiateInitialViewController() as! AddListingViewController
+        controller.viewModel.completionHandler = { [weak self] in
+            self?.viewModel.resetData()
+            self?.viewModel.loadListings()
+        }
+        present(controller, animated: true)
     }
 
     @IBAction func onFilterClicked(_: Any) {
-        present(viewModel.filterListingController, animated: true)
+        let controller = UIStoryboard(name: "ListingFilter", bundle: nil).instantiateInitialViewController() as! ListingFilterViewController
+        controller.viewModel.submitCompletion = { [weak self] parameters in
+            self?.viewModel.changeFilter(parameters: parameters)
+        }
+        present(controller, animated: true)
     }
 
     @objc private func refreshListings(_: Any) {
+        viewModel.resetData()
+        collectionView.reloadData()
         viewModel.loadListings { [weak self] in
-            self?.viewModel.refreshControl.endRefreshing()
+            self?.refreshControl.endRefreshing()
         }
     }
 }
@@ -69,12 +66,9 @@ class ListingViewController: UIViewController {
 // MARK: DELEGATE
 
 extension ListingViewController: ListingViewDelegate {
-    func showListings() {
-        collectionView.reloadData()
-        revealCollectionView()
+    func showListings(at indexPath: [IndexPath]) {
+        collectionView.insertItems(at: indexPath)
     }
-    
-
 }
 
 // MARK: COLLECTION MANAGER
@@ -88,14 +82,12 @@ extension ListingViewController: CollectionManager {
         return viewModel.listings.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if (indexPath.row == viewModel.listings.count - 1 ) && (!viewModel.isLoading) {
-            viewModel.listingFilter.page += 1
-            showHUD()
-            viewModel.loadListings { [weak self] in
-                self?.hideHUD()
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height) && scrollView.contentSize.height > 100) {
+            viewModel.loadMoreListings {
+                scrollView.setContentOffset(CGPoint(x: 0, y: scrollView.contentOffset.y + 64), animated: true)
             }
-         }
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

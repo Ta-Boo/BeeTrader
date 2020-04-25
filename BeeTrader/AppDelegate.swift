@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.applicationCoordinator = applicationCoordinator
     
     applicationCoordinator.start()
-    styleNavBar()
+    styleNavBar()        
     return true
   }
     

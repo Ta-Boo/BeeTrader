@@ -4,27 +4,19 @@ import KeychainSwift
 
 class GlobalUser {
     private init() {}
-
-    private static var _shared: User?
-    static var shared: User? {
+    static var shared = GlobalUser()
+    var user: User? {
         get {
             guard let user = UserDefaults.standard.object(forKey: StorageKeys.user) as? Data else {
                 return nil
             }
             if let loadedUser = try? JSONDecoder().decode(User.self, from: user) {
-                _shared = loadedUser
-                return _shared
+                return loadedUser
             } else { return nil }
         }
-        set { _shared = newValue }
     }
 
-    
-    static func update(_ user: User?) {
-//        if user?.token == nil {
-//            user?.token = shared?.token
-//        }
-        
+     func update(_ user: User?) {
         if let token = user?.token {
             KeychainSwift().set(token, forKey: "bearer_token")
         }
@@ -33,7 +25,7 @@ class GlobalUser {
             defaults.set(encoded, forKey: StorageKeys.user)
         }
     }
-    static func dispose() {
+     func dispose() {
         UserDefaults.standard.set(nil, forKey: StorageKeys.user)
     }
 }

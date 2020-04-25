@@ -15,7 +15,7 @@ class MainCoordinator: Coordinator {
         let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.mainTabBar) as! MainTabBarController
         controller.handleLogOut = { [weak self] in
-            GlobalUser.dispose()
+            GlobalUser.shared.dispose()
             self?.navigationController.setViewControllers([self!.registrationController], animated: true)
         }
         return controller
@@ -34,7 +34,6 @@ class MainCoordinator: Coordinator {
     init(window: UIWindow) {
         self.window = window
         navigationController = UINavigationController()
-//        navigationController.navigationBar.prefersLargeTitles = false
     }
 
     func start() {
@@ -43,7 +42,7 @@ class MainCoordinator: Coordinator {
 
         loadUser()
         
-        if let _ = GlobalUser.shared {
+        if let _ = GlobalUser.shared.user {
             navigationController.pushViewController(mainTabBarController, animated: true)
         } else {
             navigationController.presentInFullScreen(registrationController, animated: false)
@@ -54,7 +53,8 @@ class MainCoordinator: Coordinator {
         if let user = UserDefaults.standard.object(forKey: StorageKeys.user) as? Data {
             let decoder = JSONDecoder()
             if let loadedUser = try? decoder.decode(User.self, from: user) {
-                GlobalUser.shared = loadedUser
+                GlobalUser.shared.update(loadedUser)
+                
             }
         }
     }

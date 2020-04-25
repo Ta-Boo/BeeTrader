@@ -7,7 +7,7 @@ protocol ViewModel {
 
 class UserViewModel: ViewModel {
     var loadDataparameters: Parameters? {
-        guard let email = GlobalUser.shared?.email else {
+        guard let email = GlobalUser.shared.user?.email else {
             delegate?.presentFailure()
             return nil
         }
@@ -18,7 +18,7 @@ class UserViewModel: ViewModel {
     var delegate: UserViewDelegate?
 
     func viewModelDidLoad() {
-        loadData()
+        loadData() //todo
     }
 
     func loadData() {
@@ -34,7 +34,7 @@ class UserViewModel: ViewModel {
                     self?.delegate?.presentFailure()
                     return
                 }
-                GlobalUser.update(user)
+                GlobalUser.shared.update(user)
                 self?.delegate?.showUserInfo(user)
             }
             self?.delegate?.hideHUD()

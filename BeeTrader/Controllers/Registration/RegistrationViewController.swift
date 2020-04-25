@@ -111,7 +111,7 @@ class RegistrationViewController: UIViewController {
     }
 
     private func saveUserData(user: User) {
-        GlobalUser.update(user)
+        GlobalUser.shared.update(user)
     }
 
     private func sucessfulLogin(_ value: DataWrapper<User>) {

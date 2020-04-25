@@ -66,7 +66,7 @@ extension UserViewController: UserViewDelegate {
         address.text = "\(user.city), \(user.postalCode)"
         phoneNumber.text = user.phoneNumber ?? "---"
         if let imageUrl = user.image {
-            avatar.imageFromUrl("\(ApiConstants.baseUrl)\(imageUrl)", true)
+            avatar.imageFromUrl("\(ApiConstants.baseUrl)\(imageUrl)", useCached: false, true)
         }
     }
 }
