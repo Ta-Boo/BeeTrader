@@ -19,7 +19,7 @@ protocol UserDetailViewDelegate: Delegate {
 }
 
 
-class UserDetailViewController: ImagePickerKeyboardManager {
+class UserDetailViewController: KeyboardLayoutManager {
     var viewModel = UserDetailViewModel()
     @IBOutlet var avatar: UIImageView!
     @IBOutlet var firstName: UITextField!

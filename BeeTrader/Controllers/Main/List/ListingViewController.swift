@@ -77,6 +77,13 @@ extension ListingViewController: ListingViewDelegate {
     }
 }
 
+extension ListingViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+}
+
 extension ListingViewController: UIGestureRecognizerDelegate {
     func setupUiHandlers() {
         let longTapHandler = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(_:)))

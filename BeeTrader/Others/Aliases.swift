@@ -19,7 +19,7 @@ typealias DoubleClosure = (Double) -> Void
 typealias IntegerClosure = (Int?) -> Void
 typealias OptionalStringClosure = (String?) -> Void
 
-typealias ImagePickerKeyboardManager = UITableViewController & UITextFieldDelegate
+typealias KeyboardLayoutManager = UITableViewController & UITextFieldDelegate
 typealias ImagePickerManager = UIImagePickerControllerDelegate & UINavigationControllerDelegate
 
 typealias DataResult<Type: Codable> = Result<DataWrapper<Type>>

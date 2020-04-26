@@ -17,7 +17,7 @@ protocol AddListingViewDelegate: Delegate {
     func dismiss(animated : Bool, completion: EmptyClosure?)
 }
 
-class AddListingViewController: ImagePickerKeyboardManager {
+class AddListingViewController: KeyboardLayoutManager {
     let viewModel = AddListingViewModel()
     var imagePicker: UIImagePickerController!
 

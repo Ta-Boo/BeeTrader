@@ -18,7 +18,7 @@ protocol EditListingViewDelegate: Delegate {
 
 }
 
-class EditListingViewController: ImagePickerKeyboardManager {
+class EditListingViewController: KeyboardLayoutManager {
     @IBOutlet weak var image: UIImageView!
     @IBOutlet weak var titleLabel: UITextField!
     @IBOutlet weak var priceLabel: UITextField!
