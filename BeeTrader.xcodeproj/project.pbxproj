@@ -161,13 +161,6 @@
 		B37F57AF24220558001B84BB /* UserDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserDetail.storyboard; sourceTree = "<group>"; };
 		B38E4EEE241AC45600B85994 /* Aliases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aliases.swift; sourceTree = "<group>"; };
 		B38E4EF0241AC74500B85994 /* Parameters+Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Parameters+Headers.swift"; sourceTree = "<group>"; };
-		B3923DB2241E3A0600DD7F53 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3923DB5241E3B1E00DD7F53 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3923DBC241E3CEA00DD7F53 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3923DBF241E3E4500DD7F53 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3923DC0241E3E4500DD7F53 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3923DC9241E3EE700DD7F53 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3923DCA241E3EE700DD7F53 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B39C967E242CB78600B4101E /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		B39C9680242CB7B200B4101E /* CategoryPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewModel.swift; sourceTree = "<group>"; };
 		B39C9682242CB9B200B4101E /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
@@ -208,13 +201,6 @@
 		7C13FF9B749E7C3F5F13F756 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B3923DC9241E3EE700DD7F53 /* Alamofire.framework */,
-				B3923DCA241E3EE700DD7F53 /* Lottie.framework */,
-				B3923DBF241E3E4500DD7F53 /* Alamofire.framework */,
-				B3923DC0241E3E4500DD7F53 /* Lottie.framework */,
-				B3923DBC241E3CEA00DD7F53 /* Alamofire.framework */,
-				B3923DB5241E3B1E00DD7F53 /* Alamofire.framework */,
-				B3923DB2241E3A0600DD7F53 /* Alamofire.framework */,
 				A97B99D8265A1756988E7F9E /* libPods-BeeTrader.a */,
 			);
 			name = Frameworks;
