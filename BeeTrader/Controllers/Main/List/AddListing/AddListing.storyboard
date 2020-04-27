@@ -148,11 +148,13 @@
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="categoryButton" destination="NBk-jH-N3h" id="u6l-YA-Dxe"/>
                         <outlet property="changeImageButton" destination="XDg-vw-vbT" id="TTF-Ro-Xtv"/>
                         <outlet property="listingDescription" destination="mo6-MD-gUY" id="6vp-lZ-TO2"/>
                         <outlet property="listingImage" destination="C8h-eb-Rgf" id="NCC-yt-6RH"/>
                         <outlet property="listingPrice" destination="XRK-2q-Jec" id="ZRs-hX-WqY"/>
                         <outlet property="listingTitle" destination="Ul4-g5-g1u" id="0Nj-Xj-nBd"/>
+                        <outlet property="submitButton" destination="AbM-Yk-0TN" id="Zdv-H4-CjU"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gbW-AS-uLS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

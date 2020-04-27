@@ -54,6 +54,15 @@ class RegistrationViewController: UIViewController {
     @IBOutlet var registrationPasswordLabel: UITextField!
     @IBOutlet var registrationConfirmEmailLabel: UITextField!
     @IBOutlet var submitRegistrationButton: UIButton!
+    
+    @IBOutlet weak var loginPasswordTitle: UILabel!
+    @IBOutlet weak var firstNameTitle: UILabel!
+    @IBOutlet weak var lastNameTitle: UILabel!
+    @IBOutlet weak var passwordTitle: UILabel!
+    @IBOutlet weak var passwordConfirmTitle: UILabel!
+    @IBOutlet weak var existingAccountButton: UIButton!
+    @IBOutlet weak var firstTimeButton: UIButton!
+    
         
     var registrationFilled: Bool {
            get {
@@ -70,11 +79,22 @@ class RegistrationViewController: UIViewController {
         super.viewDidLoad()
         viewModel.delegate = self
         viewModel.viewModelDidLoad()
+        localize()
         #if DEBUG
             emailLabel.text = "tobias@hladek.com"
             passwordLabel.text = "1"
             enableLoginIfPossible()
         #endif
+    }
+    
+    func localize() {
+        loginPasswordTitle.text = L10n.Welcome.password
+        firstNameTitle.text = L10n.Welcome.firstName
+        lastNameTitle.text = L10n.Welcome.lastName
+        passwordTitle.text = L10n.Welcome.password
+        passwordConfirmTitle.text = L10n.Welcome.confimrPassword
+        firstTimeButton.setTitle(L10n.Welcome.firstTime, for: .normal)
+        existingAccountButton.setTitle(L10n.Welcome.existingButton, for: .normal)
     }
 
     func enableLoginIfPossible() {

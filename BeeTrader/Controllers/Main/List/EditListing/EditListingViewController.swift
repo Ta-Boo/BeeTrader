@@ -25,6 +25,7 @@ class EditListingViewController: KeyboardLayoutManager {
     @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var descriptionTextView: UITextView!
     @IBOutlet weak var changeButton: UIButton!
+    @IBOutlet weak var submitButton: UIButton!
     
     var imagePicker: UIImagePickerController!
 
@@ -35,10 +36,13 @@ class EditListingViewController: KeyboardLayoutManager {
         super.viewDidLoad()
         viewModel.delegate = self
         viewModel.viewModelDidLoad()
+        localize()
     }
     
     func localize() {
            changeButton.setTitle(L10n.Listing.Add.changeImage, for: .normal)
+        categoryButton.setTitle(L10n.Listing.category, for: .normal)
+        submitButton.setTitle(L10n.Common.submit, for: .normal)
            titleLabel.placeholder = L10n.Listing.Add.title
            priceLabel.placeholder = L10n.Listing.Add.price
        }

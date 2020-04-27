@@ -7,6 +7,7 @@
 */
 "Welcome.Password" = "Password";
 "Welcome.FirstTime" = "Your first time ?";
+"Welcome.ExistingButton" = "I have existing account";
 "Welcome.FirstName" = "First name";
 "Welcome.LastName" = "Last name";
 "Welcome.ConfimrPassword" = "Confirm your password";
@@ -19,18 +20,20 @@
 "Listing.Add.Price" = "Price in €";
 "Listing.Add.ChangeImage" = "Change your listing image.";
 "Listing.Add.Description" = "Type some aditional info to describe what you are selling.";
-"Listing.Add.Submit" = "Submit";
 "Listing.Add.Category.Title" = "Choose your category";
 
 "Listing.CannotEdit" = "You cannot edit this listing.";
-"Listing.Edit.RemoveDialog.Title" = "You are about to delete this listing.";
+"Listing.Category" = "Category";
+"Listing.Edit.RemoveDialogTitle" = "You are about to delete this listing.";
 
 "Listing.Filter.Distance" = "Distance";
-"Listing.Filter.Submit" = "Submit";
 
 "Common.Ok" = "Ok";
 "Common.Cancel" = "Cancel";
 "Common.Yes" = "Yes";
+"Common.Submit" = "Submit";
+
+
 
 "Alert.UnknownFail" = "Something went wrong.";
 "Alert.TryAgain" = "Try again later.";

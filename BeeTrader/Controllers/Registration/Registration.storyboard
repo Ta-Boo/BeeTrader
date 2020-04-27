@@ -268,9 +268,16 @@
                     </view>
                     <connections>
                         <outlet property="emailLabel" destination="3ta-W8-6iF" id="Hb0-d2-Bhw"/>
+                        <outlet property="existingAccountButton" destination="Iut-XH-nNt" id="xbL-vE-hQq"/>
+                        <outlet property="firstNameTitle" destination="hDK-SQ-JNb" id="kz2-QS-kyc"/>
+                        <outlet property="firstTimeButton" destination="vNn-Y8-xiJ" id="yT0-ED-qzp"/>
+                        <outlet property="lastNameTitle" destination="6al-xY-zv9" id="cyO-r2-Wov"/>
                         <outlet property="loginForm" destination="QBr-98-lZy" id="QFe-Gx-JZ3"/>
+                        <outlet property="loginPasswordTitle" destination="dxW-Xl-gvd" id="0Sx-wr-LxT"/>
+                        <outlet property="passwordConfirmTitle" destination="9Gy-X6-df1" id="m44-Tb-og0"/>
                         <outlet property="passwordLabel" destination="aHq-IX-RP5" id="roN-l5-rK5"/>
                         <outlet property="passwordRightOffset" destination="IW9-mf-Sv6" id="bNp-9S-zns"/>
+                        <outlet property="passwordTitle" destination="Bjb-8W-Nnp" id="rCz-0P-hF7"/>
                         <outlet property="registrationConfirmEmailLabel" destination="nHt-TH-ZS7" id="KjI-Dh-kJm"/>
                         <outlet property="registrationEmailLabel" destination="xXq-jH-ch1" id="hMN-KI-Vns"/>
                         <outlet property="registrationFirstNameLabel" destination="qCB-VZ-YiJ" id="zHk-D1-WgK"/>

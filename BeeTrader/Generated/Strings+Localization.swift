@@ -36,12 +36,14 @@ internal enum L10n {
     internal static let cancel = L10n.tr("Localizable", "Common.Cancel")
     /// Ok
     internal static let ok = L10n.tr("Localizable", "Common.Ok")
+    /// Submit
+    internal static let submit = L10n.tr("Localizable", "Common.Submit")
     /// Yes
     internal static let yes = L10n.tr("Localizable", "Common.Yes")
   }
 
   internal enum Email {
-    /// Your listing!
+    /// at Beetrader!
     internal static let subject = L10n.tr("Localizable", "Email.Subject")
     /// Your listing!
     internal static let subjectPlaceholder = L10n.tr("Localizable", "Email.SubjectPlaceholder")
@@ -50,6 +52,8 @@ internal enum L10n {
   internal enum Listing {
     /// You cannot edit this listing.
     internal static let cannotEdit = L10n.tr("Localizable", "Listing.CannotEdit")
+    /// Category
+    internal static let category = L10n.tr("Localizable", "Listing.Category")
     internal enum Add {
       /// Change your listing image.
       internal static let changeImage = L10n.tr("Localizable", "Listing.Add.ChangeImage")
@@ -57,8 +61,6 @@ internal enum L10n {
       internal static let description = L10n.tr("Localizable", "Listing.Add.Description")
       /// Price in €
       internal static let price = L10n.tr("Localizable", "Listing.Add.Price")
-      /// Submit
-      internal static let submit = L10n.tr("Localizable", "Listing.Add.Submit")
       /// Title
       internal static let title = L10n.tr("Localizable", "Listing.Add.Title")
       internal enum Category {
@@ -73,8 +75,6 @@ internal enum L10n {
     internal enum Filter {
       /// Distance
       internal static let distance = L10n.tr("Localizable", "Listing.Filter.Distance")
-      /// Submit
-      internal static let submit = L10n.tr("Localizable", "Listing.Filter.Submit")
     }
   }
 
@@ -90,6 +90,8 @@ internal enum L10n {
   internal enum Welcome {
     /// Confirm your password
     internal static let confimrPassword = L10n.tr("Localizable", "Welcome.ConfimrPassword")
+    /// I have existing account
+    internal static let existingButton = L10n.tr("Localizable", "Welcome.ExistingButton")
     /// First name
     internal static let firstName = L10n.tr("Localizable", "Welcome.FirstName")
     /// Your first time ?

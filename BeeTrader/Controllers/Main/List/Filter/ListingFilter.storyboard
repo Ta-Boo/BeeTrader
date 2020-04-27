@@ -122,6 +122,8 @@
                     <connections>
                         <outlet property="distance" destination="u9E-jp-muZ" id="ZW6-dB-IQo"/>
                         <outlet property="distanceSlider" destination="arz-cS-ZBB" id="z80-hT-PsU"/>
+                        <outlet property="distanceTitle" destination="xsp-Ty-mvt" id="wYr-xv-Lo5"/>
+                        <outlet property="submitButton" destination="Q4S-iC-cLW" id="2rs-me-9uR"/>
                         <outlet property="tableView" destination="gi6-OV-aEk" id="S3s-yJ-oGG"/>
                     </connections>
                 </viewController>

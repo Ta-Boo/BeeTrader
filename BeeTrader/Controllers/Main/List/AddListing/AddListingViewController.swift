@@ -27,6 +27,8 @@ class AddListingViewController: KeyboardLayoutManager {
     @IBOutlet weak var listingPrice: UITextField!
     @IBOutlet weak var listingDescription: UITextView!
     @IBOutlet weak var changeImageButton: UIButton!
+    @IBOutlet weak var categoryButton: UIButton!
+    @IBOutlet weak var submitButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +42,8 @@ class AddListingViewController: KeyboardLayoutManager {
         changeImageButton.setTitle(L10n.Listing.Add.changeImage, for: .normal)
         listingTitle.placeholder = L10n.Listing.Add.title
         listingPrice.placeholder = L10n.Listing.Add.price
+        categoryButton.setTitle(L10n.Listing.category, for: .normal)
+        submitButton.setTitle(L10n.Common.submit, for: .normal)
     }
     
 

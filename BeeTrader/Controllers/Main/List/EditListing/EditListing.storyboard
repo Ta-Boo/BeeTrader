@@ -163,6 +163,7 @@
                         <outlet property="descriptionTextView" destination="mo6-MD-gUY" id="wrL-Fv-Gcy"/>
                         <outlet property="image" destination="C8h-eb-Rgf" id="aOH-aA-Pen"/>
                         <outlet property="priceLabel" destination="XRK-2q-Jec" id="ZIG-WZ-SqK"/>
+                        <outlet property="submitButton" destination="AbM-Yk-0TN" id="vTX-x6-nb8"/>
                         <outlet property="titleLabel" destination="Ul4-g5-g1u" id="PqK-0U-mQC"/>
                     </connections>
                 </tableViewController>

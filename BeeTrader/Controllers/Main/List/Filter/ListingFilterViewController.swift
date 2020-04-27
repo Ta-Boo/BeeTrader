@@ -16,6 +16,8 @@ protocol ListingFilterViewDelegate: Delegate {
 class ListingFilterViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var distanceSlider: UISlider!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var distanceTitle: UILabel!
     @IBOutlet var distance: UILabel!
     let viewModel = ListingFilterViewModel()
 
@@ -23,8 +25,14 @@ class ListingFilterViewController: UIViewController {
         super.viewDidLoad()
         viewModel.delegate = self
         viewModel.viewModelDidLoad()
+        localize()
     }
 
+    func localize() {
+        distanceTitle.text = L10n.Listing.Filter.distance
+        submitButton.setTitle(L10n.Common.submit, for: .normal)
+    }
+    
     @IBAction func onDistanceChanged(_ sender: UISlider) {
         distance.text = "\(String(format: "%.2f", sender.value)) Km"
     }
