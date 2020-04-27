@@ -34,6 +34,7 @@
                                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                                                 <connections>
                                                     <action selector="onEmailChanged:" destination="4K0-fj-IjB" eventType="editingChanged" id="tGc-WW-LWE"/>
+                                                    <outlet property="delegate" destination="4K0-fj-IjB" id="0GT-Yj-DSN"/>
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aHq-IX-RP5">
@@ -42,6 +43,7 @@
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 <connections>
                                                     <action selector="onPasswordChange:" destination="4K0-fj-IjB" eventType="editingChanged" id="04Z-IS-AJd"/>
+                                                    <outlet property="delegate" destination="4K0-fj-IjB" id="hyg-RD-ee7"/>
                                                 </connections>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dxW-Xl-gvd">
@@ -119,6 +121,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                         <connections>
                                             <action selector="onRegistrationFirstnameChanged:" destination="4K0-fj-IjB" eventType="editingChanged" id="Nh4-OJ-5Lx"/>
+                                            <outlet property="delegate" destination="4K0-fj-IjB" id="dba-E9-8Zl"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hDK-SQ-JNb">
@@ -133,6 +136,7 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                         <connections>
                                             <action selector="onRegistrationLastNameChanged:" destination="4K0-fj-IjB" eventType="editingChanged" id="NOj-7n-BeZ"/>
+                                            <outlet property="delegate" destination="4K0-fj-IjB" id="oNj-6x-cvh"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last name:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6al-xY-zv9">
@@ -148,6 +152,7 @@
                                         <connections>
                                             <action selector="onEmailChanged:" destination="4K0-fj-IjB" eventType="editingChanged" id="yDY-I9-icp"/>
                                             <action selector="onRegistrationEmailChanged:" destination="4K0-fj-IjB" eventType="editingChanged" id="L3D-3M-2Yz"/>
+                                            <outlet property="delegate" destination="4K0-fj-IjB" id="WB0-Dq-JVl"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3Q-qK-mfV">
@@ -163,6 +168,7 @@
                                         <connections>
                                             <action selector="onEmailChanged:" destination="4K0-fj-IjB" eventType="editingChanged" id="gqO-IY-rOP"/>
                                             <action selector="onRegistrationPasswordChanged:" destination="4K0-fj-IjB" eventType="editingChanged" id="SvC-xY-rP2"/>
+                                            <outlet property="delegate" destination="4K0-fj-IjB" id="0fV-Cn-JGO"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bjb-8W-Nnp">
@@ -177,6 +183,7 @@
                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                         <connections>
                                             <action selector="onRegistrationConfirmPasswordChanged:" destination="4K0-fj-IjB" eventType="editingChanged" id="DgL-8Z-gj4"/>
+                                            <outlet property="delegate" destination="4K0-fj-IjB" id="r2d-Qe-a8H"/>
                                         </connections>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm your password:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Gy-X6-df1">
@@ -280,16 +287,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="app_icon" width="200" height="170"/>
+        <image name="app_icon" width="2043" height="2033"/>
         <image name="paperplane.fill" catalog="system" width="64" height="60"/>
         <namedColor name="AccentColor">
-            <color red="0.91764705882352937" green="0.82352941176470584" blue="0.67450980392156867" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.9179999828338623" green="0.82400000095367432" blue="0.67500001192092896" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PrimaryColor">
-            <color red="1" green="0.88627450980392153" blue="0.011764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.88599997758865356" blue="0.012000000104308128" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="SecondaryColor">
-            <color red="0.12941176470588237" green="0.16078431372549021" blue="0.16862745098039217" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.1289999932050705" green="0.16099999845027924" blue="0.16899999976158142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

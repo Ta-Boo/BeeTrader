@@ -24,8 +24,11 @@ class MainCoordinator: Coordinator {
     var registrationController: UIViewController {
         let storyboard = UIStoryboard(name: "Registration", bundle: nil)
         let controller: RegistrationViewController = storyboard.instantiateViewController(withIdentifier: ViewControllers.registration) as! RegistrationViewController
-        controller.successfulLoginHandler = { [weak self] in
-            self?.navigationController.setViewControllers([self!.mainTabBarController], animated: true)
+        controller.viewModel.okLoginHandler = { [weak self] in
+            guard let self = self else {
+                return
+            }
+            self.navigationController.setViewControllers([self.mainTabBarController], animated: true)
         }
         return controller
     }
@@ -45,7 +48,7 @@ class MainCoordinator: Coordinator {
         if let _ = GlobalUser.shared.user {
             navigationController.pushViewController(mainTabBarController, animated: true)
         } else {
-            navigationController.presentInFullScreen(registrationController, animated: false)
+            navigationController.pushViewController(registrationController, animated: false)
         }
     }
 

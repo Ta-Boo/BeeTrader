@@ -10,6 +10,34 @@ import Alamofire
 import Foundation
 import UIKit
 
+protocol SignInDelegate: Delegate {
+    var loginParameters: Parameters { get }
+    var registerParameters: Parameters { get }
+    
+    func okRegistrationHandler(user: RegisterResponse)
+}
+
+extension RegistrationViewController: SignInDelegate {
+    
+    
+    var loginParameters: Parameters {
+           return RequestParameters.login(withEmail: emailLabel.text!, password: passwordLabel.text!)
+    }
+    
+    var registerParameters: Parameters {
+          return RequestParameters.register(firstName: registrationFirstNameLabel.text!,
+          lastName: registrationLastNameLabel.text!,
+          email: registrationEmailLabel.text!,
+          password: registrationConfirmEmailLabel.text!)
+      }
+
+    func okRegistrationHandler(user: RegisterResponse) {
+        swapForms(from: registrationForm, to: loginForm)
+        emailLabel.text = user.email
+        passwordLabel.text = ""
+    }
+}
+
 class RegistrationViewController: UIViewController {
     let viewModel = RegistrationViewModel()
 
@@ -26,19 +54,22 @@ class RegistrationViewController: UIViewController {
     @IBOutlet var registrationPasswordLabel: UITextField!
     @IBOutlet var registrationConfirmEmailLabel: UITextField!
     @IBOutlet var submitRegistrationButton: UIButton!
-
-    var successfulLoginHandler: EmptyClosure?
-
-    private var loginEnabled = false
-    private let shrinkedOffset: CGFloat = 64
-    private let stretchedOffset: CGFloat = 8
-
+        
+    var registrationFilled: Bool {
+           get {
+               return registrationFirstNameLabel.isNotEmpty() &&
+               registrationFirstNameLabel.isNotEmpty() &&
+               registrationLastNameLabel.isNotEmpty() &&
+               registrationEmailLabel.isNotEmpty() &&
+               registrationPasswordLabel.isNotEmpty() &&
+               registrationConfirmEmailLabel.isNotEmpty()
+           }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+        viewModel.delegate = self
+        viewModel.viewModelDidLoad()
         #if DEBUG
             emailLabel.text = "tobias@hladek.com"
             passwordLabel.text = "1"
@@ -46,39 +77,46 @@ class RegistrationViewController: UIViewController {
         #endif
     }
 
-    private func animatePasswordLabelWidth(withSpace space: CGFloat, _ completion: @escaping (Bool) -> Void) {
+    func enableLoginIfPossible() {
+        if (passwordLabel.text?.isEmpty ?? true) || (emailLabel.text?.isEmpty ?? true) {
+            hideLoginButton()
+        } else  {
+            showLoginButton()
+        }
+    }
+    
+    func hideLoginButton() {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.submitButton.alpha = 0
+
+        }, completion: { _ in
+            self.submitButton.isEnabled = false
+            self.submitButton.isHidden = true
+            })
+        animatePasswordLabelWidth(withSpace: 8) { _ in }
+    }
+    
+    func showLoginButton() {
+        animatePasswordLabelWidth(withSpace: 64) { _ in
+            UIView.animate(withDuration: 0.3, animations: {
+                self.submitButton.isHidden = false
+                self.submitButton.alpha = 1
+
+            }, completion: { _ in
+                self.submitButton.isEnabled = true
+            })
+        }
+    }
+    
+    func animatePasswordLabelWidth(withSpace space: CGFloat, _ completion: @escaping (Bool) -> Void) {
         UIView.animate(withDuration: 0.6, animations: {
             self.passwordRightOffset.constant = space
             self.view.layoutIfNeeded()
         }, completion: completion)
     }
+    
 
-    private func enableLoginIfPossible() {
-        if (passwordLabel.text?.isEmpty ?? true) || (emailLabel.text?.isEmpty ?? true) {
-            loginEnabled = false
-            UIView.animate(withDuration: 0.3, animations: {
-                self.submitButton.alpha = 0
-
-            }, completion: { _ in
-                self.submitButton.isEnabled = false
-                self.submitButton.isHidden = true
-                })
-            animatePasswordLabelWidth(withSpace: stretchedOffset) { _ in }
-        } else if !loginEnabled {
-            loginEnabled = true
-            animatePasswordLabelWidth(withSpace: shrinkedOffset) { _ in
-                UIView.animate(withDuration: 0.3, animations: {
-                    self.submitButton.isHidden = false
-                    self.submitButton.alpha = 1
-
-                }, completion: { _ in
-                    self.submitButton.isEnabled = true
-                })
-            }
-        }
-    }
-
-    private func swapForms(from: UIView, to: UIView) {
+    func swapForms(from: UIView, to: UIView) {
         to.alpha = 0
         to.isHidden = false
 
@@ -93,61 +131,18 @@ class RegistrationViewController: UIViewController {
         })
     }
 
-    private func checkRegistrationFormFill() {
-        if isRegistrationFormFilled() {
+    func updateRegistrationView() {
+        if registrationFilled {
             submitRegistrationButton.isHidden = false
         } else {
             submitRegistrationButton.isHidden = true
         }
     }
 
-    private func isRegistrationFormFilled() -> Bool {
-        return registrationFirstNameLabel.isNotEmpty() &&
-            registrationFirstNameLabel.isNotEmpty() &&
-            registrationLastNameLabel.isNotEmpty() &&
-            registrationEmailLabel.isNotEmpty() &&
-            registrationPasswordLabel.isNotEmpty() &&
-            registrationConfirmEmailLabel.isNotEmpty()
-    }
 
-    private func saveUserData(user: User) {
-        GlobalUser.shared.update(user)
-    }
-
-    private func sucessfulLogin(_ value: DataWrapper<User>) {
-        if var data = value.data {
-            saveUserData(user: data)
-            successfulLoginHandler?()
-            dismiss(animated: true, completion: nil)
-        } else {
-            let alert = UIAlertController(title: "Check your email or password", message: nil, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-            present(alert, animated: true)
-        }
-    }
-
-    func failedLogin() {
-        let alert = UIAlertController(title: L10n.Alert.noConnection, message: nil, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: L10n.Common.cancel, style: .cancel))
-        present(alert, animated: true)
-    }
-
-    func login(parameters: Parameters? = nil) {
-        let workingParams = parameters ?? RequestParameters.login(withEmail: emailLabel.text!, password: passwordLabel.text!)
-        showHUD()
-        viewModel.login(parameters: workingParams) { [weak self] result in
-            self?.hideHUD()
-            switch result {
-            case let .success(value):
-                self?.sucessfulLogin(value)
-            case .failure:
-                self?.failedLogin()
-            }
-        }
-    }
 
     @IBAction func onSentButtonClicked(_: Any) {
-        login()
+        viewModel.login()
     }
 
     // MARK: LOGIN
@@ -163,22 +158,7 @@ class RegistrationViewController: UIViewController {
     // MARK: REGISTRATION
 
     @IBAction func onsubmitRegistrationTapped(_: Any) {
-        let email = registrationEmailLabel.text!
-        let password = registrationConfirmEmailLabel.text!
-        let parameters = RequestParameters.register(firstName: registrationFirstNameLabel.text!,
-                                                    lastName: registrationLastNameLabel.text!,
-                                                    email: email,
-                                                    password: password)
-        showHUD()
-        viewModel.register(parameters: parameters) { [weak self] result in
-            switch result {
-            case .success:
-                self?.login(parameters: RequestParameters.login(withEmail: email, password: password))
-            case let .failure(error):
-                print(error)
-                self?.hideHUD()
-            }
-        }
+        viewModel.register(withParameters: registerParameters)
     }
 
     @IBAction func registrationFormTapped(_: Any) {
@@ -190,22 +170,22 @@ class RegistrationViewController: UIViewController {
     }
 
     @IBAction func onRegistrationFirstnameChanged(_: Any) {
-        checkRegistrationFormFill()
+        updateRegistrationView()
     }
 
     @IBAction func onRegistrationLastNameChanged(_: Any) {
-        checkRegistrationFormFill()
+        updateRegistrationView()
     }
 
     @IBAction func onRegistrationEmailChanged(_: Any) {
-        checkRegistrationFormFill()
+        updateRegistrationView()
     }
 
     @IBAction func onRegistrationPasswordChanged(_: Any) {
-        checkRegistrationFormFill()
+        updateRegistrationView()
     }
 
     @IBAction func onRegistrationConfirmPasswordChanged(_: Any) {
-        checkRegistrationFormFill()
+        updateRegistrationView()
     }
 }

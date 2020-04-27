@@ -128,6 +128,13 @@ extension ListingViewController: UIGestureRecognizerDelegate {
 
 // MARK: COLLECTION MANAGER
 
+extension RegistrationViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+           textField.resignFirstResponder()
+           return true
+       }
+}
+
 
 extension ListingViewController: CollectionManager {
     var spacing: CGFloat { return 16 }

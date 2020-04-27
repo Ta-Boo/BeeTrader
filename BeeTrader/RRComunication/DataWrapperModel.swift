@@ -20,7 +20,6 @@ struct DataWrapper<T: Codable>: Codable {
     }
 }
 
-struct RegisterResponse: Codable {}
 struct Dump: Codable {}
 
 

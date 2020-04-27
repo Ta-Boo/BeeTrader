@@ -1,7 +1,47 @@
-/* 
+/*
   Localizable.strings
   BeeTrader
 
   Created by hladek on 25/04/2020.
   Copyright © 2020 hladek. All rights reserved.
 */
+"Welcome.Password" = "Heslo";
+"Welcome.FirstTime" = "Ste tu prvýkrát ?";
+"Welcome.FirstName" = "Meno";
+"Welcome.LastName" = "Priezvisko";
+"Welcome.ConfimrPassword" = "Potvrďte svoje heslo";
+
+"User.LogOut" = "Odhlásiť sa";
+"User.ChangeAvatar" = "Zmeňte svoju fotku!";
+"User.AddressHint" = "Zadajte PSČ alebo názov mesta.";
+
+"Listing.Add.Title" = "Názov";
+"Listing.Add.Price" = "Cena v €";
+"Listing.Add.ChangeImage" = "Zmeňte obrázok svojho inzerátu.";
+"Listing.Add.Description" = "Zadajte ďalšie informácie, ktoré opisujú, čo predávate.";
+"Listing.Add.Submit" = "Potvrdiť";
+"Listing.Add.Category.Title" = "Vyberte vašu kategóriu.";
+
+"Listing.CannotEdit" = "Nemôžete upraviť tento inzerát.";
+"Listing.Edit.RemoveDialogTitle" = "Chystáte sa odstrániť tento záznam.";
+
+"Listing.Filter.Distance" = "Vzdialenosť";
+"Listing.Filter.Submit" = "Potvrdiť";
+
+"Common.Ok" = "Ok";
+"Common.Cancel" = "Zrušiť";
+"Common.Yes" = "Áno";
+
+"Alert.UnknownFail" = "Niečo sa pokazilo.";
+"Alert.TryAgain" = "Skúste to neskôr.";
+"Alert.Confirm" = "Ste si istý? ";
+"Alert.FutureEfect" = "Táto akcia ovplyvní používanie tejto aplikácie v budúcnosti.";
+"Alert.Fill" = "Vyplňte všetky polia a nahrajte obrázok!";
+"Alert.NoCamera" = "Vaše zariadenie nedisponuje kamerou.";
+"Alert.EmailMissing" = "Z tohto zariadenia nie je možné odosielať e-maily.";
+"Alert.NoConnection" = "Skontrolujte svoje pripojenie k internetu.";
+
+
+"Email.SubjectPlaceholder" = "Váš záznam!";
+"Email.Subject" = "z platformy Beetrader!";
+

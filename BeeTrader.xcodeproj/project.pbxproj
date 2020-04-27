@@ -13,6 +13,7 @@
 		B3188C40245491030058E74E /* EditListing.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3188C3F245491030058E74E /* EditListing.storyboard */; };
 		B3188C42245491930058E74E /* EditListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3188C41245491930058E74E /* EditListingViewController.swift */; };
 		B3188C44245491D20058E74E /* EditListingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3188C43245491D20058E74E /* EditListingViewModel.swift */; };
+		B3188C462455957B0058E74E /* RegistrationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3188C452455957B0058E74E /* RegistrationModel.swift */; };
 		B33B7C982411210300CD6719 /* DataWrapperModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B7C972411210300CD6719 /* DataWrapperModel.swift */; };
 		B33B7C9A2411481600CD6719 /* UrlRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B33B7C992411481600CD6719 /* UrlRequest.swift */; };
 		B35BA94C240FEB4C00BDA7C9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35BA94B240FEB4C00BDA7C9 /* AppDelegate.swift */; };
@@ -118,6 +119,7 @@
 		B3188C3F245491030058E74E /* EditListing.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = EditListing.storyboard; sourceTree = "<group>"; };
 		B3188C41245491930058E74E /* EditListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditListingViewController.swift; sourceTree = "<group>"; };
 		B3188C43245491D20058E74E /* EditListingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditListingViewModel.swift; sourceTree = "<group>"; };
+		B3188C452455957B0058E74E /* RegistrationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationModel.swift; sourceTree = "<group>"; };
 		B33B7C972411210300CD6719 /* DataWrapperModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataWrapperModel.swift; sourceTree = "<group>"; };
 		B33B7C992411481600CD6719 /* UrlRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlRequest.swift; sourceTree = "<group>"; };
 		B35BA948240FEB4C00BDA7C9 /* BeeTrader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeeTrader.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -321,6 +323,7 @@
 				B35BA987240FEC5600BDA7C9 /* RegistrationViewController.swift */,
 				B35BA988240FEC5600BDA7C9 /* RegistrationViewModel.swift */,
 				B35BA986240FEC5600BDA7C9 /* Registration.storyboard */,
+				B3188C452455957B0058E74E /* RegistrationModel.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -614,6 +617,7 @@
 				B37F57AE2422050A001B84BB /* UserDetailViewModel.swift in Sources */,
 				B38E4EF1241AC74500B85994 /* Parameters+Headers.swift in Sources */,
 				B375399524269E140051C2E6 /* ListingDetailViewModel.swift in Sources */,
+				B3188C462455957B0058E74E /* RegistrationModel.swift in Sources */,
 				B35BA98E240FEC5700BDA7C9 /* UserModel.swift in Sources */,
 				B35BA98D240FEC5700BDA7C9 /* RegistrationViewModel.swift in Sources */,
 				B37B1B4D2415A68B005C3702 /* UserViewController.swift in Sources */,

@@ -23,7 +23,7 @@
 "Listing.Add.Category.Title" = "Choose your category";
 
 "Listing.CannotEdit" = "You cannot edit this listing.";
-"Listing.Edit.RemoveDialogTitle" = "You are about to delete this listing.";
+"Listing.Edit.RemoveDialog.Title" = "You are about to delete this listing.";
 
 "Listing.Filter.Distance" = "Distance";
 "Listing.Filter.Submit" = "Submit";
@@ -43,5 +43,5 @@
 
 
 "Email.SubjectPlaceholder" = "Your listing!";
-"Email.Subject" = "Your listing!";
+"Email.Subject" = "at Beetrader!";
 
