@@ -21,6 +21,7 @@ class EditListingViewController: KeyboardLayoutManager {
     @IBOutlet weak var submitButton: UIButton!
     
     var imagePicker: UIImagePickerController!
+    let viewModel = EditListingViewModel()
     var parameters: [String: String?] {
         return RequestParameters.updateListing(listingId: viewModel.listingId,
                                                title: titleLabel.text,
@@ -30,11 +31,8 @@ class EditListingViewController: KeyboardLayoutManager {
     }
     var isFilled: Bool {
           return titleLabel.isNotEmpty() && priceLabel.isNotEmpty() && viewModel.category != nil
-      }
+    }
        
-    
-    let viewModel = EditListingViewModel()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
@@ -48,7 +46,7 @@ class EditListingViewController: KeyboardLayoutManager {
         submitButton.setTitle(L10n.Common.submit, for: .normal)
         titleLabel.placeholder = L10n.Listing.Add.title
         priceLabel.placeholder = L10n.Listing.Add.price
-       }
+    }
     
     @IBAction func submitTapped(_ sender: Any) {
         if isFilled{
@@ -57,16 +55,18 @@ class EditListingViewController: KeyboardLayoutManager {
             presentFailAlert(L10n.Alert.fill)
         }
     }
+    
     @IBAction func changeImageTapped(_ sender: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                   imagePicker = UIImagePickerController()
-                   imagePicker.delegate = self
-                   imagePicker.sourceType = .camera
-                   present(imagePicker, animated: true)
-               } else {
-                   presentFailAlert(L10n.Alert.noCamera)
-               }
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            presentFailAlert(L10n.Alert.noCamera)
+            return
+        }
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        present(imagePicker, animated: true)
     }
+    
     @IBAction func categoryTapped(_ sender: Any) {
         let controller = StoryboardScene.CategoryPicker.initialScene.instantiate()
         controller.viewModel.categoryPickCompletion = { [weak self] category in
@@ -74,6 +74,7 @@ class EditListingViewController: KeyboardLayoutManager {
                }
         present(controller, animated: true)
     }
+    
     @IBAction func deleteTapped(_ sender: Any) {
         presentConfirmationAlert(title: L10n.Listing.Edit.removeDialogTitle) { [weak self] in
             self?.viewModel.deleteListing()
@@ -91,20 +92,13 @@ extension EditListingViewController: ImagePickerManager {
 protocol EditListingViewDelegate: Delegate {
     func listingLoadedHandler(listing: ListingDetail)
     func listingEditOKHandler()
-    func listingEditFailureHandler()
 }
 
 extension EditListingViewController: EditListingViewDelegate{
-    func listingEditFailureHandler() {
-        presentFailure()
-        view.isUserInteractionEnabled = true
-        hideHUD()
-    }
+
     
     func listingEditOKHandler() {
         dismiss(animated: true, completion: nil)
-        view.isUserInteractionEnabled = true
-        hideHUD()
     }
     
     func listingLoadedHandler(listing: ListingDetail) {

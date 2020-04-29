@@ -9,10 +9,6 @@
 import Foundation
 import UIKit
 
-protocol ListingFilterViewDelegate: Delegate {
-    func showCategories()
-}
-
 class ListingFilterViewController: UIViewController {
     @IBOutlet var tableView: UITableView!
     @IBOutlet var distanceSlider: UISlider!
@@ -43,6 +39,10 @@ class ListingFilterViewController: UIViewController {
     }
 }
 // MARK: Delegate
+protocol ListingFilterViewDelegate: Delegate {
+    func showCategories()
+}
+
 extension ListingFilterViewController: ListingFilterViewDelegate {
     func showCategories() {
         tableView.reloadData()

@@ -10,7 +10,6 @@ import Alamofire
 import Foundation
 
 class ListingFilterViewModel: ViewModel {
-    
     var delegate: ListingFilterViewDelegate?
     var submitCompletion: ((ListingFilter) -> Void)?
     var filterTypes: [Category]? = []

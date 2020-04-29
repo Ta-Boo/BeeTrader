@@ -10,13 +10,6 @@ import Foundation
 import UIKit
 import Alamofire
 
-protocol AddListingViewDelegate: Delegate {
-    var parameters: [String: String?] { get }
-    var isFilled: Bool { get }
-    func changeAccessibility(to: Bool)
-    func dismiss(animated : Bool, completion: EmptyClosure?)
-}
-
 class AddListingViewController: KeyboardLayoutManager {
     let viewModel = AddListingViewModel()
     var imagePicker: UIImagePickerController!
@@ -29,6 +22,16 @@ class AddListingViewController: KeyboardLayoutManager {
     @IBOutlet weak var changeImageButton: UIButton!
     @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var submitButton: UIButton!
+    var parameters: [String: String?] {
+        return RequestParameters.addListing(title: listingTitle.text,
+                                            userId: GlobalUser.shared.user?.id,
+                                            typeId: viewModel.category,
+                                            description: listingDescription.text,
+                                            price: Int(listingPrice.text!)!*100)
+    }
+    var isFormFilled: Bool {
+           return listingTitle.isNotEmpty() && listingPrice.isNotEmpty() && viewModel.category != nil && viewModel.imageSet
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,29 +57,35 @@ class AddListingViewController: KeyboardLayoutManager {
 
 
     @IBAction func takePhoto(_: Any) {
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = .camera
-            present(imagePicker, animated: true)
-        } else {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
             presentFailAlert(L10n.Alert.noCamera)
+            return
         }
+        imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        present(imagePicker, animated: true)
     }
     
     @IBAction func categoryTapped(_ sender: Any) {
         let controller = StoryboardScene.CategoryPicker.initialScene.instantiate()
         controller.viewModel.categoryPickCompletion = { [weak self] category in
             self?.viewModel.category = category.id
-               }
+        }
         present(controller, animated: true)
     }
     
     @IBAction func submitActiontapped(_ sender: Any) {
-        viewModel.uploadListing(image: listingImage.image)
+        guard isFormFilled else {
+            presentFailAlert(L10n.Alert.fill)
+            return
+        }
+        viewModel.uploadListing(withParameters: parameters, image: listingImage.image)
     }
 }
 //MARK: Delegates
+
+
 extension AddListingViewController: ImagePickerManager {
     func imagePickerController(_: UIImagePickerController, didFinishPickingMediaWithInfo image: [UIImagePickerController.InfoKey: Any]) {
         viewModel.imageSet = true
@@ -85,18 +94,11 @@ extension AddListingViewController: ImagePickerManager {
     }
 }
 
+protocol AddListingViewDelegate: Delegate {
+    func listingChangedHandler()
+}
 extension AddListingViewController: AddListingViewDelegate {
-    var isFilled: Bool {
-        return listingTitle.isNotEmpty() && listingPrice.isNotEmpty() && viewModel.category != nil && viewModel.imageSet
+    func listingChangedHandler() {
+        dismiss(animated: true)
     }
-    
-    func changeAccessibility(to: Bool) {
-        view.isUserInteractionEnabled = to
-    }
-    
-    
-    var parameters: [String: String?] {
-        return RequestParameters.addListing(title: listingTitle.text, userId: GlobalUser.shared.user?.id, typeId: viewModel.category, description: listingDescription.text, price: Int(listingPrice.text!)!*100)
-    }
-    
 }

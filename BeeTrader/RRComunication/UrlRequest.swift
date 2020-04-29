@@ -64,9 +64,7 @@ class UrlRequest<WrappedData: Codable> {
                         images: [Image],
                       parameters: Dictionary<String,String?>? = nil,
                       headers: HTTPHeaders? = nil,
-                      loadingProgressor: @escaping DoubleClosure,
-                      successCompletion: @escaping EmptyClosure,
-                      failureCompletion: @escaping EmptyClosure
+                      completionHandler: @escaping (Result<Any>) -> Void
                       ) {
         Alamofire.upload(multipartFormData: { (multipartFormData) in
             for image in images {
@@ -86,16 +84,14 @@ class UrlRequest<WrappedData: Codable> {
            headers: RequestHeaders.authorization) { result in
                 switch result {
                 case .success(let upload, _, _):
-                    upload.uploadProgress(closure: { (progress) in
-                        loadingProgressor(progress.fractionCompleted)
-                    })
+                    upload.uploadProgress(closure: { _ in })
                     upload.validate().responseJSON { result in
-                        if result.data != nil {
-                            successCompletion()
+                        if let data = result.data {
+                            completionHandler(Result.success(data))
                         }
                     }
-                case .failure:
-                    failureCompletion()
+                case .failure(let error):
+                    completionHandler(Result.failure(error))
                 }
             }
         }

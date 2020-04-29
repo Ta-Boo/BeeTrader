@@ -50,14 +50,19 @@ class EditListingViewModel: ViewModel {
         delegate.showHUD()
 
         UrlRequest<Dump>().uploadImages(url: url, images: images,
-                                        parameters: parameters,
-                                        loadingProgressor: { _ in
-        }, successCompletion: { [weak self] in
-            self?.completionHandler?()
-            self?.delegate.listingEditOKHandler()
-        }, failureCompletion: { [weak self] in
-            self?.delegate.listingEditFailureHandler()
-        })
+                                        parameters: parameters)
+                                       { [weak self] result in
+            self?.delegate.hideHUD()
+            self?.delegate.changeAccessibility(to: true)
+            switch result {
+            case .success:
+                self?.completionHandler?()
+                self?.delegate.listingEditOKHandler()
+            case .failure:
+                self?.delegate.presentFailure()
+            }
+            
+        }
     }
     
     func deleteListing() {
@@ -66,6 +71,8 @@ class EditListingViewModel: ViewModel {
         delegate?.showHUD()
         UrlRequest<Dump>().handle(url, methood: .delete,
                                   parameters: RequestParameters.listing(id: listingId)) { [weak self] response in
+            self?.delegate?.hideHUD()
+            self?.delegate?.changeAccessibility(to: true)
             switch response {
             case .success:
                 self?.delegate.listingEditOKHandler()
@@ -73,8 +80,6 @@ class EditListingViewModel: ViewModel {
             case .failure:
                 self?.delegate?.presentFailure()
             }
-            self?.delegate?.hideHUD()
-            self?.delegate?.changeAccessibility(to: true)
         }
     }
 }

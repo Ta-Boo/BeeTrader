@@ -29,12 +29,14 @@ class UserDetailViewModel: ViewModel {
     func uploadData(withParameters parameters: WeakParameters, image: UIImage?) {
         let url = ApiConstants.updateUser
         UrlRequest<Dump>().uploadImages(url: url, images: image.toImageArray(),
-                                        parameters: parameters, loadingProgressor: { _ in
-        }, successCompletion: { [weak self] in
-            self?.delegate.completionHandler()
-        }, failureCompletion: { [weak self] in
-            self?.delegate.presentFailure()
-        })
+                                        parameters: parameters){ [weak self]  result in
+            switch result {
+            case .success:
+                self?.delegate.completionHandler()
+            case .failure:
+                self?.delegate.presentFailure()
+            }
+        }
     }
 
     func avatarToUpload(_ imageView: UIImageView) -> UIImage? {

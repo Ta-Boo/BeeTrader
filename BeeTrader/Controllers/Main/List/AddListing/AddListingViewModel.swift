@@ -11,38 +11,30 @@ import UIKit
 import Alamofire
 
 class AddListingViewModel: ViewModel {
-    var delegate: AddListingViewDelegate?
+    var delegate: AddListingViewDelegate!
     var category: Int?
     var imageSet: Bool = false
-    
     var completionHandler: EmptyClosure?
 
-    
     func viewModelDidLoad() {}
     
-    func uploadListing(image: UIImage?) {
-        guard let delegate = delegate else {
-            return
-        }
-        if !delegate.isFilled {
-            delegate.presentFailAlert(L10n.Alert.fill)
-            return
-        }
+    func uploadListing(withParameters parameters: WeakParameters,image: UIImage?) {
         let url = ApiConstants.listing
         let images = [Image(name: "image", fileName: "image", data: image!)]
         delegate.changeAccessibility(to: false)
         delegate.showHUD()
 
-        UrlRequest<Dump>().uploadImages(url: url, images: images, parameters: delegate.parameters, loadingProgressor: { _ in
-        }, successCompletion: { [weak self] in
-            self?.delegate?.dismiss(animated: true, completion: nil)
-            self?.completionHandler?()
+        UrlRequest<Dump>().uploadImages(url: url, images: images, parameters: parameters){ [weak self]  result in
             self?.delegate?.hideHUD()
-        }, failureCompletion: { [weak self] in
-            self?.delegate?.presentFailure()
             self?.delegate?.changeAccessibility(to: true)
-            self?.delegate?.hideHUD()
-        })
+            switch result{
+            case .success:
+                self?.delegate.listingChangedHandler()
+                self?.completionHandler?()
+            case .failure:
+                self?.delegate?.presentFailure()
+            }
+        }
     }
     
 }
