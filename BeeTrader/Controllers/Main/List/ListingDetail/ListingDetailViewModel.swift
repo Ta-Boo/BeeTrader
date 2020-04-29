@@ -13,7 +13,6 @@ protocol ListingDetailDelegate {
     func loadListing()
     func listingLoadedSuccess(listing: ListingDetail)
     func listingLoadedFailure()
-    func sendEmailHandler(sender: UITapGestureRecognizer)
     func setupViewsHandler()
 }
 
@@ -22,7 +21,7 @@ class ListingDetailViewModel {
     var listingId: Int?
     var listing: ListingDetail?
     func loadData(parameters: Parameters) {
-        UrlRequest<ListingDetail>().handle(ApiConstants.baseUrl + "listing",
+        UrlRequest<ListingDetail>().handle(ApiConstants.listing,
                                            methood: HTTPMethod.get,
                                            parameters: parameters) { [weak self] result in
             switch result {

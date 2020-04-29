@@ -78,36 +78,12 @@ extension UIView {
 }
 
 extension UIImageView {
-//    func loadImage(url imageUrl : String?,_ animated: Bool = false) {
-//        guard let urlString = imageUrl else {
-//            return
-//        }
-//        DispatchQueue.global().async { [weak self] in
-//            let url = URL(string: urlString)
-//            let data = try? Data(contentsOf: url!)
-//            if animated {
-//                DispatchQueue.main.async {
-//                UIView.animate(withDuration: 0.2, animations: {
-//                    self?.alpha = 0
-//                }, completion: nil)
-//                UIView.animate(withDuration: 0.3, animations: {
-//                    self?.alpha = 1
-//                }, completion: nil)
-//                    self?.image = UIImage(data: data!)
-//                }
-//            } else {
-//                DispatchQueue.main.async {
-//                    self?.image = UIImage(data: data!)
-//                }
-//            }
-//        }
-//    }
     
     func imageFromUrl(_ url : String?, useCached: Bool, _ animated: Bool = false) {
         guard let url = url ,
             var request = try? URLRequest(url: url,
                                           method: .get,
-                                          headers: ["Authorization" : KeychainSwift().get("bearer_token") ?? ""])
+                                          headers: RequestHeaders.authorization)
             else { return }
         request.cachePolicy = useCached ?
             URLRequest.CachePolicy.returnCacheDataElseLoad : URLRequest.CachePolicy.reloadIgnoringCacheData

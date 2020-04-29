@@ -11,29 +11,14 @@ import Foundation
 import UIKit
 
 protocol SignInDelegate: Delegate {
-    var loginParameters: Parameters { get }
-    var registerParameters: Parameters { get }
-    
-    func okRegistrationHandler(user: RegisterResponse)
+    func okRegistrationHandler(email: String)
 }
 
 extension RegistrationViewController: SignInDelegate {
-    
-    
-    var loginParameters: Parameters {
-           return RequestParameters.login(withEmail: emailLabel.text!, password: passwordLabel.text!)
-    }
-    
-    var registerParameters: Parameters {
-          return RequestParameters.register(firstName: registrationFirstNameLabel.text!,
-          lastName: registrationLastNameLabel.text!,
-          email: registrationEmailLabel.text!,
-          password: registrationConfirmEmailLabel.text!)
-      }
 
-    func okRegistrationHandler(user: RegisterResponse) {
+    func okRegistrationHandler(email: String) {
         swapForms(from: registrationForm, to: loginForm)
-        emailLabel.text = user.email
+        emailLabel.text = email
         passwordLabel.text = ""
     }
 }
@@ -62,7 +47,6 @@ class RegistrationViewController: UIViewController {
     @IBOutlet weak var passwordConfirmTitle: UILabel!
     @IBOutlet weak var existingAccountButton: UIButton!
     @IBOutlet weak var firstTimeButton: UIButton!
-    
         
     var registrationFilled: Bool {
            get {
@@ -74,6 +58,17 @@ class RegistrationViewController: UIViewController {
                registrationConfirmEmailLabel.isNotEmpty()
            }
     }
+    
+    var loginParameters: Parameters {
+           return RequestParameters.login(withEmail: emailLabel.text!, password: passwordLabel.text!)
+    }
+    
+    var registerParameters: Parameters {
+          return RequestParameters.register(firstName: registrationFirstNameLabel.text!,
+          lastName: registrationLastNameLabel.text!,
+          email: registrationEmailLabel.text!,
+          password: registrationConfirmEmailLabel.text!)
+      }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -162,7 +157,7 @@ class RegistrationViewController: UIViewController {
 
 
     @IBAction func onSentButtonClicked(_: Any) {
-        viewModel.login()
+        viewModel.login(withParameters: loginParameters)
     }
 
     // MARK: LOGIN

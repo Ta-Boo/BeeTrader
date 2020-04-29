@@ -9,13 +9,13 @@
 import Foundation
 import UIKit
 
-extension UIColor {
-    enum Common {
-        static let primary = UIColor(named: "PrimaryColor")
-        static let secondary = UIColor(named: "SecondaryColor")
-        static let accent = UIColor(named: "AccentColor")
-        static let accentTomato = UIColor(named: "AccentTomatoColor")
-        static let text = UIColor(named: "TextColor")
-
-    }
-}
+//extension UIColor {
+//    enum Common {
+//        static let primary = UIColor(named: "PrimaryColor")
+//        static let secondary = UIColor(named: "SecondaryColor")
+//        static let accent = UIColor(named: "AccentColor")
+//        static let accentTomato = UIColor(named: "AccentTomatoColor")
+//        static let text = UIColor(named: "TextColor")
+//
+//    }
+//}

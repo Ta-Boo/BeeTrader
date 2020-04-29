@@ -21,7 +21,7 @@ class ListingFilterViewModel: ViewModel {
 
     func loadCategories() {
         delegate?.showHUD()
-        UrlRequest<[Category]>().handle(ApiConstants.baseUrl + "categories",
+        UrlRequest<[Category]>().handle(ApiConstants.categories,
                                         methood: HTTPMethod.get) { [weak self] result in
                                             self?.delegate?.hideHUD()
                                             switch result {

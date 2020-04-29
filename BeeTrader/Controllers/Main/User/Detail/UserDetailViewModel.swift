@@ -28,8 +28,7 @@ class UserDetailViewModel: ViewModel {
 
 
     func handleAddressTapped() {
-        let storyboard = UIStoryboard(name: "AddressPicker", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.userDetailAddressPicker) as! AddressPickerViewController
+        let controller = StoryboardScene.AddressPicker.addressPickerViewController.instantiate()
         controller.addressPickCompletion = { [weak self] address in
             self?.delegate?.addressPickerCompletionHandler(address: address)
         }
@@ -37,7 +36,7 @@ class UserDetailViewModel: ViewModel {
     }
 
     func uploadData(image: UIImage?) {
-        let url = "\(ApiConstants.baseUrl)user"
+        let url = ApiConstants.user
         var images: [Image]
         if let img = image {
             images = [Image(name: "image", fileName: "image", data: img)]

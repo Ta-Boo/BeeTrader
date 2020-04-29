@@ -16,7 +16,7 @@ class FilterTypeCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        choosenSwitch.onTintColor = UIColor(named: "PrimaryColor")
+        choosenSwitch.onTintColor = UIColor.primaryColor
     }
 
     func setData(data: Category) {

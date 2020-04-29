@@ -296,14 +296,23 @@
                                                         <constraint firstAttribute="bottom" secondItem="mJY-V6-4Hz" secondAttribute="bottom" constant="2" id="zWf-eZ-2NW"/>
                                                     </constraints>
                                                 </view>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="2O0-Ys-1MI">
+                                                    <rect key="frame" x="147" y="12" width="24" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="24" id="VDm-F0-qt8"/>
+                                                        <constraint firstAttribute="height" constant="24" id="ZPB-sX-W4w"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" name="AccentTomatoColor"/>
                                             <constraints>
                                                 <constraint firstItem="ri3-nr-fiv" firstAttribute="leading" secondItem="j1C-An-AKz" secondAttribute="leading" id="4jD-NU-aPp"/>
                                                 <constraint firstAttribute="trailing" secondItem="ri3-nr-fiv" secondAttribute="trailing" id="6Gh-Qx-gtj"/>
                                                 <constraint firstItem="ri3-nr-fiv" firstAttribute="top" secondItem="j1C-An-AKz" secondAttribute="top" id="920-4d-uhs"/>
+                                                <constraint firstItem="2O0-Ys-1MI" firstAttribute="top" secondItem="j1C-An-AKz" secondAttribute="top" constant="12" id="Ew0-I7-KxY"/>
                                                 <constraint firstItem="9Qe-H9-eFW" firstAttribute="bottom" secondItem="ri3-nr-fiv" secondAttribute="bottom" id="UyU-UN-pSP"/>
                                                 <constraint firstAttribute="bottom" secondItem="ri3-nr-fiv" secondAttribute="bottom" id="XOJ-Z2-Ums"/>
+                                                <constraint firstAttribute="trailing" secondItem="2O0-Ys-1MI" secondAttribute="trailing" constant="12" id="Yln-zT-GB2"/>
                                                 <constraint firstItem="9Qe-H9-eFW" firstAttribute="top" secondItem="j1C-An-AKz" secondAttribute="top" constant="171" id="bf1-A0-RlM"/>
                                                 <constraint firstItem="9Qe-H9-eFW" firstAttribute="leading" secondItem="ri3-nr-fiv" secondAttribute="leading" id="blz-6G-aBK"/>
                                                 <constraint firstItem="9Qe-H9-eFW" firstAttribute="trailing" secondItem="ri3-nr-fiv" secondAttribute="trailing" id="k0Y-o3-BSa"/>
@@ -318,6 +327,7 @@
                                         <connections>
                                             <outlet property="distance" destination="TYL-dr-qVe" id="MnI-VT-e6E"/>
                                             <outlet property="image" destination="ri3-nr-fiv" id="zMt-Ju-JnR"/>
+                                            <outlet property="ownerMark" destination="2O0-Ys-1MI" id="MEE-ly-EnD"/>
                                             <outlet property="price" destination="mJY-V6-4Hz" id="fdY-A5-8pV"/>
                                             <outlet property="title" destination="OMd-ou-RxF" id="1or-QA-vOv"/>
                                             <outlet property="views" destination="g5q-Wj-Dl2" id="feE-dR-PEK"/>
@@ -394,7 +404,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kXd-A4-79c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="400" y="-402"/>
+            <point key="canvasLocation" x="400.00000000000006" y="-402.71739130434787"/>
         </scene>
         <!--Main Tab Bar Controller-->
         <scene sceneID="c7W-7b-3og">
@@ -420,7 +430,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="avatar" width="520" height="520"/>
+        <image name="avatar" width="128" height="128"/>
         <image name="edit" width="384" height="384"/>
         <image name="eye" catalog="system" width="64" height="40"/>
         <image name="filter" width="464" height="464"/>

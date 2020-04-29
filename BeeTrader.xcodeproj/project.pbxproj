@@ -31,7 +31,6 @@
 		B37539832424BFAC0051C2E6 /* AddressPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37539822424BFAC0051C2E6 /* AddressPickerViewController.swift */; };
 		B37539852424BFDA0051C2E6 /* AddressPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37539842424BFDA0051C2E6 /* AddressPickerViewModel.swift */; };
 		B37539872424C0840051C2E6 /* AddressPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B37539862424C0840051C2E6 /* AddressPicker.storyboard */; };
-		B37539892424C32D0051C2E6 /* UserDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37539882424C32D0051C2E6 /* UserDetailCoordinator.swift */; };
 		B375398B2424D7550051C2E6 /* AddressModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B375398A2424D7550051C2E6 /* AddressModel.swift */; };
 		B375398D2424D9B40051C2E6 /* AddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B375398C2424D9B40051C2E6 /* AddressCell.swift */; };
 		B375398F24262ADF0051C2E6 /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B375398E24262ADF0051C2E6 /* Debouncer.swift */; };
@@ -40,13 +39,11 @@
 		B375399724269EB60051C2E6 /* ListingDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B375399624269EB60051C2E6 /* ListingDetail.storyboard */; };
 		B37539992426AE790051C2E6 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37539982426AE790051C2E6 /* Gradient.swift */; };
 		B37ACC7624407D7D001A8765 /* CategorypickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37ACC7524407D7D001A8765 /* CategorypickerCell.swift */; };
-		B37B1B4524157012005C3702 /* StorageKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4424157012005C3702 /* StorageKeys.swift */; };
 		B37B1B4824159F0D005C3702 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4724159F0D005C3702 /* Circle.swift */; };
 		B37B1B4D2415A68B005C3702 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4C2415A68B005C3702 /* UserViewController.swift */; };
 		B37B1B4F2415A6DA005C3702 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B4E2415A6DA005C3702 /* UserViewModel.swift */; };
 		B37B1B5324169252005C3702 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B5224169252005C3702 /* Coordinator.swift */; };
 		B37B1B56241692B6005C3702 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B55241692B6005C3702 /* MainCoordinator.swift */; };
-		B37B1B582416C74E005C3702 /* ViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37B1B572416C74E005C3702 /* ViewControllers.swift */; };
 		B37F57A9242159C4001B84BB /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37F57A8242159C4001B84BB /* UIViewController.swift */; };
 		B37F57AC242204F5001B84BB /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37F57AB242204F5001B84BB /* UserDetailViewController.swift */; };
 		B37F57AE2422050A001B84BB /* UserDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37F57AD2422050A001B84BB /* UserDetailViewModel.swift */; };
@@ -59,6 +56,11 @@
 		B39C9681242CB7B200B4101E /* CategoryPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39C9680242CB7B200B4101E /* CategoryPickerViewModel.swift */; };
 		B39C9683242CB9B200B4101E /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B39C9682242CB9B200B4101E /* CategoryCell.swift */; };
 		B39C9685242CBAE900B4101E /* CategoryPicker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B39C9684242CBAE900B4101E /* CategoryPicker.storyboard */; };
+		B3A0293D2459B6FF00E31980 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A0293C2459B6FF00E31980 /* Keys.swift */; };
+		B3A029402459BBAC00E31980 /* StoryboardScenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A0293E2459BBAC00E31980 /* StoryboardScenes.swift */; };
+		B3A029412459BBAC00E31980 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A0293F2459BBAC00E31980 /* Assets.swift */; };
+		B3A029432459BE0800E31980 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3A029422459BE0800E31980 /* Colors.xcassets */; };
+		B3A029452459C12A00E31980 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3A029442459C12A00E31980 /* UIColorExtension.swift */; };
 		B3AA33B42447716A0043EAF4 /* GlobalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3AA33B32447716A0043EAF4 /* GlobalUser.swift */; };
 		B3C2AD95241BBD2E00CECE33 /* MainTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C2AD94241BBD2E00CECE33 /* MainTabBar.storyboard */; };
 		B3C2AD97241BBD7500CECE33 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C2AD96241BBD7500CECE33 /* MainTabBarController.swift */; };
@@ -139,7 +141,6 @@
 		B37539822424BFAC0051C2E6 /* AddressPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressPickerViewController.swift; sourceTree = "<group>"; };
 		B37539842424BFDA0051C2E6 /* AddressPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressPickerViewModel.swift; sourceTree = "<group>"; };
 		B37539862424C0840051C2E6 /* AddressPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddressPicker.storyboard; sourceTree = "<group>"; };
-		B37539882424C32D0051C2E6 /* UserDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailCoordinator.swift; sourceTree = "<group>"; };
 		B375398A2424D7550051C2E6 /* AddressModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressModel.swift; sourceTree = "<group>"; };
 		B375398C2424D9B40051C2E6 /* AddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressCell.swift; sourceTree = "<group>"; };
 		B375398E24262ADF0051C2E6 /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
@@ -148,13 +149,11 @@
 		B375399624269EB60051C2E6 /* ListingDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ListingDetail.storyboard; sourceTree = "<group>"; };
 		B37539982426AE790051C2E6 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		B37ACC7524407D7D001A8765 /* CategorypickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorypickerCell.swift; sourceTree = "<group>"; };
-		B37B1B4424157012005C3702 /* StorageKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageKeys.swift; sourceTree = "<group>"; };
 		B37B1B4724159F0D005C3702 /* Circle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		B37B1B4C2415A68B005C3702 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		B37B1B4E2415A6DA005C3702 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		B37B1B5224169252005C3702 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		B37B1B55241692B6005C3702 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		B37B1B572416C74E005C3702 /* ViewControllers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllers.swift; sourceTree = "<group>"; };
 		B37F57A8242159C4001B84BB /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		B37F57AB242204F5001B84BB /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		B37F57AD2422050A001B84BB /* UserDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewModel.swift; sourceTree = "<group>"; };
@@ -165,6 +164,11 @@
 		B39C9680242CB7B200B4101E /* CategoryPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewModel.swift; sourceTree = "<group>"; };
 		B39C9682242CB9B200B4101E /* CategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
 		B39C9684242CBAE900B4101E /* CategoryPicker.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CategoryPicker.storyboard; sourceTree = "<group>"; };
+		B3A0293C2459B6FF00E31980 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
+		B3A0293E2459BBAC00E31980 /* StoryboardScenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardScenes.swift; sourceTree = "<group>"; };
+		B3A0293F2459BBAC00E31980 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		B3A029422459BE0800E31980 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		B3A029442459C12A00E31980 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		B3AA33B124476D180043EAF4 /* BeeTrader.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BeeTrader.entitlements; sourceTree = "<group>"; };
 		B3AA33B32447716A0043EAF4 /* GlobalUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalUser.swift; sourceTree = "<group>"; };
 		B3C2AD94241BBD2E00CECE33 /* MainTabBar.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainTabBar.storyboard; sourceTree = "<group>"; };
@@ -228,6 +232,9 @@
 		B3188C3C245480AE0058E74E /* Generated */ = {
 			isa = PBXGroup;
 			children = (
+				B3A029442459C12A00E31980 /* UIColorExtension.swift */,
+				B3A0293F2459BBAC00E31980 /* Assets.swift */,
+				B3A0293E2459BBAC00E31980 /* StoryboardScenes.swift */,
 				B3188C3D245480AE0058E74E /* Strings+Localization.swift */,
 			);
 			path = Generated;
@@ -270,7 +277,6 @@
 				B3AA33B124476D180043EAF4 /* BeeTrader.entitlements */,
 				B38E4EED241AC44700B85994 /* Others */,
 				B37B1B4624159EF9005C3702 /* CustomUI */,
-				B37B1B4324156FBE005C3702 /* Constants */,
 				B3F5C6692413B45000F7EF70 /* Extensions */,
 				B33B7C96241120E200CD6719 /* RRComunication */,
 				B35BA990240FEC6800BDA7C9 /* Protocols */,
@@ -290,6 +296,7 @@
 				B3188C3724547DD10058E74E /* Localizable.strings */,
 				B3EC2C07241BD61200F0E738 /* Animations */,
 				B35BA982240FEC0100BDA7C9 /* Assets.xcassets */,
+				B3A029422459BE0800E31980 /* Colors.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -357,15 +364,6 @@
 			path = AddListing;
 			sourceTree = "<group>";
 		};
-		B37B1B4324156FBE005C3702 /* Constants */ = {
-			isa = PBXGroup;
-			children = (
-				B37B1B4424157012005C3702 /* StorageKeys.swift */,
-				B37B1B572416C74E005C3702 /* ViewControllers.swift */,
-			);
-			path = Constants;
-			sourceTree = "<group>";
-		};
 		B37B1B4624159EF9005C3702 /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,7 +402,6 @@
 				B37F57AB242204F5001B84BB /* UserDetailViewController.swift */,
 				B37F57AD2422050A001B84BB /* UserDetailViewModel.swift */,
 				B37F57AF24220558001B84BB /* UserDetail.storyboard */,
-				B37539882424C32D0051C2E6 /* UserDetailCoordinator.swift */,
 				B37539812424BF8E0051C2E6 /* AddressPicker */,
 			);
 			path = Detail;
@@ -413,6 +410,7 @@
 		B38E4EED241AC44700B85994 /* Others */ = {
 			isa = PBXGroup;
 			children = (
+				B3A0293C2459B6FF00E31980 /* Keys.swift */,
 				B38E4EEE241AC45600B85994 /* Aliases.swift */,
 				B3EC2C16241BDC7D00F0E738 /* Hud.swift */,
 			);
@@ -560,6 +558,7 @@
 				B35BA983240FEC0100BDA7C9 /* Assets.xcassets in Resources */,
 				B39C9685242CBAE900B4101E /* CategoryPicker.storyboard in Resources */,
 				B3CC6999242A532E00DAF451 /* ListingFilter.storyboard in Resources */,
+				B3A029432459BE0800E31980 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +606,7 @@
 				B35BA98E240FEC5700BDA7C9 /* UserModel.swift in Sources */,
 				B35BA98D240FEC5700BDA7C9 /* RegistrationViewModel.swift in Sources */,
 				B37B1B4D2415A68B005C3702 /* UserViewController.swift in Sources */,
+				B3A029402459BBAC00E31980 /* StoryboardScenes.swift in Sources */,
 				B37ACC7624407D7D001A8765 /* CategorypickerCell.swift in Sources */,
 				B37539852424BFDA0051C2E6 /* AddressPickerViewModel.swift in Sources */,
 				B3188C42245491930058E74E /* EditListingViewController.swift in Sources */,
@@ -620,20 +620,20 @@
 				B37B1B4F2415A6DA005C3702 /* UserViewModel.swift in Sources */,
 				B3188C44245491D20058E74E /* EditListingViewModel.swift in Sources */,
 				B3EC2C17241BDC7D00F0E738 /* Hud.swift in Sources */,
+				B3A029412459BBAC00E31980 /* Assets.swift in Sources */,
 				B3FE90652427BF4C005D75F6 /* Primitives.swift in Sources */,
 				B37F57AC242204F5001B84BB /* UserDetailViewController.swift in Sources */,
 				B3D02ED1241D8B75009AAD20 /* ListingViewController.swift in Sources */,
 				B3654E2B241F90DE00592EF8 /* ListingModel.swift in Sources */,
-				B37B1B4524157012005C3702 /* StorageKeys.swift in Sources */,
 				B38E4EEF241AC45600B85994 /* Aliases.swift in Sources */,
 				B37B1B4824159F0D005C3702 /* Circle.swift in Sources */,
 				B3F5C66B2413B46600F7EF70 /* UIElements.swift in Sources */,
 				B375398B2424D7550051C2E6 /* AddressModel.swift in Sources */,
+				B3A0293D2459B6FF00E31980 /* Keys.swift in Sources */,
 				B35BA992240FEC7300BDA7C9 /* ViewControllerType.swift in Sources */,
 				B3CC6997242A51E900DAF451 /* ListingFilterViewModel.swift in Sources */,
 				B37539992426AE790051C2E6 /* Gradient.swift in Sources */,
 				B375398D2424D9B40051C2E6 /* AddressCell.swift in Sources */,
-				B37539892424C32D0051C2E6 /* UserDetailCoordinator.swift in Sources */,
 				B3CC6995242A51B300DAF451 /* ListingFilterViewController.swift in Sources */,
 				B35BA98C240FEC5700BDA7C9 /* RegistrationViewController.swift in Sources */,
 				B39C967F242CB78600B4101E /* CategoryPickerViewController.swift in Sources */,
@@ -641,12 +641,12 @@
 				B3CC696E2428EB4D00DAF451 /* AddListingViewModel.swift in Sources */,
 				B39C9681242CB7B200B4101E /* CategoryPickerViewModel.swift in Sources */,
 				B37F57A9242159C4001B84BB /* UIViewController.swift in Sources */,
-				B37B1B582416C74E005C3702 /* ViewControllers.swift in Sources */,
 				B33B7C9A2411481600CD6719 /* UrlRequest.swift in Sources */,
 				B3D02ED4241D8E1F009AAD20 /* ListingCell.swift in Sources */,
 				B3CC696C2428EAEB00DAF451 /* AddListingViewController.swift in Sources */,
 				B37539832424BFAC0051C2E6 /* AddressPickerViewController.swift in Sources */,
 				B375398F24262ADF0051C2E6 /* Debouncer.swift in Sources */,
+				B3A029452459C12A00E31980 /* UIColorExtension.swift in Sources */,
 				B35BA94E240FEB4C00BDA7C9 /* SceneDelegate.swift in Sources */,
 				B3654E2D241F9C7E00592EF8 /* ListingViewModel.swift in Sources */,
 			);

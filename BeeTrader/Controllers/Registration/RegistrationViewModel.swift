@@ -14,12 +14,12 @@ class RegistrationViewModel: ViewModel {
     
     var delegate: SignInDelegate!
     var okLoginHandler: EmptyClosure?
-    
-    func login() {
+    func viewModelDidLoad() {}
+    func login(withParameters paramters: Parameters) {
         delegate.showHUD()
-        UrlRequest<User>().handle(ApiConstants.baseUrl + "login",
+        UrlRequest<User>().handle(ApiConstants.login,
                                   methood: HTTPMethod.post,
-                                  parameters: delegate.loginParameters) {  [weak self] response in
+                                  parameters: paramters) {  [weak self] response in
                                     switch response {
                                     case .success(let result):
                                         guard let data = result.data else {
@@ -35,12 +35,10 @@ class RegistrationViewModel: ViewModel {
         }
     }
 
-    func viewModelDidLoad() {
-        
-    }
+
     func register(withParameters parameters: Parameters) {
         delegate.showHUD()
-        UrlRequest<RegisterResponse>().handle(ApiConstants.baseUrl + "register",
+        UrlRequest<RegisterResponse>().handle(ApiConstants.register,
                                               methood: HTTPMethod.post,
                                               parameters: parameters) { [weak self] response in
                                                 switch response {
@@ -49,7 +47,7 @@ class RegistrationViewModel: ViewModel {
                                                         self?.delegate.presentFailure()
                                                         return
                                                     }
-                                                    self?.delegate.okRegistrationHandler(user: data)
+                                                    self?.delegate.okRegistrationHandler(email: data.email)
                                                 case.failure:
                                                     self?.delegate.presentFailure()
                                                 }

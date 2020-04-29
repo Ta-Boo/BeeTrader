@@ -36,7 +36,7 @@ class AddressPickerViewModel: ViewModel {
 
     func loadAddresses(parameters: Parameters) {
         delegate?.showHUD()
-        UrlRequest<[Address]>().handle(ApiConstants.baseUrl + "addresses",
+        UrlRequest<[Address]>().handle(ApiConstants.addresses,
                                        methood: HTTPMethod.get,
                                        parameters: parameters) { [weak self] result in
             switch result {

@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().shadowImage = UIImage()
         UINavigationBar.appearance().backgroundColor = .clear
         UINavigationBar.appearance().isTranslucent = true
-        UINavigationBar.appearance().tintColor = UIColor(named: "AccentTomatoColor")
+        UINavigationBar.appearance().tintColor = UIColor.accentTomatoColor
     }
 }
 

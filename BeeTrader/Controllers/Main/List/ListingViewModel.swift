@@ -29,9 +29,8 @@ class ListingViewModel: ViewModel{
     
     
     func onFilterChangedHandler(search: String?) {
-        guard let filter = search else { return }
+        guard search != nil else { return }
         let debounceHandler: () -> Void = { [weak self] in
-//            if filter.isEmpty || filter.count < 3 { return }
             self?.listingFilter.text = search ?? ""
             self?.resetData()
             self?.loadListings()
@@ -78,7 +77,7 @@ class ListingViewModel: ViewModel{
         if !shouldLoad() { return }
         isLoading = true
         delegate?.showHUD()
-        UrlRequest<[Listing]>().handle(ApiConstants.baseUrl + "listings/inRadius",
+        UrlRequest<[Listing]>().handle(ApiConstants.listings ,
                                        methood: HTTPMethod.get,
                                        parameters: parameters) { [weak self] result in
             switch result {

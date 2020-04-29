@@ -9,7 +9,10 @@
 import Foundation
 
 struct StorageKeys {
-    static let apiToken = "api_token"
     static let user = "user"
     static let email = "email"
+}
+
+struct KeychainKeys {
+    static let token = "bearer_token"
 }

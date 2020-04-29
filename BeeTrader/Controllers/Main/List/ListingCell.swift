@@ -14,11 +14,18 @@ class ListingCell: UICollectionViewCell {
     @IBOutlet var distance: UILabel!
     @IBOutlet var views: UILabel!
     @IBOutlet var price: UILabel!
-
+    @IBOutlet weak var ownerMark: UIImageView!
+    
     func setData(data: Listing) {
-        image.image = UIImage(named: "loading_placeholder")
+        image.image = Asset.loadingPlaceholder.image
         if let listingImage = data.image {
-            image.imageFromUrl("\(ApiConstants.baseUrl)\(listingImage)", useCached: true, true)
+            image.imageFromUrl(ApiConstants.getImage(postFix: listingImage), useCached: true, true)
+        }
+        
+        if data.email == GlobalUser.shared.user?.email {
+            ownerMark.isHidden = false
+        }  else {
+            ownerMark.isHidden = true
         }
         title.text = data.title
         distance.text = "\(data.distance)Km"

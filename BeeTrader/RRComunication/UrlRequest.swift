@@ -14,7 +14,22 @@ import KeychainSwift
 
 struct ApiConstants {
 //    static let baseUrl = "http://localhost:8000/api/"
-    static let baseUrl = "http://192.168.0.110:8000/api/"
+    private static let baseUrl = "http://192.168.0.110:8000/api"
+    static let login = "\(baseUrl)/login"
+    static let register = "\(baseUrl)/register"
+    
+    static let listing = "\(baseUrl)/listing"
+    static let listings = "\(baseUrl)/listings/inRadius"
+    static let updateListing = "\(baseUrl)/listingUpdate"
+    static let user = "\(baseUrl)/user"
+    static let getUser = "\(baseUrl)/userByEmail"
+    
+    static let categories = "\(baseUrl)/categories"
+    static let addresses = "\(baseUrl)/addresses"
+    
+    static func getImage(postFix: String) -> String {
+        return "\(baseUrl)/\(postFix)"
+    }
 }
 
 struct Image {
@@ -35,7 +50,7 @@ class UrlRequest<WrappedData: Codable> {
             method: methood,
             parameters: parameters,
             encoding: encoding,
-            headers: ["Authorization": KeychainSwift().get("bearer_token") ?? ""]
+            headers: RequestHeaders.authorization
         ).validate().responseJSON { response in
             print(response)
             let result = Result<DataWrapper<WrappedData>>(value: {
@@ -74,7 +89,7 @@ class UrlRequest<WrappedData: Codable> {
             }
         }, to: url,
            method: .post,
-           headers: ["Authorization": KeychainSwift().get("bearer_token") ?? ""]) { result in
+           headers: RequestHeaders.authorization) { result in
                 switch result {
                 case .success(let upload, _, _):
                     upload.uploadProgress(closure: { (progress) in

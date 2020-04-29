@@ -3,4 +3,25 @@ strings:
   outputs:
     - templateName: structured-swift4
       output: BeeTrader/Generated/Strings+Localization.swift
-  
+ib:
+    inputs: BeeTrader/Controllers
+    outputs:
+        templateName: scenes-swift4
+        output: Beetrader/Generated/StoryboardScenes.swift
+        
+xcassets:
+    inputs: BeeTrader/Resources/Assets.xcassets
+    outputs:
+        templateName: swift4
+        output: BeeTrader/Generated/Assets.swift
+
+xcassets:
+    inputs: BeeTrader/Resources/Colors.xcassets
+    outputs:
+        templatePath: BeeTrader/SwiftgenTemplates/colors_template.stencil
+        output: BeeTrader/Generated/UIColorExtension.swift
+        params:
+            enumName: UIColor
+            publicAccess: true
+            allValues: true
+    

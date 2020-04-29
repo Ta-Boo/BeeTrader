@@ -23,7 +23,7 @@ class UserViewModel: ViewModel {
 
     func loadData() {
         delegate?.showHUD()
-        UrlRequest<User>().handle(ApiConstants.baseUrl + "userByEmail",
+        UrlRequest<User>().handle(ApiConstants.getUser,
                                   methood: HTTPMethod.get,
                                   parameters: loadDataparameters) { [weak self] result in
             switch result {
@@ -42,8 +42,7 @@ class UserViewModel: ViewModel {
     }
 
     func handleEditController() {
-        let storyboard = UIStoryboard(name: "UserDetail", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.userDetail) as! UserDetailViewController
+        let controller = StoryboardScene.UserDetail.initialScene.instantiate()
         controller.viewModel.userUpdateCompletion = { [weak self] _ in
             self?.loadData()
         }

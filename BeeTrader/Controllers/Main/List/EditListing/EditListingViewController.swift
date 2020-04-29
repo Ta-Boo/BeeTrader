@@ -61,8 +61,7 @@ class EditListingViewController: KeyboardLayoutManager {
                }
     }
     @IBAction func categoryTapped(_ sender: Any) {
-        let storyboard = UIStoryboard.init(name: "CategoryPicker", bundle: nil)
-        let controller = storyboard.instantiateInitialViewController()! as! CategoryPickerViewController
+        let controller = StoryboardScene.CategoryPicker.initialScene.instantiate()
         controller.viewModel.categoryPickCompletion = { [weak self] category in
             self?.viewModel.category = category.id
                }
@@ -93,7 +92,7 @@ extension EditListingViewController: EditListingViewDelegate{
     
     func fillFields(listing: ListingDetail) {
         if let listingImage = listing.image {
-            image.imageFromUrl("\(ApiConstants.baseUrl)\(listingImage)", useCached: true, true)
+            image.imageFromUrl(ApiConstants.getImage(postFix: listingImage), useCached: true, true)
         }
         titleLabel.text = listing.title
         priceLabel.text = "\(listing.price/100)"

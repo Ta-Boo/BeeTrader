@@ -12,8 +12,7 @@ class MainCoordinator: Coordinator {
     let navigationController: UINavigationController
     
     var mainTabBarController: UIViewController {
-        let storyboard = UIStoryboard(name: "MainTabBar", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.mainTabBar) as! MainTabBarController
+        let controller = StoryboardScene.MainTabBar.mainTabBarController.instantiate()
         controller.handleLogOut = { [weak self] in
             GlobalUser.shared.dispose()
             self?.navigationController.setViewControllers([self!.registrationController], animated: true)
@@ -22,8 +21,7 @@ class MainCoordinator: Coordinator {
     }
     
     var registrationController: UIViewController {
-        let storyboard = UIStoryboard(name: "Registration", bundle: nil)
-        let controller: RegistrationViewController = storyboard.instantiateViewController(withIdentifier: ViewControllers.registration) as! RegistrationViewController
+        let controller = StoryboardScene.Registration.initialScene.instantiate()
         controller.viewModel.okLoginHandler = { [weak self] in
             guard let self = self else {
                 return

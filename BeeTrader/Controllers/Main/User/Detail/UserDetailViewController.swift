@@ -55,7 +55,7 @@ class UserDetailViewController: KeyboardLayoutManager {
             imagePicker.sourceType = .camera
             present(imagePicker,animated: true)
         } else {
-            presentFailAlert("No camera detected")
+            presentFailAlert(L10n.Alert.noCamera)
         }
     }
 

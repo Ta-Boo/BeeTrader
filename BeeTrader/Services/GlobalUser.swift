@@ -18,7 +18,7 @@ class GlobalUser {
 
      func update(_ user: User?) {
         if let token = user?.token {
-            KeychainSwift().set(token, forKey: "bearer_token")
+            KeychainSwift().set(token, forKey: KeychainKeys.token)
         }
         if let encoded = try? JSONEncoder().encode(user) {
             let defaults = UserDefaults.standard

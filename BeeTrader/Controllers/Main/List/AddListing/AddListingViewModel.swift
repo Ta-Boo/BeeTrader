@@ -28,7 +28,7 @@ class AddListingViewModel: ViewModel {
             delegate.presentFailAlert(L10n.Alert.fill)
             return
         }
-        let url = "\(ApiConstants.baseUrl)listing"
+        let url = ApiConstants.listing
         let images = [Image(name: "image", fileName: "image", data: image!)]
         delegate.changeAccessibility(to: false)
         delegate.showHUD()

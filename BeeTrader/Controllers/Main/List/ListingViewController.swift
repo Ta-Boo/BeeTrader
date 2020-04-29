@@ -29,7 +29,7 @@ class ListingViewController: UIViewController {
 
     private func setupViews() {
         setupCollectionView()
-        searchBar.underline(UIColor.Common.secondary!)
+        searchBar.underline(UIColor.secondaryColor)
         setupUiHandlers()
     }
 
@@ -40,7 +40,7 @@ class ListingViewController: UIViewController {
     }
 
     @IBAction func onAddlistingClicked(_: Any) {
-        let controller = UIStoryboard(name: "AddListing", bundle: nil).instantiateInitialViewController() as! AddListingViewController
+        let controller = StoryboardScene.AddListing.addListingViewController.instantiate()
         controller.viewModel.completionHandler = { [weak self] in
             self?.viewModel.resetData()
             self?.viewModel.loadListings()
@@ -49,7 +49,7 @@ class ListingViewController: UIViewController {
     }
 
     @IBAction func onFilterClicked(_: Any) {
-        let controller = UIStoryboard(name: "ListingFilter", bundle: nil).instantiateInitialViewController() as! ListingFilterViewController
+        let controller = StoryboardScene.ListingFilter.listingFilterViewController.instantiate()
         controller.viewModel.submitCompletion = { [weak self] parameters in
             self?.viewModel.changeFilter(parameters: parameters)
         }
@@ -105,8 +105,7 @@ extension ListingViewController: UIGestureRecognizerDelegate {
             if let index = indexPath?.row {
                 if GlobalUser.shared.user?.email == viewModel.listings[index].email {
                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                    let storyboard = UIStoryboard(name: "EditListing", bundle: nil)
-                    let controller = storyboard.instantiateInitialViewController() as! EditListingViewController
+                    let controller = StoryboardScene.EditListing.addListingViewController.instantiate()
                     controller.viewModel.listingId = viewModel.listings[index].id
                     controller.viewModel.completionHandler = { [weak self] in
                         self?.viewModel.resetData()
@@ -158,8 +157,7 @@ extension ListingViewController: CollectionManager {
     }
 
     func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "ListingDetail", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: ViewControllers.listingDetail) as! ListingDetailViewController
+        let controller = StoryboardScene.ListingDetail.listingDetailViewController.instantiate()
         controller.viewModel.listingId = viewModel.listings[indexPath.row].id
         present(controller, animated: true)
     }

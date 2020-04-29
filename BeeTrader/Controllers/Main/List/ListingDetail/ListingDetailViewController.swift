@@ -35,13 +35,33 @@ class ListingDetailViewController: UIViewController, MFMailComposeViewController
     }
 
     func setupGestureRecognizers() {
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(ListingDetailViewController.sendEmail))
+        let sendEmailGesture = UITapGestureRecognizer(target: self, action: #selector(ListingDetailViewController.sendEmail))
         emailLabel.isUserInteractionEnabled = true
-        emailLabel.addGestureRecognizer(gesture)
+        emailLabel.addGestureRecognizer(sendEmailGesture)
+        
+        let callGesture = UITapGestureRecognizer(target: self, action: #selector(ListingDetailViewController.makeCall))
+        phoneLabel.isUserInteractionEnabled = true
+        phoneLabel.addGestureRecognizer(callGesture)
     }
 
     @IBAction func sendEmail(sender: UITapGestureRecognizer) {
-        sendEmailHandler(sender: sender)
+        guard let email = viewModel.listing?.email else { return }
+        let mailVC = MFMailComposeViewController()
+        if MFMailComposeViewController.canSendMail() {
+            mailVC.mailComposeDelegate = self
+            mailVC.setToRecipients([email])
+            //TODO get subject
+            mailVC.setSubject("\(viewModel.listing?.title ?? L10n.Email.subjectPlaceholder) \(L10n.Email.subject)")
+            present(mailVC, animated: true, completion: nil)
+        } else { presentFailAlert(title: L10n.Alert.emailMissing) }
+    }
+    @IBAction func makeCall(sender: UITapGestureRecognizer) {
+        guard let phone  = phoneLabel.text,
+            let url = URL(string: "tel://\(phone)")  else {
+            presentFailAlert()
+            return
+        }
+        UIApplication.shared.open(url)
     }
 }
 
@@ -66,21 +86,11 @@ extension ListingDetailViewController: ListingDetailDelegate {
         presentFailedRequestAlert()
     }
 
-    func sendEmailHandler(sender _: UITapGestureRecognizer) {
-        guard let email = viewModel.listing?.email else { return }
-        let mailVC = MFMailComposeViewController()
-        if MFMailComposeViewController.canSendMail() {
-            mailVC.mailComposeDelegate = self
-            mailVC.setToRecipients(["\(email)"])
-            mailVC.setSubject("\(viewModel.listing?.title ?? L10n.Email.subjectPlaceholder) \(L10n.Email.subject)")
-            present(mailVC, animated: true, completion: nil)
-        } else { presentFailAlert(title: L10n.Alert.emailMissing) }
-    }
 
     func setupViewsHandler() {
         guard let listing = viewModel.listing else { return }
         if let listingImage = listing.image {
-            image.imageFromUrl("\(ApiConstants.baseUrl)\(listingImage)", useCached: true, true)
+            image.imageFromUrl(ApiConstants.getImage(postFix: listingImage), useCached: true, true)
         }
         viewsLabel.text = "\(listing.views)"
         addressLabel.text = listing.location

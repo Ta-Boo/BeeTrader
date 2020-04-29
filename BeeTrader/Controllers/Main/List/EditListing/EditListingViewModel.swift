@@ -24,7 +24,7 @@ class EditListingViewModel: ViewModel {
     func loadData() {
         let parameters = RequestParameters.listing(id: listingId)
         delegate?.showHUD()
-        UrlRequest<ListingDetail>().handle(ApiConstants.baseUrl + "listing",
+        UrlRequest<ListingDetail>().handle(ApiConstants.listing,
                                             methood: HTTPMethod.get,
                                             parameters: parameters) { [weak self] result in
             self?.delegate?.hideHUD()
@@ -50,7 +50,7 @@ class EditListingViewModel: ViewModel {
             delegate.presentFailAlert(L10n.Alert.fill)
             return
         }
-        let url = "\(ApiConstants.baseUrl)listingUpdate"
+        let url = ApiConstants.updateListing
         let images = [Image(name: "image", fileName: "image", data: image!)]
         delegate.changeAccessibility(to: false)
         delegate.showHUD()
@@ -69,7 +69,7 @@ class EditListingViewModel: ViewModel {
     
     func deleteListing() {
         let parameters = RequestParameters.listing(id: listingId)
-        let url = "\(ApiConstants.baseUrl)listing"
+        let url = ApiConstants.listing
         delegate?.changeAccessibility(to: false)
         delegate?.showHUD()
         UrlRequest<Dump>().handle(url, methood: .delete, parameters: parameters) { [weak self] response in
