@@ -11,10 +11,7 @@ import Foundation
 import UIKit
 
 protocol UserDetailViewDelegate: Delegate {
-    var parameters: [String: String?] { get }
-    func setupViews(user: User)
-    func presentController(_ controller: UIViewController)
-    func addressPickerCompletionHandler(address: Address)
+    func updateViews(user: User)
     func completionHandler()
 }
 
@@ -30,7 +27,15 @@ class UserDetailViewController: KeyboardLayoutManager {
     @IBOutlet weak var changeAvatarLabel: UIButton!
     
     var imagePicker: UIImagePickerController!
-
+    
+    var parameters: WeakParameters {
+        return RequestParameters.updateUser(firstName: firstName.text,
+                                            lastName: lastName.text,
+                                            addressID: viewModel.addressId,
+                                            phoneNumber: phoneNumber.text,
+                                            email: email.text,
+                                            id: GlobalUser.shared.user?.id)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,13 +65,20 @@ class UserDetailViewController: KeyboardLayoutManager {
     }
 
     @IBAction func sendTapped(_: Any) {
-        viewModel.uploadData(image: viewModel.avatarToUpload(avatar))
+        viewModel.uploadData(withParameters: parameters ,image: viewModel.avatarToUpload(avatar))
     }
 
     @IBAction func onAddressTapped(_: Any) {
-        viewModel.handleAddressTapped()
+        let controller = StoryboardScene.AddressPicker.addressPickerViewController.instantiate()
+        
+        controller.addressPickCompletion = { [weak self] address in
+            self?.address.setTitle("\(address.postalCode), \(address.name)", for: .normal)
+            self?.viewModel.addressId = address.id
+        }
+        present(controller,animated: true)
     }
 }
+
 //MARK: Delegates (ImagePickerManager)
 
 extension UserDetailViewController: ImagePickerManager {
@@ -80,31 +92,13 @@ extension UserDetailViewController: ImagePickerManager {
 //MARK: Delegates (UserDetailViewDelegate)
 
 extension UserDetailViewController: UserDetailViewDelegate {
-    var parameters: [String: String?] {
-        return RequestParameters.updateUser(firstName: firstName.text,
-                                            lastName: lastName.text,
-                                            addressID: viewModel.addressId,
-                                            phoneNumber: phoneNumber.text,
-                                            email: email.text,
-                                            id: GlobalUser.shared.user?.id)
-    }
 
     func completionHandler() {
         viewModel.userUpdateCompletion?(email.text ?? GlobalUser.shared.user?.email ?? "")
         dismiss(animated: false)
     }
-
-    func addressPickerCompletionHandler(address: Address) {
-        self.address.setTitle("\(address.postalCode), \(address.name)", for: .normal)
-        viewModel.addressId = address.id
-    }
-
-    func presentController(_ controller: UIViewController) {
-        present(controller, animated: true)
-    }
-
-
-    func setupViews(user: User) {
+    
+    func updateViews(user: User) {
         firstName.text = user.firstName
         lastName.text = user.lastName
         address.setTitle("\(user.postalCode), \(user.city)", for: .normal)

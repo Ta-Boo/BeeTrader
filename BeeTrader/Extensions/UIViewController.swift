@@ -29,5 +29,10 @@ extension UIViewController {
         present(alertController, animated: true)
     }
     
-    
+    func presentInFullScreen(_ viewController: UIViewController,
+                                animated: Bool,
+                                completion: (() -> Void)? = nil) {
+           viewController.modalPresentationStyle = .fullScreen
+           present(viewController, animated: animated, completion: completion)
+       }
 }

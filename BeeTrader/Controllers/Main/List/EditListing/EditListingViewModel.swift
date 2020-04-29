@@ -12,7 +12,7 @@ import UIKit
 import Alamofire
 
 class EditListingViewModel: ViewModel {
-    var delegate: EditListingViewDelegate?
+    var delegate: EditListingViewDelegate!
     var listingId: Int!
     var completionHandler: EmptyClosure?
     var category: Int?
@@ -35,47 +35,40 @@ class EditListingViewModel: ViewModel {
                     return
                 }
                 self?.category = data.category
-                self?.delegate?.fillFields(listing: data)
+                self?.delegate.listingLoadedHandler(listing: data)
+                
             case .failure:
                 self?.delegate?.presentFailure()
             }
         }
     }
     
-    func updateListing(image: UIImage?) {
-        guard let delegate = delegate else {
-            return
-        }
-        if !delegate.isFilled {
-            delegate.presentFailAlert(L10n.Alert.fill)
-            return
-        }
+    func updateListing(withParameters parameters: WeakParameters, image: UIImage?) {
         let url = ApiConstants.updateListing
         let images = [Image(name: "image", fileName: "image", data: image!)]
         delegate.changeAccessibility(to: false)
         delegate.showHUD()
 
-        UrlRequest<Dump>().uploadImages(url: url, images: images, parameters: delegate.parameters, loadingProgressor: { _ in
+        UrlRequest<Dump>().uploadImages(url: url, images: images,
+                                        parameters: parameters,
+                                        loadingProgressor: { _ in
         }, successCompletion: { [weak self] in
-            self?.delegate?.dismiss(animated: true, completion: nil)
             self?.completionHandler?()
-            self?.delegate?.hideHUD()
+            self?.delegate.listingEditOKHandler()
         }, failureCompletion: { [weak self] in
-            self?.delegate?.presentFailure()
-            self?.delegate?.changeAccessibility(to: true)
-            self?.delegate?.hideHUD()
+            self?.delegate.listingEditFailureHandler()
         })
     }
     
     func deleteListing() {
-        let parameters = RequestParameters.listing(id: listingId)
         let url = ApiConstants.listing
         delegate?.changeAccessibility(to: false)
         delegate?.showHUD()
-        UrlRequest<Dump>().handle(url, methood: .delete, parameters: parameters) { [weak self] response in
+        UrlRequest<Dump>().handle(url, methood: .delete,
+                                  parameters: RequestParameters.listing(id: listingId)) { [weak self] response in
             switch response {
             case .success:
-                self?.delegate?.dismiss(animated: true, completion: nil)
+                self?.delegate.listingEditOKHandler()
                 self?.completionHandler?()
             case .failure:
                 self?.delegate?.presentFailure()
@@ -84,7 +77,4 @@ class EditListingViewModel: ViewModel {
             self?.delegate?.changeAccessibility(to: true)
         }
     }
-   
-
-    
 }

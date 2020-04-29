@@ -26,12 +26,8 @@ class ListingDetailViewController: UIViewController, MFMailComposeViewController
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.delegate = self
-        loadListing()
+        viewModel.viewModelDidLoad()
         setupGestureRecognizers()
-    }
-
-    func setupViews() {
-        setupViewsHandler()
     }
 
     func setupGestureRecognizers() {
@@ -45,16 +41,21 @@ class ListingDetailViewController: UIViewController, MFMailComposeViewController
     }
 
     @IBAction func sendEmail(sender: UITapGestureRecognizer) {
-        guard let email = viewModel.listing?.email else { return }
+        guard let email = viewModel.listing?.email else {
+            presentFailure()
+            return
+        }
         let mailVC = MFMailComposeViewController()
         if MFMailComposeViewController.canSendMail() {
             mailVC.mailComposeDelegate = self
             mailVC.setToRecipients([email])
-            //TODO get subject
-            mailVC.setSubject("\(viewModel.listing?.title ?? L10n.Email.subjectPlaceholder) \(L10n.Email.subject)")
-            present(mailVC, animated: true, completion: nil)
-        } else { presentFailAlert(title: L10n.Alert.emailMissing) }
+            mailVC.setSubject("\(emailLabel.text ?? L10n.Email.subjectPlaceholder) \(L10n.Email.subject)")
+            present(mailVC, animated: true)
+        } else {
+            presentFailAlert(title: L10n.Alert.emailMissing)
+        }
     }
+    
     @IBAction func makeCall(sender: UITapGestureRecognizer) {
         guard let phone  = phoneLabel.text,
             let url = URL(string: "tel://\(phone)")  else {
@@ -66,29 +67,13 @@ class ListingDetailViewController: UIViewController, MFMailComposeViewController
 }
 
 // MARK: Delegate
+protocol ListingDetailDelegate: Delegate {
+    func listingLoaded(listing: ListingDetail)
+}
 
 extension ListingDetailViewController: ListingDetailDelegate {
-    func loadListing() {
-        guard let id = viewModel.listingId else { return }
-        let parameters = RequestParameters.listing(id: id)
-        showHUD()
-        viewModel.loadData(parameters: parameters)
-    }
 
-    func listingLoadedSuccess(listing: ListingDetail) {
-        viewModel.listing = listing
-        setupViews()
-        hideHUD()
-    }
-
-    func listingLoadedFailure() {
-        hideHUD()
-        presentFailedRequestAlert()
-    }
-
-
-    func setupViewsHandler() {
-        guard let listing = viewModel.listing else { return }
+    func listingLoaded(listing: ListingDetail) {
         if let listingImage = listing.image {
             image.imageFromUrl(ApiConstants.getImage(postFix: listingImage), useCached: true, true)
         }

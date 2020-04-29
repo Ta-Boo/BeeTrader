@@ -14,11 +14,10 @@ class UserViewModel: ViewModel {
         return RequestParameters.userData(email: email)
     }
     var handleLogOut: EmptyClosure?
-
     var delegate: UserViewDelegate?
 
     func viewModelDidLoad() {
-        loadData() //todo
+        loadData()
     }
 
     func loadData() {
@@ -39,13 +38,5 @@ class UserViewModel: ViewModel {
             }
             self?.delegate?.hideHUD()
         }
-    }
-
-    func handleEditController() {
-        let controller = StoryboardScene.UserDetail.initialScene.instantiate()
-        controller.viewModel.userUpdateCompletion = { [weak self] _ in
-            self?.loadData()
-        }
-        delegate?.presetnEditController(controller)
     }
 }

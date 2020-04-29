@@ -13,16 +13,17 @@ import KeychainSwift
 
 
 struct ApiConstants {
-//    static let baseUrl = "http://localhost:8000/api/"
+//    private static let baseUrl = "http://localhost:8000/api"
     private static let baseUrl = "http://192.168.0.110:8000/api"
     static let login = "\(baseUrl)/login"
     static let register = "\(baseUrl)/register"
+    static let updateUser = "\(baseUrl)/user"
+    static let getUser = "\(baseUrl)/userByEmail"
     
     static let listing = "\(baseUrl)/listing"
     static let listings = "\(baseUrl)/listings/inRadius"
     static let updateListing = "\(baseUrl)/listingUpdate"
-    static let user = "\(baseUrl)/user"
-    static let getUser = "\(baseUrl)/userByEmail"
+    
     
     static let categories = "\(baseUrl)/categories"
     static let addresses = "\(baseUrl)/addresses"
@@ -52,16 +53,9 @@ class UrlRequest<WrappedData: Codable> {
             encoding: encoding,
             headers: RequestHeaders.authorization
         ).validate().responseJSON { response in
-            print(response)
             let result = Result<DataWrapper<WrappedData>>(value: {
                 try JSONDecoder().decode(DataWrapper<WrappedData>.self, from: response.data!)
             })
-            switch result {
-            case .failure(let error):
-                print("error reason : ", error)
-            case .success(let data):
-                print("RESPONSE: ",data.data ?? "no data")
-            }
             completionHandler(result)
         }
     }
@@ -96,8 +90,7 @@ class UrlRequest<WrappedData: Codable> {
                         loadingProgressor(progress.fractionCompleted)
                     })
                     upload.validate().responseJSON { result in
-                        if let data = result.data {
-                            print("RESPONSE: ",String(data: data, encoding: String.Encoding.utf8) ?? "cannot decode response")
+                        if result.data != nil {
                             successCompletion()
                         }
                     }

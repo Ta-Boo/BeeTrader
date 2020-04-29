@@ -43,7 +43,7 @@ extension CategoryPickerViewController: ListingManager {
     }
 
     func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryPickerCell") as! CategoryPickerCell
+        let cell = tableView.dequeueReusableCell(type: CategoryPickerCell.self)
         cell.setData(data: viewModel.categories[indexPath.row])
         return cell
     }

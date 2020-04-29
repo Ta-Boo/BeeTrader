@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol AddressPickerViewDelegate: Delegate {
-    func reloadTableView(addresses: [Address])
+    func reloadTableView()
 }
 
 class AddressPickerViewController: UIViewController {
@@ -40,7 +40,7 @@ extension AddressPickerViewController: ListingManager {
     }
 
     func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "AddressCell") as! AddressCell
+        let cell = tableView.dequeueReusableCell(type: AddressCell.self)
         cell.setData(data: viewModel.addresses[indexPath.row])
         return cell
     }
@@ -52,7 +52,7 @@ extension AddressPickerViewController: ListingManager {
 }
 
 extension AddressPickerViewController: AddressPickerViewDelegate {
-    func reloadTableView(addresses _: [Address]) {
+    func reloadTableView() {
         UIView.transition(with: tableView,
                           duration: 0.35,
                           options: .transitionCrossDissolve,

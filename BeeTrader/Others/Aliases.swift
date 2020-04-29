@@ -19,6 +19,8 @@ typealias DoubleClosure = (Double) -> Void
 typealias IntegerClosure = (Int?) -> Void
 typealias OptionalStringClosure = (String?) -> Void
 
+typealias WeakParameters = [String: String?]
+
 typealias KeyboardLayoutManager = UITableViewController & UITextFieldDelegate
 typealias ImagePickerManager = UIImagePickerControllerDelegate & UINavigationControllerDelegate
 

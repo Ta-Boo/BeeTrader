@@ -20,7 +20,7 @@ class AddressPickerViewModel: ViewModel {
         guard let filter = search else { return }
         let debounceHandler: () -> Void = { [weak self] in
             if filter.isEmpty || filter.count < 3 { return }
-            self?.loadAddresses(parameters: RequestParameters.addresses(filter: filter))
+            self?.loadAddresses(withParameters: RequestParameters.addresses(filter: filter))
         }
         guard let searchDebouncer = searchDebouncer else {
             let debouncer = Debouncer(handler: {})
@@ -34,7 +34,7 @@ class AddressPickerViewModel: ViewModel {
         searchDebouncer.call()
     }
 
-    func loadAddresses(parameters: Parameters) {
+    func loadAddresses(withParameters parameters: Parameters) {
         delegate?.showHUD()
         UrlRequest<[Address]>().handle(ApiConstants.addresses,
                                        methood: HTTPMethod.get,
@@ -46,7 +46,7 @@ class AddressPickerViewModel: ViewModel {
                     return
                 }
                 self?.addresses = addresses
-                self?.delegate?.reloadTableView(addresses: addresses)
+                self?.delegate?.reloadTableView()
             case .failure:
                 self?.delegate?.presentFailure()
             }

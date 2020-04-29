@@ -9,14 +9,7 @@
 import Foundation
 import UIKit
 
-protocol EditListingViewDelegate: Delegate {
-    var parameters: [String: String?] { get }
-    var isFilled: Bool { get }
-    func fillFields(listing: ListingDetail)
-    func changeAccessibility(to: Bool)
-    func dismiss(animated : Bool, completion: EmptyClosure?)
 
-}
 
 class EditListingViewController: KeyboardLayoutManager {
     @IBOutlet weak var image: UIImageView!
@@ -28,7 +21,17 @@ class EditListingViewController: KeyboardLayoutManager {
     @IBOutlet weak var submitButton: UIButton!
     
     var imagePicker: UIImagePickerController!
-
+    var parameters: [String: String?] {
+        return RequestParameters.updateListing(listingId: viewModel.listingId,
+                                               title: titleLabel.text,
+                                               typeId: viewModel.category,
+                                               description: descriptionTextView.text,
+                                               price: Int(priceLabel.text!)!*100)
+    }
+    var isFilled: Bool {
+          return titleLabel.isNotEmpty() && priceLabel.isNotEmpty() && viewModel.category != nil
+      }
+       
     
     let viewModel = EditListingViewModel()
     
@@ -40,15 +43,19 @@ class EditListingViewController: KeyboardLayoutManager {
     }
     
     func localize() {
-           changeButton.setTitle(L10n.Listing.Add.changeImage, for: .normal)
+        changeButton.setTitle(L10n.Listing.Add.changeImage, for: .normal)
         categoryButton.setTitle(L10n.Listing.category, for: .normal)
         submitButton.setTitle(L10n.Common.submit, for: .normal)
-           titleLabel.placeholder = L10n.Listing.Add.title
-           priceLabel.placeholder = L10n.Listing.Add.price
+        titleLabel.placeholder = L10n.Listing.Add.title
+        priceLabel.placeholder = L10n.Listing.Add.price
        }
     
     @IBAction func submitTapped(_ sender: Any) {
-        viewModel.updateListing(image: image.image)
+        if isFilled{
+            viewModel.updateListing(withParameters: parameters, image: image.image)
+        } else {
+            presentFailAlert(L10n.Alert.fill)
+        }
     }
     @IBAction func changeImageTapped(_ sender: Any) {
         if UIImagePickerController.isSourceTypeAvailable(.camera) {
@@ -81,25 +88,31 @@ extension EditListingViewController: ImagePickerManager {
     }
 }
 
+protocol EditListingViewDelegate: Delegate {
+    func listingLoadedHandler(listing: ListingDetail)
+    func listingEditOKHandler()
+    func listingEditFailureHandler()
+}
+
 extension EditListingViewController: EditListingViewDelegate{
-    var isFilled: Bool {
-        return titleLabel.isNotEmpty() && priceLabel.isNotEmpty() && viewModel.category != nil
+    func listingEditFailureHandler() {
+        presentFailure()
+        view.isUserInteractionEnabled = true
+        hideHUD()
     }
     
-    var parameters: [String: String?] {
-        return RequestParameters.updateListing(listingId: viewModel.listingId, title: titleLabel.text, typeId: viewModel.category, description: descriptionTextView.text, price: Int(priceLabel.text!)!*100)
+    func listingEditOKHandler() {
+        dismiss(animated: true, completion: nil)
+        view.isUserInteractionEnabled = true
+        hideHUD()
     }
     
-    func fillFields(listing: ListingDetail) {
+    func listingLoadedHandler(listing: ListingDetail) {
         if let listingImage = listing.image {
             image.imageFromUrl(ApiConstants.getImage(postFix: listingImage), useCached: true, true)
         }
         titleLabel.text = listing.title
         priceLabel.text = "\(listing.price/100)"
         descriptionTextView.text = listing.description
-    }
-    
-    func changeAccessibility(to: Bool) {
-           view.isUserInteractionEnabled = to
     }
 }

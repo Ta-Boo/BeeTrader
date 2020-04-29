@@ -12,7 +12,7 @@ class UserDetailViewModel: ViewModel {
     var addressId: Int?
     var avatarChanged = false
     var userUpdateCompletion: StringClosure?
-    var delegate: UserDetailViewDelegate?
+    var delegate: UserDetailViewDelegate!
 
     func viewModelDidLoad() {
         setupViews()
@@ -23,32 +23,17 @@ class UserDetailViewModel: ViewModel {
             delegate?.presentFailure()
             return
         }
-        delegate?.setupViews(user: globalUser)
+        delegate?.updateViews(user: globalUser)
     }
 
-
-    func handleAddressTapped() {
-        let controller = StoryboardScene.AddressPicker.addressPickerViewController.instantiate()
-        controller.addressPickCompletion = { [weak self] address in
-            self?.delegate?.addressPickerCompletionHandler(address: address)
-        }
-        delegate?.presentController(controller)
-    }
-
-    func uploadData(image: UIImage?) {
-        let url = ApiConstants.user
-        var images: [Image]
-        if let img = image {
-            images = [Image(name: "image", fileName: "image", data: img)]
-        } else {
-            images = []
-        }
-
-        UrlRequest<Dump>().uploadImages(url: url, images: images, parameters: delegate?.parameters, loadingProgressor: { _ in
+    func uploadData(withParameters parameters: WeakParameters, image: UIImage?) {
+        let url = ApiConstants.updateUser
+        UrlRequest<Dump>().uploadImages(url: url, images: image.toImageArray(),
+                                        parameters: parameters, loadingProgressor: { _ in
         }, successCompletion: { [weak self] in
-            self?.delegate?.completionHandler()
+            self?.delegate.completionHandler()
         }, failureCompletion: { [weak self] in
-            self?.delegate?.presentFailure()
+            self?.delegate.presentFailure()
         })
     }
 

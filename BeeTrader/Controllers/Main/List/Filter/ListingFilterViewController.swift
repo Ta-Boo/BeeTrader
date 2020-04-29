@@ -57,7 +57,7 @@ extension ListingFilterViewController: ListingManager {
     }
 
     func tableView(_: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FilterCell") as! FilterTypeCell
+        let cell = tableView.dequeueReusableCell(type: FilterTypeCell.self)
         cell.setData(data: viewModel.filterTypes![indexPath.row])
         cell.onSwitchTapped = { [weak self] isOn in
             self?.viewModel.filterTypes![indexPath.row].isChoosen = isOn

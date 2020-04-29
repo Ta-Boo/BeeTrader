@@ -151,7 +151,8 @@ extension ListingViewController: CollectionManager {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListingCell", for: indexPath) as! ListingCell
+//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ListingCell", for: indexPath) as! ListingCell
+        let cell = collectionView.dequeueReusableCell(type: ListingCell.self, indexPath: indexPath)
         cell.setData(data: viewModel.listings[indexPath.row])
         return cell
     }

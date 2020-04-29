@@ -9,30 +9,37 @@
 import Alamofire
 import Foundation
 
-protocol ListingDetailDelegate {
-    func loadListing()
-    func listingLoadedSuccess(listing: ListingDetail)
-    func listingLoadedFailure()
-    func setupViewsHandler()
-}
 
-class ListingDetailViewModel {
-    var delegate: ListingDetailDelegate?
+class ListingDetailViewModel: ViewModel {
+   
+    var delegate: ListingDetailDelegate!
     var listingId: Int?
     var listing: ListingDetail?
-    func loadData(parameters: Parameters) {
+    
+    func viewModelDidLoad() {
+        loadData()
+    }
+    
+    func loadData() {
+        guard let id = listingId else {
+            delegate.presentFailure()
+            return
+        }
+        delegate.showHUD()
         UrlRequest<ListingDetail>().handle(ApiConstants.listing,
                                            methood: HTTPMethod.get,
-                                           parameters: parameters) { [weak self] result in
+                                           parameters: RequestParameters.listing(id: id)) { [weak self] result in
+            self?.delegate.hideHUD()
             switch result {
             case let .success(response):
                 guard let data = response.data else {
-                    self?.delegate?.listingLoadedFailure()
+                    self?.delegate.presentFailure()
                     return
                 }
-                self?.delegate?.listingLoadedSuccess(listing: data)
+                self?.listing = data
+                self?.delegate?.listingLoaded(listing: data)
             case .failure:
-                self?.delegate?.listingLoadedFailure()
+                self?.delegate.presentFailure()
             }
         }
     }

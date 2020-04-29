@@ -2,23 +2,6 @@ import Alamofire
 import Foundation
 import UIKit
 
-protocol Delegate {
-    func showHUD()
-    func hideHUD()
-    func presentFailure()
-    func presentFailAlert(_ title: String)
-}
-
-extension Delegate where Self: UIViewController {
-    func presentFailure() {
-        presentFailedRequestAlert()
-    }
-
-    func presentFailAlert(_ title: String) {
-        presentFailAlert(title: title)
-    }
-}
-
 protocol UserViewDelegate: Delegate {
     func showUserInfo(_ user: User)
     func presetnEditController(_ controller: UIViewController)
@@ -42,7 +25,11 @@ class UserViewController: UIViewController {
     }
 
     @IBAction func onEditClicked(_: Any) {
-        viewModel.handleEditController()
+        let controller = StoryboardScene.UserDetail.initialScene.instantiate()
+        controller.viewModel.userUpdateCompletion = { [weak self] _ in
+            self?.viewModel.loadData()
+        }
+        present(controller, animated: true)
     }
     
     @objc func logOutTapped(_ sender: UIBarButtonItem) {
